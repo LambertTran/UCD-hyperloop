@@ -1,0 +1,164 @@
+/*==============================
+              Color 
+**=============================*/
+
+/** background color **/
+$homepage-top: #212F3D; 
+$homepage-2: #273746; 
+
+/** font **/
+$UCD-color : #DAAA00;
+$sm-fs: 50px;
+$md-fs: 100px;
+$lg-fs: 130px;
+$xl-fs: 150px;
+
+
+/*==============================
+            Properties 
+**=============================*/
+
+@mixin pageProps{
+  width: 100%;
+  height: 100vh;
+}
+
+@mixin centerV{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/*==============================
+              Body
+**=============================*/
+
+html,body{
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+h1{
+  color:$UCD-color;
+}
+
+.container-fluid{
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.container{
+  height: 100%;
+  .row{
+    height: 100%;
+  }
+}
+  
+/** navbar section **/
+.bg-light{
+  background-color:$homepage-2 !important; 
+}
+.nav-link{
+  color:$UCD-color !important;
+}
+.navbar-toggler{
+  border:1px solid $UCD-color;
+  border-color:$UCD-color;
+}
+
+/** page section **/
+
+
+.page1{
+  @include pageProps;
+  background-color: $homepage-top;
+  margin-top:-56px;
+  h1{
+    text-align: center;
+    font-size: $sm-fs;
+    &:first-of-type{
+      padding-top:100px;
+    }
+  }
+  @media screen and (min-width:767px){
+    h1{
+      font-size: $md-fs;
+    }
+  }
+  @media screen and (min-width:1025px){
+    h1{
+      text-align:left;
+      font-size: $lg-fs;
+      &:nth-of-type(1){
+        margin-left: 200px;
+        padding-top: 12%;
+      }
+      &:nth-of-type(2){
+        margin-left: 400px;
+      }
+      &:nth-of-type(3){
+        margin-left: 300px;
+      }
+    }
+  }
+  @media screen and (min-width: 1500px){
+    h1{
+      font-size: $xl-fs;
+    }
+  }
+}
+
+
+.page2{
+  position:relative;
+  @include pageProps;
+  background-color: $homepage-2;
+
+  .info{
+    padding-top: 40px;
+    h1{
+      text-align: center;
+      font-size: $sm-fs;
+    }
+  }
+  .description{
+    color:$UCD-color;
+    font-size: 20px;
+  }
+  @media screen and (min-width:767px){
+    .info{
+      @include centerV;
+      padding-top: 0;
+      h1{
+        font-size: $md-fs - 20px;
+      }
+    }
+    .description{
+      font-size:25px;
+      @include centerV;
+    }
+  }
+  @media screen and (min-width:1023px){
+    h1{
+      font-size: $lg-fs;
+    }
+  }
+}
+
+.page3{
+  @include pageProps;
+  background-color: $homepage-top; 
+}
+
+.page4{
+  @include pageProps;
+  background-color: $homepage-2;
+}
+
+.page5{
+  @include pageProps;
+  background-color: $homepage-top; 
+}
