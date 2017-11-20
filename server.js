@@ -19,6 +19,7 @@ var bodyParser   = require('body-parser');
 /** import routers */
 // Admin
 var HomePage = require('./routes/users/homepage');
+var Team = require('./routes/users/team-page');
 
 
 /** =================================
@@ -85,5 +86,6 @@ app.use(function (req, res, next) {
 
 
 app.use('/',HomePage);
+app.use('/',Team);
 
 app.listen(port, () => console.log(`connect to ${port}`));

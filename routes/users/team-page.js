@@ -10,10 +10,9 @@ const router  = express.Router();
                 Body
 **==================================*/
 
-/** homepage **/
-router.get('/',(req,res) => {
-  res.render('homepage');
-})
+/** teampage **/
+router.get('/team', (req,res) => {
+  res.render('team-page');
+});
 
-
-module.exports = router;    
+module.exports = router;
