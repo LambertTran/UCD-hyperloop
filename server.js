@@ -17,10 +17,10 @@ var bodyParser   = require('body-parser');
 
 
 /** import routers */
-// Admin
+
 var HomePage = require('./routes/users/homepage');
 var Team = require('./routes/users/team-page');
-
+var Admin = require('./routes/admins/admin');
 
 /** =================================
                 Body
@@ -87,5 +87,6 @@ app.use(function (req, res, next) {
 
 app.use('/',HomePage);
 app.use('/',Team);
+app.use('/admin',Admin);
 
 app.listen(port, () => console.log(`connect to ${port}`));

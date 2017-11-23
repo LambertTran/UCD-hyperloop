@@ -9,6 +9,7 @@
 /*==============================
               Body
 **=============================*/
+/** shared classes **/
 html, body {
   height: 100%;
   width: 100%;
@@ -27,6 +28,23 @@ h1 {
   height: 100%; }
   .container .row {
     height: 100%; }
+
+.pg-header, .page2, .page4 {
+  padding-top: 40px; }
+  .pg-header h1, .page2 h1, .page4 h1 {
+    text-align: center;
+    font-size: 40px; }
+  @media screen and (min-width: 767px) {
+    .pg-header .pg-header, .page2 .pg-header, .page4 .pg-header, .pg-header .page2, .page2 .page2, .page4 .page2, .pg-header .page4, .page2 .page4, .page4 .page4 {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-top: 0; }
+      .pg-header .pg-header h1, .page2 .pg-header h1, .page4 .pg-header h1, .pg-header .page2 h1, .page2 .page2 h1, .page4 .page2 h1, .pg-header .page4 h1, .page2 .page4 h1, .page4 .page4 h1 {
+        font-size: 80px; } }
+  @media screen and (min-width: 1023px) {
+    .pg-header h1, .page2 h1, .page4 h1 {
+      font-size: 130px; } }
 
 /** navbar section **/
 .bg-light {
@@ -47,7 +65,7 @@ h1 {
   margin-top: -56px; }
   .page1 h1 {
     text-align: center;
-    font-size: 50px; }
+    font-size: 40px; }
     .page1 h1:first-of-type {
       padding-top: 100px; }
   @media screen and (min-width: 767px) {
@@ -73,44 +91,33 @@ h1 {
   width: 100%;
   height: 100vh;
   background-color: #273746; }
-  .page2 .info {
-    padding-top: 40px; }
-    .page2 .info h1 {
-      text-align: center;
-      font-size: 50px; }
   .page2 .description {
     color: #DAAA00;
     font-size: 20px; }
   @media screen and (min-width: 767px) {
-    .page2 .info {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      padding-top: 0; }
-      .page2 .info h1 {
-        font-size: 80px; }
     .page2 .description {
       font-size: 25px;
       position: absolute;
       top: 50%;
       transform: translateY(-50%); } }
-  @media screen and (min-width: 1023px) {
-    .page2 h1 {
-      font-size: 130px; } }
 
 .page3 {
+  position: relative;
+  background-color: #212F3D;
   width: 100%;
   height: 100vh;
-  background-color: #212F3D; }
+  @extende .pg-header; }
+  .page3 h1 {
+    font-size: 40px; }
 
 .page4 {
   width: 100%;
   height: 100vh;
   background-color: #273746; }
 
-.page5 {
+footer {
+  background-color: #404040;
   width: 100%;
-  height: 100vh;
-  background-color: #212F3D; }
+  height: 50vh; }
 
 /*# sourceMappingURL=index.css.map */
