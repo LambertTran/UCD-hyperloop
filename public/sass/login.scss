@@ -1,0 +1,33 @@
+.login{
+  height:85%;
+  width:80%;
+  position:absolute;
+  margin:auto;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color:$login-bg;
+  padding: 20px;
+  padding-top:50px;
+  border-radius: 15px 50px;
+  font-size:0.5em;
+  h2{
+    text-align:center;
+  }
+  label{
+    font-size:30px;
+    color:white;
+  }
+  .button{
+    text-align:center;
+  }
+  @media (min-width: 767px){
+    height: 700px;
+    width:400px;
+  }
+  @media screen and (min-width: 1200px){
+
+  }
+}
+

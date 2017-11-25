@@ -1,0 +1,72 @@
+/** page section **/
+.page1{
+  @include pageProps;
+  background-color: $homepage-top;
+  margin-top:-56px;
+  h1{
+    text-align: center;
+    font-size: $sm-fs;
+    &:first-of-type{
+      padding-top:100px;
+    }
+  }
+  @media screen and (min-width:767px){
+    h1{
+      font-size: $md-fs;
+    }
+  }
+  @media screen and (min-width:1025px){
+    h1{
+      text-align:left;
+      font-size: $lg-fs;
+      &:nth-of-type(1){
+        margin-left: 200px;
+        padding-top: 12%;
+      }
+      &:nth-of-type(2){
+        margin-left: 400px;
+      }
+      &:nth-of-type(3){
+        margin-left: 300px;
+      }
+    }
+  }
+  @media screen and (min-width: 1500px){
+    h1{
+      font-size: $xl-fs;
+    }
+  }
+}
+
+.page2{
+  position:relative;
+  @include pageProps;
+  background-color: $homepage-2;
+  @extend .pg-header;
+  .description{
+    color:$UCD-color;
+    font-size: 20px;
+  }
+  @media screen and (min-width:767px){
+    .description{
+      font-size:25px;
+      @include centerV;
+    }
+  }
+}
+
+.page3{
+  position:relative;
+  background-color: $homepage-top;
+  @include pageProps;
+  @extende .pg-header;
+  h1{
+    font-size:40px;
+  }
+}
+
+.page4{
+  @include pageProps;
+  background-color: $homepage-2;
+  @extend .pg-header;
+}
