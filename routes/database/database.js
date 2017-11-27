@@ -13,7 +13,7 @@ var mysql = require('mysql');
 const db = mysql.createConnection({
   host:'localhost',
   user: 'root',
-  password: 'password',
+  password: 'abc123',
   database: 'nodemysql'
 });
 
@@ -34,7 +34,7 @@ router.get('/create/db',(req,res) => {
 })
 
 router.get('/create/table', (req, res) => {
-  let sql = "CREATE TABLE posts(id int AUTO_INCREMENT, user VARCHAR(255), password VARCHAR(255))";
+  let sql = "CREATE TABLE user_data(id int AUTO_INCREMENT,PRIMARY KEY(id), user VARCHAR(255), password VARCHAR(255))";
   
   db.query(sql,(err,result) => {
     if(err) throw err;

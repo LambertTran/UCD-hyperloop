@@ -1,3 +1,7 @@
+/** nav **/
+$nav-bg: #003399;
+$nav-item-hover: #CCFFCC;
+
 /** navbar section **/
 .bg-light{
   background-color:$homepage-2 !important; 
@@ -8,4 +12,72 @@
 .navbar-toggler{
   border:1px solid $UCD-color;
   border-color:$UCD-color;
+}
+
+.navigator{
+  z-index:100;
+  position:fixed;
+  background-color: $nav-bg;
+  padding:0 !important;
+  margin:0 !important;
+  ul{
+    width:100%;
+    margin:0;
+    margin:10px 0 0px 0;
+    -webkit-padding-start:0;
+    list-style-type: none;
+    li{
+      display:inline;
+      width:100%;
+      padding-right:0;
+      padding-left:0;
+      // padding:10px;
+      text-align:center;
+      a{
+        color:#CCFFCC;
+        font-size:20px;
+        display: block;      
+        pading: 10px;
+      }
+      &:hover{
+        background-color:$nav-item-hover;
+        a{
+          color:black;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .navbar-active{
+    background-color:red;
+    a{
+      color:black;
+    }
+  }
+  @media screen and (min-width:767px){
+    height:100vh;
+    ul{
+      // padding-top:40px;
+      li{
+        margin-bottom:30px;
+        // padding:5px;
+        a{
+          font-size:30px;
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1200px){
+    ul{
+      // padding-top:60px;
+      li{
+        a{
+          font-size:20px;
+        }
+      }
+    }
+  }
 }

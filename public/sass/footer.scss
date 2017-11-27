@@ -3,4 +3,28 @@ footer{
   position:relative;
   width: 100%;
   height:50vh;
+  h4{
+    padding-top: 15px;
+    text-align: center;
+    color:white;
+  }
+  .med-icon{
+    display:block;
+    text-align:center;
+    a{
+      margin-left: 5px;
+      margin-top: 5px;
+    }
+  }
+  .contact-item{
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    h5{
+      height: 100%;
+    }
+    span{
+      margin-right: 2px;
+    }
+  }
 }

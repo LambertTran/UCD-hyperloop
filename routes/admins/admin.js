@@ -11,12 +11,17 @@ const router  = express.Router();
 **==================================*/
 
 /** admin page **/
+/* login */
 router.get('/login',(req,res) => {
   res.render('login');
 })
 
-router.get('/dashboard',(req,res) => {
-  res.render('dashboard');
+router.post('/login',(req,res) => {
+  res.redirect('/admin');
+})
+
+router.get('/',(req,res) => {
+  res.render('dashboard',{isAdmin:true});
 })
 
 module.exports = router;

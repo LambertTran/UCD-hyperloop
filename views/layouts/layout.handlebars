@@ -4,7 +4,10 @@
   <title>Hyperloop</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- bootstrap -->
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <!-- front-awesome -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">     <!-- custom css -->
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
@@ -13,7 +16,31 @@
   <div class="container-fluid">
 
     {{!-- NavBar --}}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+    {{#if isAdmin}}
+    <nav>
+      <div class="row">
+        <div class="col-12 col-md-3 col-lg-2 navigator">
+          <ul class="row" id= "navbar-admin">
+            <li class="col-4 col-md-12 navbar-active">
+              <a href="/admin/">DashBoard</a>
+            </li>
+            <li class="col-4 col-md-12">
+              <a href="#">Customer Images</a>
+            </li>
+            <li class="col-4 col-md-12">
+              <a href="#">Upload New Car</a>
+            </li>
+            <li class="col-4 col-md-12">
+              <a href="#">Upload Customer Images</a>
+            </li>
+            <li class="col-4 col-md-12">
+              <a href="/">Logout</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    {{else}}
+      <nav class="navbar navbar-expand-lg navbar-dark bg-light">
       <a class="navbar-brand" href="#">ICON</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,22 +60,45 @@
             <a class="nav-link" href="/contact">Donate</a>
           </li>
         </ul>
-      </div>
-    </nav>
-
+      </div></nav>
+    {{/if}}
     {{!-- Body --}}
     <div>
       {{{body}}}
-    </div>    
+    </div>
 
-    <footer>
-      
-    </footer>
+    {{!-- Footer --}}
+    {{#if isAdmin}}
+    {{else}}
+      <footer>
+        <h4>Contact us</h4>
+        <div class="contact-item">
+          <h5>
+            <span>
+              <i class="fa fa-envelope-o fa-1x" aria-hidden="true"></i>
+            </span> 
+            <a href="mailto:hyperloop@ucdavis.edu">
+              hyperloop@ucdavis.edu
+            </a>
+          </h5></div>
+        <div class="med-icon">
+          <a href="#">
+          <img title="Twitter" alt="Twitter" src="https://socialmediawidgets.files.wordpress.com/2014/03/01_twitter.png" width="35" height="35" />
+          </a>
+          <a href="#">
+          <img title="Facebook" alt="Facebook" src="https://socialmediawidgets.files.wordpress.com/2014/03/02_facebook.png" width="35" height="35" />
+          </a>
+          <a href="#">
+          <img title="Instagram" alt="RSS" src="https://socialmediawidgets.files.wordpress.com/2014/03/10_instagram.png" width="35" height="35" />
+          </a></div>
+      </footer>
+    {{/if}}
   </div>
 
   {{!-- Javascript --}}
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="/js/index.js" type="text/javascript"></script>
 </body>
 </html>

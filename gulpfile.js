@@ -28,6 +28,7 @@ gulp.task('reload', () => {
 gulp.task('watch',['browser-sync'], () => {
   gulp.watch('./public/css/*.css',['reload']);
   gulp.watch('./views/*.handlebars',['reload']);
+  gulp.watch('./views/**/*.handlebars',['reload']);
   gulp.watch('./routes/**/*.js',['reload']);
 })
 
