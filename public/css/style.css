@@ -3,6 +3,7 @@
 **=============================*/
 /** background color **/
 /** font **/
+/** image **/
 /*==============================
             Properties 
 **=============================*/
@@ -149,11 +150,46 @@ h1 {
 .page3 {
   position: relative;
   background-color: #212F3D;
+  background-image: url("../images/team-img.png");
   width: 100%;
   height: 100vh;
+  position: relative;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   @extende .pg-header; }
   .page3 h1 {
     font-size: 40px; }
+
+.btn-div {
+  position: absolute;
+  bottom: 15%;
+  width: 100%; }
+
+.btn-3d {
+  position: relative;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  background-color: #1A3E68;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 16px;
+  padding: 15px 25px;
+  border-radius: 15px;
+  margin: 0 auto;
+  box-shadow: 0 6px #002855; }
+
+.btn-3d:hover {
+  box-shadow: 0 4px #002855;
+  top: 2px; }
+
+.btn-3d:active {
+  box-shadow: none;
+  top: 6px; }
 
 .page4 {
   width: 100%;
@@ -161,28 +197,44 @@ h1 {
   background-color: #273746; }
 
 footer {
-  background-color: #404040;
+  background-color: #002855;
   position: relative;
   width: 100%;
-  height: 50vh; }
+  padding-top: 15px;
+  padding-bottom: 15px; }
   footer h4 {
     padding-top: 15px;
     text-align: center;
     color: white; }
-  footer .med-icon {
-    display: block;
-    text-align: center; }
-    footer .med-icon a {
-      margin-left: 5px;
-      margin-top: 5px; }
-  footer .contact-item {
-    margin-top: 10px;
-    text-align: center;
-    width: 100%; }
-    footer .contact-item h5 {
-      height: 100%; }
-    footer .contact-item span {
-      margin-right: 2px; }
+  footer hr {
+    border-top: 1px dotted white;
+    width: 200px; }
+  @media screen and (min-width: 767px) {
+    footer {
+      padding-top: 30px;
+      padding-bottom: 30px; } }
+
+.slack-icon {
+  padding-top: 20px;
+  text-align: center; }
+  .slack-icon h5 {
+    margin-top: 5px; }
+
+.social-icon {
+  display: block;
+  text-align: center;
+  padding-bottom: 30px; }
+  .social-icon a {
+    margin-left: 5px;
+    margin-top: 5px; }
+
+.contact-item {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%; }
+  .contact-item h5 {
+    height: 100%; }
 
 /** classes **/
 .container-fluid {

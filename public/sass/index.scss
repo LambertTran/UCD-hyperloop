@@ -8,7 +8,7 @@ $homepage-top: #212F3D;
 $homepage-2: #273746; 
 
 // footer
-$footer: #404040;
+$footer: #002855;
 
 // login
 $login-bg:#0099CC;
@@ -20,6 +20,8 @@ $md-fs: 100px;
 $lg-fs: 130px;
 $xl-fs: 150px;
 
+/** image **/
+$team-bg-img: url('../images/team-img.png');
 /*==============================
             Properties 
 **=============================*/
@@ -35,6 +37,13 @@ $xl-fs: 150px;
   transform: translateY(-50%);
 }
 
+@mixin image-bg{
+  position:relative;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+}
 /*==============================
               Body
 **=============================*/

@@ -58,11 +58,43 @@
 .page3{
   position:relative;
   background-color: $homepage-top;
+  background-image:$team-bg-img;
   @include pageProps;
+  @include image-bg;
   @extende .pg-header;
   h1{
     font-size:40px;
   }
+}
+.btn-div{
+  position:absolute;
+  bottom: 15%;
+  width: 100%;
+}
+.btn-3d{
+  position:relative;
+  outline:none;
+  border:none;
+  cursor:pointer;
+  display:block;
+  background-color:#1A3E68;
+  color:white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size:16px;
+  padding:15px 25px;
+  border-radius:15px;
+  margin:0 auto;
+  box-shadow: 0 6px #002855;
+}
+.btn-3d:hover{
+  box-shadow: 0 4px #002855;
+  top:2px;
+}
+
+.btn-3d:active{
+  box-shadow:none;
+  top:6px;
 }
 
 .page4{

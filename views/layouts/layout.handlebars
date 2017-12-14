@@ -4,43 +4,42 @@
   <title>Hyperloop</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- bootstrap -->
+  <!-- bootstrap -->
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-    <!-- front-awesome -->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">     <!-- custom css -->
+  <!-- front-awesome -->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- custom css -->
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
   {{!-- Layout --}}
-
-  <div class="container-fluid">
-
-    {{!-- NavBar --}}
-    {{#if isAdmin}}
-    <nav>
-      <div class="row">
-        <div class="col-12 col-md-3 col-lg-2 navigator">
-          <ul class="row" id= "navbar-admin">
-            <li class="col-4 col-md-12 navbar-active">
-              <a href="/admin/">DashBoard</a>
-            </li>
-            <li class="col-4 col-md-12">
-              <a href="#">Customer Images</a>
-            </li>
-            <li class="col-4 col-md-12">
-              <a href="#">Upload New Car</a>
-            </li>
-            <li class="col-4 col-md-12">
-              <a href="#">Upload Customer Images</a>
-            </li>
-            <li class="col-4 col-md-12">
-              <a href="/">Logout</a>
-            </li>
-          </ul>
-        </div>
-    </nav>
-    {{else}}
-      <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+  {{!-- NavBar --}}
+  {{#if isAdmin}}
+    <div class="container-fluid">
+      <nav>
+        <div class="row">
+          <div class="col-12 col-md-3 col-lg-2 navigator">
+            <ul class="row" id= "navbar-admin">
+              <li class="col-4 col-md-12 navbar-active">
+                <a href="/admin/">DashBoard</a>
+              </li>
+              <li class="col-4 col-md-12">
+                <a href="#">Customer Images</a>
+              </li>
+              <li class="col-4 col-md-12">
+                <a href="#">Upload New Car</a>
+              </li>
+              <li class="col-4 col-md-12">
+                <a href="#">Upload Customer Images</a>
+              </li>
+              <li class="col-4 col-md-12">
+                <a href="/">Logout</a>
+              </li>
+            </ul>
+          </div>
+      </nav></div>
+  {{else}}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
       <a class="navbar-brand" href="#">ICON</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -61,39 +60,49 @@
           </li>
         </ul>
       </div></nav>
-    {{/if}}
-    {{!-- Body --}}
-    <div>
-      {{{body}}}
-    </div>
-
-    {{!-- Footer --}}
-    {{#if isAdmin}}
-    {{else}}
-      <footer>
-        <h4>Contact us</h4>
-        <div class="contact-item">
-          <h5>
-            <span>
-              <i class="fa fa-envelope-o fa-1x" aria-hidden="true"></i>
-            </span> 
-            <a href="mailto:hyperloop@ucdavis.edu">
-              hyperloop@ucdavis.edu
-            </a>
-          </h5></div>
-        <div class="med-icon">
-          <a href="#">
-          <img title="Twitter" alt="Twitter" src="https://socialmediawidgets.files.wordpress.com/2014/03/01_twitter.png" width="35" height="35" />
-          </a>
-          <a href="#">
-          <img title="Facebook" alt="Facebook" src="https://socialmediawidgets.files.wordpress.com/2014/03/02_facebook.png" width="35" height="35" />
-          </a>
-          <a href="#">
-          <img title="Instagram" alt="RSS" src="https://socialmediawidgets.files.wordpress.com/2014/03/10_instagram.png" width="35" height="35" />
-          </a></div>
-      </footer>
-    {{/if}}
+  {{/if}}
+  {{!-- Body --}}
+  <div class="container-fluid">
+    {{{body}}}
   </div>
+
+  {{!-- Footer --}}
+  {{#if isAdmin}}
+  {{else}}
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <div class="slack-icon">
+              <a href="https://ucdhyperloopteam.slack.com">
+                <img src="../images/slack.png" alt="icon">
+                <h5>Chat with us on slack </h5>
+              </a></div>
+            <hr>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <h4>Contact us</h4>
+            <div class="contact-item">
+              <h5>
+                <a href="mailto:hyperloop@ucdavis.edu">
+                  hyperloop@ucdavis.edu
+                </a>
+              </h5></div>
+            <div class="social-icon">
+              <a href="#">
+              <img title="Twitter" alt="Twitter" src="https://socialmediawidgets.files.wordpress.com/2014/03/01_twitter.png" width="35" height="35" />
+              </a>
+              <a href="#">
+              <img title="Facebook" alt="Facebook" src="https://socialmediawidgets.files.wordpress.com/2014/03/02_facebook.png" width="35" height="35" />
+              </a>
+              <a href="#">
+              <img title="Instagram" alt="RSS" src="https://socialmediawidgets.files.wordpress.com/2014/03/10_instagram.png" width="35" height="35" />
+              </a></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  {{/if}}
 
   {{!-- Javascript --}}
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -2,29 +2,45 @@ footer{
   background-color: $footer;
   position:relative;
   width: 100%;
-  height:50vh;
+  padding-top:15px;
+  padding-bottom:15px;
   h4{
     padding-top: 15px;
     text-align: center;
     color:white;
   }
-  .med-icon{
-    display:block;
-    text-align:center;
-    a{
-      margin-left: 5px;
-      margin-top: 5px;
-    }
+  hr{
+    border-top:1px dotted white;
+    width:200px;
   }
-  .contact-item{
-    margin-top: 10px;
-    text-align: center;
-    width: 100%;
-    h5{
-      height: 100%;
-    }
-    span{
-      margin-right: 2px;
-    }
+  @media screen and (min-width:767px){
+    padding-top:30px;
+    padding-bottom:30px;
+  }
+}
+.slack-icon{
+  padding-top:20px;
+  text-align:center;
+  h5{
+    margin-top: 5px;
+  }
+}
+
+.social-icon{
+  display:block;
+  text-align:center;
+  a{
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+  padding-bottom:30px;
+}
+.contact-item{
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+  h5{
+    height: 100%;
   }
 }
