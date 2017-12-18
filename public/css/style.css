@@ -20,8 +20,9 @@ h1 {
   color: #DAAA00; }
 
 /** import files **/
-/** nav **/
-/** navbar section **/
+/** admin navbar **/
+/** client navbar **/
+/** navbar section for admin **/
 .bg-light {
   background-color: #273746 !important; }
 
@@ -54,15 +55,15 @@ h1 {
         color: #CCFFCC;
         font-size: 20px;
         display: block;
-        pading: 10px; }
+        padding: 10px; }
       .navigator ul li:hover {
         background-color: #CCFFCC; }
         .navigator ul li:hover a {
           color: black;
           text-decoration: none; }
-  .navigator .navbar-active {
+  .navigator .nav-admin-active {
     background-color: red; }
-    .navigator .navbar-active a {
+    .navigator .nav-admin-active a {
       color: black; }
   @media screen and (min-width: 767px) {
     .navigator {
@@ -76,6 +77,43 @@ h1 {
   @media screen and (min-width: 1200px) {
     .navigator ul li a {
       font-size: 20px; } }
+
+/* navbar section for user */
+.nav-client {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap; }
+  .nav-client a {
+    font-size: 40px;
+    color: #F4E5B2;
+    border-bottom: 1px solid #F4E5B2;
+    width: 80px;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    transition: color 0.5 ease-in; }
+    .nav-client a span {
+      display: none; }
+    .nav-client a:hover {
+      color: #DEB31A;
+      border-bottom: 1px solid #DEB31A; }
+  @media screen and (min-width: 767px) {
+    .nav-client {
+      justify-content: flex-end; }
+      .nav-client a {
+        font-size: 30px;
+        margin-right: 30px;
+        width: 140px; }
+        .nav-client a span {
+          display: inline-block !important; }
+        .nav-client a i {
+          margin-right: 2px; } }
+
+.nav-client-active {
+  color: #DAAA00 !important;
+  border-bottom: 1px solid #DAAA00 !important; }
 
 .login {
   height: 85%;
@@ -108,7 +146,7 @@ h1 {
   width: 100%;
   height: 100vh;
   background-color: #212F3D;
-  margin-top: -56px; }
+  margin-top: -61px; }
   .page1 h1 {
     text-align: center;
     font-size: 40px; }
@@ -197,7 +235,7 @@ h1 {
   background-color: #273746; }
 
 footer {
-  background-color: #002855;
+  background-color: #212F3D;
   position: relative;
   width: 100%;
   padding-top: 15px;

@@ -1,8 +1,13 @@
-/** nav **/
+/** admin navbar **/
 $nav-bg: #003399;
 $nav-item-hover: #CCFFCC;
 
-/** navbar section **/
+/** client navbar **/
+$nav-client-color:#F4E5B2;
+$nav-client-hover:#DEB31A;
+$nav-client-active:#DAAA00;
+
+/** navbar section for admin **/
 .bg-light{
   background-color:$homepage-2 !important; 
 }
@@ -37,7 +42,7 @@ $nav-item-hover: #CCFFCC;
         color:#CCFFCC;
         font-size:20px;
         display: block;      
-        pading: 10px;
+        padding: 10px;
       }
       &:hover{
         background-color:$nav-item-hover;
@@ -48,7 +53,7 @@ $nav-item-hover: #CCFFCC;
       }
     }
   }
-  .navbar-active{
+  .nav-admin-active{
     background-color:red;
     a{
       color:black;
@@ -72,7 +77,6 @@ $nav-item-hover: #CCFFCC;
 
   @media screen and (min-width: 1200px){
     ul{
-      // padding-top:60px;
       li{
         a{
           font-size:20px;
@@ -81,3 +85,49 @@ $nav-item-hover: #CCFFCC;
     }
   }
 }
+
+/* navbar section for user */
+.nav-client{
+  width: 100vw;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  a{
+    font-size:40px;
+    color:$nav-client-color;
+    border-bottom: 1px solid $nav-client-color;
+    width: 80px;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+    transition:color 0.5 ease-in;
+    span{
+      display: none;      
+    }
+    &:hover{
+      color: $nav-client-hover;
+      border-bottom: 1px solid $nav-client-hover;
+    }
+  }
+
+  @media screen and (min-width:767px){
+    justify-content: flex-end;
+    a{
+      font-size: 30px;
+      margin-right: 30px;
+      width: 140px;
+      span{
+        display: inline-block !important;
+      }
+      i{
+        margin-right:2px;  
+      }
+    }
+  }
+}
+.nav-client-active{
+  color: $nav-client-active !important;
+  border-bottom: 1px solid $nav-client-active !important;
+}
+
