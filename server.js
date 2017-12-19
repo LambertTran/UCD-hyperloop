@@ -23,7 +23,7 @@ var HomePage = require('./routes/users/homepage');
 var Team = require('./routes/users/team-page');
 var Admin = require('./routes/admins/admin');
 
-// var Database = require('./routes/database/database');
+var Database = require('./routes/database/database');
 
 /** =================================
                 Body
@@ -94,7 +94,7 @@ app.use(function (req, res, next) {
 app.use('/',HomePage);
 app.use('/',Team);
 app.use('/admin',Admin);
-// app.use('/database',Database);
+app.use('/database',Database);
 
 
 app.listen(port, () => console.log(`connect to ${port}`));
