@@ -14,7 +14,8 @@
 html, body {
   height: 100%;
   width: 100%;
-  position: relative; }
+  position: relative;
+  overflow-x: hidden; }
 
 h1 {
   color: #DAAA00; }
@@ -78,22 +79,42 @@ h1 {
     .navigator ul li a {
       font-size: 20px; } }
 
-/* navbar section for user */
-.nav-client {
+/* navbar section for client */
+header {
+  position: absolute;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  animation: 1s fadein 0.5s forwards; }
+  header h2 {
+    color: white; }
+  @media screen and (min-width: 767px) {
+    header {
+      flex-direction: row;
+      justify-content: space-between; }
+      header h2 {
+        margin-left: 20px; } }
+
+.nav-client {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: nowrap; }
+  .nav-client li {
+    list-style: none;
+    width: 80px;
+    text-align: center; }
   .nav-client a {
-    font-size: 40px;
+    font-size: 45px;
     color: #F4E5B2;
     border-bottom: 1px solid #F4E5B2;
-    width: 80px;
     height: 100%;
     text-align: center;
     text-decoration: none;
-    transition: color 0.5 ease-in; }
+    transition: color 0.5s ease-in; }
     .nav-client a span {
       display: none; }
     .nav-client a:hover {
@@ -102,16 +123,17 @@ h1 {
   @media screen and (min-width: 767px) {
     .nav-client {
       justify-content: flex-end; }
-      .nav-client a {
-        font-size: 30px;
-        margin-right: 30px;
-        width: 140px; }
-        .nav-client a span {
-          display: inline-block !important; }
-        .nav-client a i {
-          margin-right: 2px; } }
+      .nav-client li {
+        margin-right: 20px;
+        width: 125px; }
+        .nav-client li a {
+          font-size: 25px; }
+          .nav-client li a span {
+            display: inline-block !important; }
+          .nav-client li a i {
+            margin-right: 2px; } }
 
-.nav-client-active {
+.nav-client-active a {
   color: #DAAA00 !important;
   border-bottom: 1px solid #DAAA00 !important; }
 
@@ -145,13 +167,12 @@ h1 {
 .page1 {
   width: 100%;
   height: 100vh;
-  background-color: #212F3D;
-  margin-top: -61px; }
+  background-color: #212F3D; }
   .page1 h1 {
     text-align: center;
     font-size: 40px; }
     .page1 h1:first-of-type {
-      padding-top: 100px; }
+      padding-top: 150px; }
   @media screen and (min-width: 767px) {
     .page1 h1 {
       font-size: 100px; } }
