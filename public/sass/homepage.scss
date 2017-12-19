@@ -2,32 +2,33 @@
 .page1{
   @include pageProps;
   background-color: $homepage-top;
-  // margin-top:-61px;
-  h1{
-    text-align: center;
-    font-size: $sm-fs;
-    &:first-of-type{
-      padding-top:150px;
-    }
-  }
-  @media screen and (min-width:767px){
+  .home-content{
+    opacity: 0;
+    animation: 0.7s slideup 0.5 forwards;
+    padding-top:250px;
     h1{
-      font-size: $md-fs;
+      text-align: center;
+      font-size: $sm-fs;
     }
-  }
-  @media screen and (min-width:1025px){
-    h1{
-      text-align:left;
-      font-size: $lg-fs;
-      &:nth-of-type(1){
-        margin-left: 200px;
-        padding-top: 12%;
+    @media screen and (min-width:767px){
+      h1{
+        font-size: $md-fs;
       }
-      &:nth-of-type(2){
-        margin-left: 400px;
-      }
-      &:nth-of-type(3){
-        margin-left: 300px;
+    }
+    @media screen and (min-width:1025px){
+      h1{
+        text-align:left;
+        font-size: $lg-fs;
+        &:nth-of-type(1){
+          margin-left: 200px;
+          padding-top: 12%;
+        }
+        &:nth-of-type(2){
+          margin-left: 400px;
+        }
+        &:nth-of-type(3){
+          margin-left: 300px;
+        }
       }
     }
   }
@@ -101,4 +102,12 @@
   @include pageProps;
   background-color: $homepage-2;
   @extend .pg-header;
+}
+
+/** animation **/
+@keyframes slideup {
+  100%{
+    opacity: 1;
+    padding-top:120px;
+  }
 }
