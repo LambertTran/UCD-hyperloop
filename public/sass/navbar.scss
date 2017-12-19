@@ -88,6 +88,7 @@ $nav-client-active:#DAAA00;
 
 /* navbar section for client */
 header{
+  z-index: 100;
   position: absolute;
   width: 100vw;
   display: flex;
