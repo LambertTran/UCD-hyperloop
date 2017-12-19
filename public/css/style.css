@@ -175,7 +175,7 @@ header {
   background-color: #212F3D; }
   .page1 .home-content {
     opacity: 0;
-    animation: 0.7s slideup 0.5 forwards;
+    animation: 1s slideup 1s forwards;
     padding-top: 250px; }
     .page1 .home-content h1 {
       text-align: center;
@@ -188,8 +188,7 @@ header {
         text-align: left;
         font-size: 130px; }
         .page1 .home-content h1:nth-of-type(1) {
-          margin-left: 200px;
-          padding-top: 12%; }
+          margin-left: 200px; }
         .page1 .home-content h1:nth-of-type(2) {
           margin-left: 400px; }
         .page1 .home-content h1:nth-of-type(3) {
@@ -223,8 +222,7 @@ header {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  @extende .pg-header; }
+  background-position: center; }
   .page3 h1 {
     font-size: 40px; }
 
@@ -319,21 +317,21 @@ footer {
   .container .row {
     height: 100%; }
 
-.pg-header, .page2, .page4 {
+.pg-header, .page2, .page3, .page4 {
   padding-top: 40px; }
-  .pg-header h1, .page2 h1, .page4 h1 {
+  .pg-header h1, .page2 h1, .page3 h1, .page4 h1 {
     text-align: center;
     font-size: 40px; }
   @media screen and (min-width: 767px) {
-    .pg-header .pg-header, .page2 .pg-header, .page4 .pg-header, .pg-header .page2, .page2 .page2, .page4 .page2, .pg-header .page4, .page2 .page4, .page4 .page4 {
+    .pg-header .pg-header, .page2 .pg-header, .page3 .pg-header, .page4 .pg-header, .pg-header .page2, .page2 .page2, .page3 .page2, .page4 .page2, .pg-header .page3, .page2 .page3, .page3 .page3, .page4 .page3, .pg-header .page4, .page2 .page4, .page3 .page4, .page4 .page4 {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       padding-top: 0; }
-      .pg-header .pg-header h1, .page2 .pg-header h1, .page4 .pg-header h1, .pg-header .page2 h1, .page2 .page2 h1, .page4 .page2 h1, .pg-header .page4 h1, .page2 .page4 h1, .page4 .page4 h1 {
+      .pg-header .pg-header h1, .page2 .pg-header h1, .page3 .pg-header h1, .page4 .pg-header h1, .pg-header .page2 h1, .page2 .page2 h1, .page3 .page2 h1, .page4 .page2 h1, .pg-header .page3 h1, .page2 .page3 h1, .page3 .page3 h1, .page4 .page3 h1, .pg-header .page4 h1, .page2 .page4 h1, .page3 .page4 h1, .page4 .page4 h1 {
         font-size: 80px; } }
   @media screen and (min-width: 1023px) {
-    .pg-header h1, .page2 h1, .page4 h1 {
+    .pg-header h1, .page2 h1, .page3 h1, .page4 h1 {
       font-size: 130px; } }
 
 /** admin page **/

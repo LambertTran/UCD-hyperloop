@@ -4,7 +4,7 @@
   background-color: $homepage-top;
   .home-content{
     opacity: 0;
-    animation: 0.7s slideup 0.5 forwards;
+    animation: 1s slideup 1s forwards;
     padding-top:250px;
     h1{
       text-align: center;
@@ -21,7 +21,6 @@
         font-size: $lg-fs;
         &:nth-of-type(1){
           margin-left: 200px;
-          padding-top: 12%;
         }
         &:nth-of-type(2){
           margin-left: 400px;
@@ -62,7 +61,7 @@
   background-image:$team-bg-img;
   @include pageProps;
   @include image-bg;
-  @extende .pg-header;
+  @extend .pg-header;
   h1{
     font-size:40px;
   }
