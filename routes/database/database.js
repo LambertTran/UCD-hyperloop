@@ -43,7 +43,7 @@ router.get('/create/admin', (req, res) => {
   
   // hash password before store into database
   bcrypt.genSalt(10,(err,salt) =>{
-    bcrypt.hash(username,salt,(err,hash) => {
+    bcrypt.hash(password,salt,(err,hash) => {
       password = hash;
       let sqlInsert = `INSERT INTO user_data (user,password) VALUES ('${username}','${password}')`;
       console.log(sqlInsert);

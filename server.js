@@ -22,6 +22,7 @@ var bodyParser   = require('body-parser');
 var HomePage = require('./routes/users/homepage');
 var Team = require('./routes/users/team-page');
 var Admin = require('./routes/admins/admin');
+var Login = require('./routes/admins/login');
 
 var Database = require('./routes/database/database');
 
@@ -51,41 +52,42 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Express Session
 app.use(session({
-    secret: 'secret',
-    saveUninitialized: true,
-    resave: false
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: false
 }));
 
 // Passport init
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Express Validator
-app.use(expressValidator({
-  errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
-      , formParam = root;
-
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
-}));
-
 // connect flash
 app.use(flash());
 
+// // Express Validator
+// app.use(expressValidator({
+//   errorFormatter: function(param, msg, value) {
+//       var namespace = param.split('.')
+//       , root    = namespace.shift()
+//       , formParam = root;
+
+//     while(namespace.length) {
+//       formParam += '[' + namespace.shift() + ']';
+//     }
+//     return {
+//       param : formParam,
+//       msg   : msg,
+//       value : value
+//     };
+//   }
+// }));
+
+
 // global variable
 app.use(function (req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
+  // res.locals.success_msg = req.flash('success_msg');
+  // res.locals.error_msg = req.flash('error_msg');
+  // res.locals.error = req.flash('error');
   res.locals.user = req.user;
   next();
 });
@@ -93,6 +95,7 @@ app.use(function (req, res, next) {
 
 app.use('/',HomePage);
 app.use('/',Team);
+app.use('/',Login);
 app.use('/admin',Admin);
 app.use('/database',Database);
 
