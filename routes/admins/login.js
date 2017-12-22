@@ -74,13 +74,13 @@ passport.deserializeUser(function(user,done) {
 function ValidateUser(username,password){
   // look for username
   return new Promise((resolve,reject) => {
-    var sql = `SELECT * FROM user_data WHERE user = '${username}'`;
+    var sql = `SELECT * FROM ${db.name} WHERE user = '${username}'`;
     db.query(sql,(err,result) => {
       if (err) {
         return reject(err);
       }
       if (result.length === 0){
-        return reject(false);
+        return reject();
       } 
       else {
         // look for password
@@ -89,9 +89,9 @@ function ValidateUser(username,password){
             return reject(err);
           }
           if (res === false){
-            return reject(false);
+            return reject();
           } else {
-            return resolve(true);
+            return resolve();
           }
         })
       }

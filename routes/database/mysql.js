@@ -8,10 +8,10 @@ const mysql = require('mysql');
 **==================================*/
 /** mysql database **/
 const db = mysql.createConnection({
-  host:'localhost',
-  user: 'root',
-  password: 'abc123',
-  database: 'admin'
+  host:'mysqlinstance.cqel7ccv9iks.us-west-1.rds.amazonaws.com',
+  user: 'alirom93',
+  password: '',
+  database: 'test'
 });
 
 db.connect((err) => {
@@ -20,5 +20,7 @@ db.connect((err) => {
     console.log("Connecting to mysql database");
   }
 });
+
+db.name = 'test';
 
 module.exports = db;

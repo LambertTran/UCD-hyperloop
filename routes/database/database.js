@@ -11,7 +11,6 @@ const db   = require("./mysql");
 /** =================================
                 Body
 **==================================*/
-
 /** create database **/
 router.get('/create/db',(req,res) => {
   let sql = 'CREATE DATABASE test';
@@ -27,7 +26,7 @@ router.get('/create/db',(req,res) => {
 router.get('/create/admin', (req, res) => {
   
   // define table parameters
-  let sql = "CREATE TABLE IF NOT EXISTS user_data(id int AUTO_INCREMENT,PRIMARY KEY(id), user VARCHAR(255), password VARCHAR(255))";
+  let sql = `CREATE TABLE IF NOT EXISTS ${db.name} (id int AUTO_INCREMENT,PRIMARY KEY(id), user VARCHAR(255), password VARCHAR(255))`;
 
   // create table using defined params
   db.query(sql,(err,result) => {
@@ -45,7 +44,7 @@ router.get('/create/admin', (req, res) => {
   bcrypt.genSalt(10,(err,salt) =>{
     bcrypt.hash(password,salt,(err,hash) => {
       password = hash;
-      let sqlInsert = `INSERT INTO user_data (user,password) VALUES ('${username}','${password}')`;
+      let sqlInsert = `INSERT INTO ${db.name} (user,password) VALUES ('${username}','${password}')`;
       console.log(sqlInsert);
       db.query(sqlInsert, (err,result) => {
         if (err) {
