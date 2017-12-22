@@ -22,8 +22,8 @@ const bcrypt  = require('bcryptjs');
 // GET request
 router.get('/login',(req,res) => {
   if(res.user === undefined){
-    console.log(req.flash('error'));
-    res.render('login',{message:req.flash('message')});
+    var message = req.flash('error'); 
+    res.render('login',{message:message[0]});
   } else {
     res.redirect('/');
   }
@@ -34,6 +34,7 @@ router.post('/login',
   passport.authenticate('local',{
     successRedirect:'/admin',
     failureRedirect:'/login',
+    badRequestMessage:'Both fields are required',
     failureFlash:true
   })
 );
@@ -47,18 +48,17 @@ router.get('/logout', function(req, res){
 
 /** Helper **/
 passport.use(new LocalStrategy(
-  {passReqToCallback:true},
   (username,password, done) => {
     // check if user enter both field
     if (!username || !passport) {
-      return done(null,false, {message:'All fields are required!'});
+      return done(null,false, {message:'Wrong credentials'});
     }
     ValidateUser(username,password)
       .then(() => {
         done(null,username);
       })
       .catch((err) => {
-        throw err;
+        return done(null,false, {message:'Wrong username or password'});
       })
   }      
 ));
@@ -68,10 +68,6 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(user,done) {
-  // var sql = `SELECT * FROM user_data WHERE id = '${id}'`;
-  // db.query(sql,(err,result) => {
-  //   done(err,result[0].user)
-  // });
   done(null,user);
 })
 

@@ -7,7 +7,6 @@ const path    = require('path');
 const cors    = require('cors');
 
 var passport         = require('passport');
-var expressValidator = require('express-validator');
 var session          = require('express-session');
 var exphbs           = require('express-handlebars');
 var flash            = require('connect-flash');
@@ -15,10 +14,7 @@ var flash            = require('connect-flash');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 
-
-
 /** import routers */
-
 var HomePage = require('./routes/users/homepage');
 var Team = require('./routes/users/team-page');
 var Admin = require('./routes/admins/admin');
@@ -30,23 +26,22 @@ var Database = require('./routes/database/database');
                 Body
 **==================================*/
 
-
 /** set up server **/
-
 var app = express();
 var port = process.env.PORT || 8080;
 app.use(cors());
-
 
 // View Engine
 app.set('views', path.join(__dirname, '/views'));
 app.engine('handlebars', exphbs({defaultLayout:'layout'}));
 app.set('view engine', 'handlebars');
 
-// BodyParser Middleware
+// middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(flash());
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -54,34 +49,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'secret',
   saveUninitialized: true,
-  resave: false
+  resave: true
 }));
 
 // Passport init
 app.use(passport.initialize());
 app.use(passport.session());
-
-// connect flash
-app.use(flash());
-
-// // Express Validator
-// app.use(expressValidator({
-//   errorFormatter: function(param, msg, value) {
-//       var namespace = param.split('.')
-//       , root    = namespace.shift()
-//       , formParam = root;
-
-//     while(namespace.length) {
-//       formParam += '[' + namespace.shift() + ']';
-//     }
-//     return {
-//       param : formParam,
-//       msg   : msg,
-//       value : value
-//     };
-//   }
-// }));
-
 
 // global variable
 app.use(function (req, res, next) {
