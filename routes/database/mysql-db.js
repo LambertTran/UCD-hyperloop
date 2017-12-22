@@ -10,9 +10,17 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
   host:'mysqlinstance.cqel7ccv9iks.us-west-1.rds.amazonaws.com',
   user: 'alirom93',
-  password: '',
+  password: 'Unknown123',
   database: 'test'
 });
+
+// table names
+db.table = {
+  admin:'admin',
+  teams:'teams',
+  images:'images',
+  descriptions:'descriptions'
+};
 
 db.connect((err) => {
   if(err) { console.log(err); }
@@ -21,6 +29,5 @@ db.connect((err) => {
   }
 });
 
-db.name = 'test';
 
 module.exports = db;

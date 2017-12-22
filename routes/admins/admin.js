@@ -10,7 +10,7 @@ const passport= require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 // database 
-const db = require('../database/mysql.js');
+const db = require('../database/mysql-db.js');
 const bcrypt  = require('bcryptjs');
 
 // middlewares

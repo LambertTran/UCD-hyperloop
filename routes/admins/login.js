@@ -10,7 +10,7 @@ const passport= require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 // database 
-const db = require('../database/mysql.js');
+const db = require('../database/mysql-db.js');
 const bcrypt  = require('bcryptjs');
 
 /** =================================
@@ -74,7 +74,7 @@ passport.deserializeUser(function(user,done) {
 function ValidateUser(username,password){
   // look for username
   return new Promise((resolve,reject) => {
-    var sql = `SELECT * FROM ${db.name} WHERE user = '${username}'`;
+    var sql = `SELECT * FROM ${db.table.admin} WHERE user = '${username}'`;
     db.query(sql,(err,result) => {
       if (err) {
         return reject(err);
