@@ -10,7 +10,7 @@ const mysql = require('mysql');
 const db = mysql.createConnection({
   host:'mysqlinstance.cqel7ccv9iks.us-west-1.rds.amazonaws.com',
   user: 'alirom93',
-  password: 'Unknown123',
+  password: '',
   database: 'test'
 });
 
