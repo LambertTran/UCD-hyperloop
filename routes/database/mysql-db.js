@@ -2,17 +2,17 @@
 /** =================================
                 Packages
 **==================================*/
+
 const mysql = require('mysql');
+
+// database identidy 
+const dbIdentity = require('../../identity/db-identity');
+
 /** =================================
                 Body
 **==================================*/
 /** mysql database **/
-const db = mysql.createConnection({
-  host:'mysqlinstance.cqel7ccv9iks.us-west-1.rds.amazonaws.com',
-  user: 'alirom93',
-  password: '',
-  database: 'test'
-});
+const db = mysql.createConnection(dbIdentity);
 
 // table names
 db.table = {
