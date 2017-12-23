@@ -15,14 +15,29 @@ const bcrypt  = require('bcryptjs');
 
 // middlewares
 const VerifyAuthentication = require('./middlewares/verify-auth');
+const upload = require('./middlewares/upload-img-aws');
 
 /** =================================
                 Body
 **==================================*/
 
-/** admin page **/
+/** admin dashboard page **/
+// get
 router.get('/', VerifyAuthentication ,(req,res) => {
   res.render('dashboard',{isAdmin:true});
 })
+
+/** upload images **/
+// GET
+router.get('/upload-image', VerifyAuthentication ,(req,res) => {
+  res.render('upload-img',{isAdmin:true});
+})
+// POST
+router.post('/team', VerifyAuthentication , upload.array('img') ,(req,res) => {
+  console.log(req.files[0].location);
+  console.log(req.body.description)
+})
+
+
 
 module.exports = router;
