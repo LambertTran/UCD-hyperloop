@@ -20,7 +20,7 @@ var Team = require('./routes/users/team-page');
 var Admin = require('./routes/admins/admin');
 var Login = require('./routes/admins/login');
 
-var Database = require('./routes/database/database');
+var CreateDb = require('./routes/database/create-db');
 
 /** =================================
                 Body
@@ -70,7 +70,7 @@ app.use('/',HomePage);
 app.use('/',Team);
 app.use('/',Login);
 app.use('/admin',Admin);
-app.use('/database',Database);
+app.use('/database',CreateDb);
 
 
 app.listen(port, () => console.log(`connect to ${port}`));
