@@ -29,14 +29,15 @@ router.get('/', VerifyAuthentication ,(req,res) => {
 
 /** upload images **/
 // GET
-router.get('/upload-image', VerifyAuthentication ,(req,res) => {
+router.get('/team/:name/upload-image', VerifyAuthentication ,(req,res) => {
   res.render('upload-img',{isAdmin:true});
 })
 // POST
-router.post('/team', VerifyAuthentication , upload.array('img') ,(req,res) => {
+router.post('/team/:name/upload-image', VerifyAuthentication , upload.array('img') ,(req,res) => {
   console.log(req.files[0].location);
   console.log(req.body.description)
 })
+
 
 
 

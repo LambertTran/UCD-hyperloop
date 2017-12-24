@@ -10,15 +10,20 @@ const bcrypt  = require('bcryptjs');
 //helper
 const db   = require("./mysql-db.js");
 const CreateTable = require('./middlewares/create-table');
+const InsertTeam = require('./middlewares/insert-team');
 
 /** =================================
                 Body
 **==================================*/
 /** create tables **/
 router.get('/create/tables',(req,res) => {
-  CreateTable().then(() => {
-    res.send('Successfully create table');
-  })  
+  CreateTable()
+    .then(() => {
+      res.status(200).send({message: 'Successfully create table'});
+    })
+    .catch(() => {
+      res.status(401).send({message: 'Cant create tables'});
+    })  
 })
 
 /** create admin table **/
@@ -56,6 +61,17 @@ router.get('/create/admin', (req, res) => {
     });
   });
 });
+
+/** insert teams into team table **/
+router.get('/insert/teams', (req,res) => {
+  InsertTeam()
+    .then(() => {
+      res.status(200).send({message: 'Successully insert teams'})
+    })
+    .catch(() => {
+      res.status(401).send({message: 'Cant insert teams'})
+    });
+})
 
 
 module.exports = router;

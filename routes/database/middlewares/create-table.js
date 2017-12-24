@@ -13,6 +13,7 @@ function CreateTables(){
                ( 
                  team_id INT AUTO_INCREMENT,
                  teams VARCHAR(100) NOT NULL,
+                 display VARCHAR(100) NOT NULL,
                  PRIMARY KEY (team_id)
                )
               `
