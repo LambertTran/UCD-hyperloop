@@ -3,6 +3,7 @@
 **=============================*/
 /** background color **/
 /** font **/
+/** spacing **/
 /** image **/
 /*==============================
             Properties 
@@ -79,7 +80,7 @@ h1 {
     .navigator ul li a {
       font-size: 20px; } }
 
-/* navbar section for client */
+/* navbar section for client side*/
 header {
   z-index: 100;
   position: absolute;
@@ -88,8 +89,8 @@ header {
   flex-direction: column;
   align-items: center;
   padding: 5px;
-  opacity: 0;
-  animation: 0.7s fadein 0.5s forwards; }
+  opacity: 1;
+  background-color: #273746; }
   header h2 {
     color: white; }
   @media screen and (min-width: 767px) {
@@ -110,18 +111,16 @@ header {
     width: 80px;
     text-align: center; }
   .nav-client a {
-    font-size: 45px;
+    font-size: 22px;
     color: #F4E5B2;
-    border-bottom: 1px solid #F4E5B2;
     height: 100%;
     text-align: center;
     text-decoration: none;
-    transition: color 0.5s ease-in; }
-    .nav-client a span {
+    transition: color 0.3s ease-in; }
+    .nav-client a i {
       display: none; }
     .nav-client a:hover {
-      color: #DEB31A;
-      border-bottom: 1px solid #DEB31A; }
+      color: #DEB31A; }
   @media screen and (min-width: 767px) {
     .nav-client {
       justify-content: flex-end; }
@@ -130,14 +129,13 @@ header {
         width: 125px; }
         .nav-client li a {
           font-size: 25px; }
-          .nav-client li a span {
+          .nav-client li a i {
             display: inline-block !important; }
           .nav-client li a i {
             margin-right: 2px; } }
 
 .nav-client-active a {
-  color: #DAAA00 !important;
-  border-bottom: 1px solid #DAAA00 !important; }
+  color: #DAAA00 !important; }
 
 /** animation section **/
 @keyframes fadein {
@@ -169,54 +167,73 @@ header {
       height: 700px;
       width: 400px; } }
 
+.pg-header, .page2, .page4, .page3 {
+  padding-top: 40px; }
+  .pg-header h1, .page2 h1, .page4 h1, .page3 h1 {
+    text-align: center;
+    font-size: 40px; }
+  @media screen and (min-width: 767px) {
+    .pg-header, .page2, .page4, .page3 {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; }
+      .pg-header .pg-header, .page2 .pg-header, .page4 .pg-header, .page3 .pg-header, .pg-header .page2, .page2 .page2, .page4 .page2, .page3 .page2, .pg-header .page4, .page2 .page4, .page4 .page4, .page3 .page4, .pg-header .page3, .page2 .page3, .page4 .page3, .page3 .page3 {
+        padding-top: 0; }
+        .pg-header .pg-header h1, .page2 .pg-header h1, .page4 .pg-header h1, .page3 .pg-header h1, .pg-header .page2 h1, .page2 .page2 h1, .page4 .page2 h1, .page3 .page2 h1, .pg-header .page4 h1, .page2 .page4 h1, .page4 .page4 h1, .page3 .page4 h1, .pg-header .page3 h1, .page2 .page3 h1, .page4 .page3 h1, .page3 .page3 h1 {
+          font-size: 80px; } }
+  @media screen and (min-width: 1023px) {
+    .pg-header h1, .page2 h1, .page4 h1, .page3 h1 {
+      font-size: 130px; } }
+
 /** page section **/
-.page1 {
+.page1, .teams-page {
   width: 100%;
   height: 100vh;
   background-color: #212F3D; }
-  .page1 .home-content {
-    opacity: 0;
-    animation: 1s slideup 1s forwards;
+  .page1 .home-content, .teams-page .home-content, .page1 .teams-content, .teams-page .teams-content {
     padding-top: 250px; }
-    .page1 .home-content h1 {
+    .page1 .home-content h1, .teams-page .home-content h1, .page1 .teams-content h1, .teams-page .teams-content h1 {
       text-align: center;
       font-size: 40px; }
     @media screen and (min-width: 767px) {
-      .page1 .home-content h1 {
+      .page1 .home-content h1, .teams-page .home-content h1, .page1 .teams-content h1, .teams-page .teams-content h1 {
         font-size: 100px; } }
     @media screen and (min-width: 1025px) {
-      .page1 .home-content h1 {
+      .page1 .home-content h1, .teams-page .home-content h1, .page1 .teams-content h1, .teams-page .teams-content h1 {
         text-align: left;
         font-size: 130px; }
-        .page1 .home-content h1:nth-of-type(1) {
+        .page1 .home-content h1:nth-of-type(1), .teams-page .home-content h1:nth-of-type(1), .page1 .teams-content h1:nth-of-type(1), .teams-page .teams-content h1:nth-of-type(1) {
           margin-left: 200px; }
-        .page1 .home-content h1:nth-of-type(2) {
+        .page1 .home-content h1:nth-of-type(2), .teams-page .home-content h1:nth-of-type(2), .page1 .teams-content h1:nth-of-type(2), .teams-page .teams-content h1:nth-of-type(2) {
           margin-left: 400px; }
-        .page1 .home-content h1:nth-of-type(3) {
+        .page1 .home-content h1:nth-of-type(3), .teams-page .home-content h1:nth-of-type(3), .page1 .teams-content h1:nth-of-type(3), .teams-page .teams-content h1:nth-of-type(3) {
           margin-left: 300px; } }
   @media screen and (min-width: 1500px) {
-    .page1 h1 {
+    .page1 h1, .teams-page h1 {
       font-size: 150px; } }
 
-.page2 {
+.page2, .page4 {
   position: relative;
   width: 100%;
   height: 100vh;
   background-color: #273746; }
-  .page2 .description {
+  .page2 .description, .page4 .description {
     color: #DAAA00;
     font-size: 20px; }
   @media screen and (min-width: 767px) {
-    .page2 .description {
+    .page2 .description, .page4 .description {
+      height: 100%;
       font-size: 25px;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%); } }
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; } }
 
+/** UCD team section **/
 .page3 {
   position: relative;
   background-color: #212F3D;
-  background-image: url("../images/team-img.png");
   width: 100%;
   height: 100vh;
   position: relative;
@@ -227,10 +244,18 @@ header {
   .page3 h1 {
     font-size: 40px; }
 
+.team-img {
+  margin-top: 50px; }
+  .team-img img {
+    max-width: 100%; }
+  @media screen and (min-width: 767px) {
+    .team-img {
+      margin-top: 0; } }
+
 .btn-div {
-  position: absolute;
-  bottom: 15%;
-  width: 100%; }
+  margin-top: 50px; }
+  .btn-div a {
+    text-decoration: none; }
 
 .btn-3d {
   position: relative;
@@ -247,19 +272,21 @@ header {
   border-radius: 15px;
   margin: 0 auto;
   box-shadow: 0 6px #002855; }
+  .btn-3d:hover {
+    box-shadow: 0 4px #002855;
+    top: 2px; }
+  .btn-3d:active {
+    box-shadow: none;
+    top: 6px; }
 
-.btn-3d:hover {
-  box-shadow: 0 4px #002855;
-  top: 2px; }
-
-.btn-3d:active {
-  box-shadow: none;
-  top: 6px; }
-
+/** Sponsor section **/
 .page4 {
   width: 100%;
   height: 100vh;
   background-color: #273746; }
+  @media screen and (min-width: 767px) {
+    .page4 .pg-header h1, .page4 .page2 h1, .page4 .page4 h1, .page4 .page3 h1 {
+      font-size: 60px; } }
 
 /** animation **/
 @keyframes slideup {
@@ -271,7 +298,8 @@ footer {
   position: relative;
   width: 100%;
   padding-top: 15px;
-  padding-bottom: 15px; }
+  padding-bottom: 15px;
+  border-top: 1px solid black; }
   footer h4 {
     padding-top: 15px;
     text-align: center;
@@ -318,22 +346,9 @@ footer {
   .container .row {
     height: 100%; }
 
-.pg-header, .page2, .page3, .page4 {
-  padding-top: 40px; }
-  .pg-header h1, .page2 h1, .page3 h1, .page4 h1 {
-    text-align: center;
-    font-size: 40px; }
-  @media screen and (min-width: 767px) {
-    .pg-header .pg-header, .page2 .pg-header, .page3 .pg-header, .page4 .pg-header, .pg-header .page2, .page2 .page2, .page3 .page2, .page4 .page2, .pg-header .page3, .page2 .page3, .page3 .page3, .page4 .page3, .pg-header .page4, .page2 .page4, .page3 .page4, .page4 .page4 {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      padding-top: 0; }
-      .pg-header .pg-header h1, .page2 .pg-header h1, .page3 .pg-header h1, .page4 .pg-header h1, .pg-header .page2 h1, .page2 .page2 h1, .page3 .page2 h1, .page4 .page2 h1, .pg-header .page3 h1, .page2 .page3 h1, .page3 .page3 h1, .page4 .page3 h1, .pg-header .page4 h1, .page2 .page4 h1, .page3 .page4 h1, .page4 .page4 h1 {
-        font-size: 80px; } }
-  @media screen and (min-width: 1023px) {
-    .pg-header h1, .page2 h1, .page3 h1, .page4 h1 {
-      font-size: 130px; } }
+.effect {
+  opacity: 0;
+  animation: 1s slideup 1s forwards; }
 
 /** admin page **/
 .admin-pg {

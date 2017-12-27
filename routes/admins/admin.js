@@ -28,7 +28,12 @@ router.get('/', VerifyAuthentication ,(req,res) => {
 /** upload images **/
 // GET
 router.get('/team/:name/upload-image',(req,res) => {
-  res.render('upload-img',{isAdmin:true});
+  res.render('upload-img',
+    {
+      isAdmin:true,
+      teamName:req.params.name
+    }
+  );
 })
 
 // POST
@@ -40,7 +45,7 @@ router.post('/team/:name/upload-image', Upload.array('img') ,(req,res) => {
   }
   var insertNewData = new QueryDataBase(data);
   insertNewData.Insert();
-
+  res.status(200).send({message: "Upload Sucessfully"})
 })
 
 

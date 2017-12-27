@@ -1,11 +1,33 @@
+.pg-header{
+  padding-top: 40px;
+  h1{
+    text-align: center;
+    font-size: $sm-fs;
+  }
+  @media screen and (min-width:767px){
+    @include centerV;
+    .pg-header{
+      padding-top: 0;
+      h1{
+        font-size: $md-fs - 20px;
+      }
+    }
+  }
+  @media screen and (min-width:1023px){
+    h1{
+      font-size: $lg-fs;
+    }
+  }
+}
+
 /** page section **/
 .page1{
   @include pageProps;
   background-color: $homepage-top;
   .home-content{
-    opacity: 0;
-    animation: 1s slideup 1s forwards;
-    padding-top:250px;
+    // opacity: 0;
+    // animation: 1s slideup 1s forwards;
+    padding-top:$space-top;
     h1{
       text-align: center;
       font-size: $sm-fs;
@@ -49,16 +71,18 @@
   }
   @media screen and (min-width:767px){
     .description{
+      height: 100%;
       font-size:25px;
       @include centerV;
     }
   }
 }
 
+/** UCD team section **/
 .page3{
   position:relative;
   background-color: $homepage-top;
-  background-image:$team-bg-img;
+  // background-image:$team-bg-img;
   @include pageProps;
   @include image-bg;
   @extend .pg-header;
@@ -66,11 +90,22 @@
     font-size:40px;
   }
 }
-.btn-div{
-  position:absolute;
-  bottom: 15%;
-  width: 100%;
+.team-img{
+  margin-top: 50px;
+  img{
+    max-width: 100%;
+  }
+  @media screen and (min-width:767px){
+    margin-top:0;
+  }
 }
+.btn-div{
+  margin-top:50px;
+  a{
+    text-decoration: none;
+  }
+}
+
 .btn-3d{
   position:relative;
   outline:none;
@@ -86,21 +121,29 @@
   border-radius:15px;
   margin:0 auto;
   box-shadow: 0 6px #002855;
-}
-.btn-3d:hover{
-  box-shadow: 0 4px #002855;
-  top:2px;
+  &:hover{
+    box-shadow: 0 4px #002855;
+    top:2px;
+  }
+  &:active{
+    box-shadow:none;
+    top:6px;
+  }
 }
 
-.btn-3d:active{
-  box-shadow:none;
-  top:6px;
-}
-
+/** Sponsor section **/
 .page4{
   @include pageProps;
   background-color: $homepage-2;
+  @extend .page2;
   @extend .pg-header;
+  @media screen and (min-width:767px){
+    .pg-header{
+      h1{
+        font-size: 60px;
+      }
+    }
+  }
 }
 
 /** animation **/

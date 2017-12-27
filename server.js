@@ -15,8 +15,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 
 /** import routers */
-var HomePage = require('./routes/users/homepage');
-var Team = require('./routes/users/team-page');
+var ClientSite = require('./routes/users/client-site');
 var Admin = require('./routes/admins/admin');
 var Login = require('./routes/admins/login');
 
@@ -66,8 +65,7 @@ app.use(function (req, res, next) {
 });
 
 
-app.use('/',HomePage);
-app.use('/',Team);
+app.use('/',ClientSite);
 app.use('/',Login);
 app.use('/admin',Admin);
 app.use('/database',CreateDb);

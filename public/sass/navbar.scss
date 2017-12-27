@@ -86,7 +86,7 @@ $nav-client-active:#DAAA00;
   }
 }
 
-/* navbar section for client */
+/* navbar section for client side*/
 header{
   z-index: 100;
   position: absolute;
@@ -95,8 +95,9 @@ header{
   flex-direction: column;
   align-items:center;
   padding:5px;
-  opacity: 0;
-  animation: 0.7s fadein 0.5s forwards;
+  opacity: 1;
+  // animation: 0.7s fadein 0.5s forwards;
+  background-color: $navbar-bg;
   h2{
     color:white;
   }
@@ -120,19 +121,19 @@ header{
     text-align: center;
   }
   a{
-    font-size:45px;
+    font-size:22px;
     color:$nav-client-color;
-    border-bottom: 1px solid $nav-client-color;
+    // border-bottom: 1px solid $nav-client-color;
     height: 100%;
     text-align: center;
     text-decoration: none;
-    transition: color 0.5s ease-in;
-    span{
+    transition: color 0.3s ease-in;
+    i{
       display: none;      
     }
     &:hover{
       color: $nav-client-hover;
-      border-bottom: 1px solid $nav-client-hover;
+      // border-bottom: 1px solid $nav-client-hover;
     }
   }
 
@@ -143,7 +144,7 @@ header{
       width:125px;
       a{
         font-size: 25px;
-        span{
+        i{
           display: inline-block !important;
         }
         i{
@@ -156,7 +157,7 @@ header{
 .nav-client-active{
   a{
     color: $nav-client-active !important;
-    border-bottom: 1px solid $nav-client-active !important;
+    // border-bottom: 1px solid $nav-client-active !important;
   }
 }
 
