@@ -20,6 +20,10 @@
   }
 }
 
+.effect{
+  opacity: 0;
+}
+
 /** page section **/
 .page1{
   @include pageProps;

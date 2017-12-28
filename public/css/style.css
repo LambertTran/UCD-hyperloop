@@ -15,8 +15,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  position: relative;
-  overflow-x: hidden; }
+  position: relative; }
 
 h1 {
   color: #DAAA00; }
@@ -186,6 +185,9 @@ header {
     .pg-header h1, .page2 h1, .page4 h1, .page3 h1 {
       font-size: 130px; } }
 
+.effect {
+  opacity: 0; }
+
 /** page section **/
 .page1, .teams-page {
   width: 100%;
@@ -345,10 +347,6 @@ footer {
   height: 100%; }
   .container .row {
     height: 100%; }
-
-.effect {
-  opacity: 0;
-  animation: 1s slideup 1s forwards; }
 
 /** admin page **/
 .admin-pg {

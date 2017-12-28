@@ -1,3 +1,4 @@
+'strict mode';
 /** active navigation bar for admin **/
 // navbarActivate("nav-admin","nav-admin-active");
 /** active navbar for client site **/
@@ -18,6 +19,25 @@
 //     this.className = activeClass;
 //   }
 // }
-window.sr = ScrollReveal();
-sr.reveal('.fadeInUp');
+
+var box = document.querySelectorAll('.effect');
+var animation = " fadeInUp";
+window.addEventListener('scroll', function(){
+  box.forEach(function(el){
+    if (IsElementInView(el) && !el.classList.contains(animation.trim())){
+      el.className += animation;
+      el.style.opacity = '1';
+    } 
+  })
+})
+
+function IsElementInView(element){
+  let rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom*0.9 <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
 
