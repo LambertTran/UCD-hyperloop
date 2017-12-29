@@ -31,8 +31,8 @@ window.addEventListener('scroll', function(){
   })
 })
 
-function IsElementInView(element){
-  let rect = element.getBoundingClientRect();
+function IsElementInView(element) {
+  const rect = element.getBoundingClientRect();
   return (
     rect.top >= 0 &&
     rect.left >= 0 &&

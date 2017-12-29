@@ -28,6 +28,8 @@
   "devDependencies": {
     "browser-sync": "^2.18.13",
     "del": "^3.0.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "gulp": "^3.9.1",
     "gulp-livereload": "^3.8.1",
     "gulp-rename": "^1.2.2",

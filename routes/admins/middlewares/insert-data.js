@@ -20,7 +20,7 @@ function QueryDatabase(data){
   this.description = data.description;
 }
 
-QueryDatabase.prototype.Insert = function(){
+QueryDatabase.prototype.Insert = function() {
   // insert image into database 
   var imgSql = QueryTemplate(this.imgLink,
                              ['img_link','team_id'],

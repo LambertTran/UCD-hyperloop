@@ -1,0 +1,10 @@
+{{!-- Dashboard teamplate used to render all sub-teams--}}
+
+<div class="col-12 col-md-9 col-lg-10 ml-md-auto content"> 
+  <h1>Sub-teams</h1>
+  {{#each teams}}
+    <a href="admin/teams/{{this}}">
+      <li>{{this}}</li>
+    </a>
+  {{/each}}
+</div>

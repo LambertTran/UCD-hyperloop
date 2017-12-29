@@ -23,7 +23,7 @@ const bcrypt  = require('bcryptjs');
 router.get('/login',(req,res) => {
   if(res.user === undefined){
     var message = req.flash('error'); 
-    res.render('login',{message:message[0]});
+    res.render('admin-login',{message:message[0]});
   } else {
     res.redirect('/');
   }
