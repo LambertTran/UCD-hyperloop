@@ -15,7 +15,9 @@
 html, body {
   height: 100%;
   width: 100%;
-  position: relative; }
+  position: relative;
+  font-size: 16px;
+  text-rendering: optimizeLegibility; }
 
 h1 {
   color: #DAAA00; }
@@ -166,23 +168,23 @@ header {
       height: 700px;
       width: 400px; } }
 
-.pg-header, .page2, .page4, .page3 {
+.pg-header, .page2, .page3, .page4 .sponsor-header {
   padding-top: 40px; }
-  .pg-header h1, .page2 h1, .page4 h1, .page3 h1 {
+  .pg-header h1, .page2 h1, .page3 h1, .page4 .sponsor-header h1 {
     text-align: center;
     font-size: 40px; }
   @media screen and (min-width: 767px) {
-    .pg-header, .page2, .page4, .page3 {
+    .pg-header, .page2, .page3, .page4 .sponsor-header {
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-around; }
-      .pg-header .pg-header, .page2 .pg-header, .page4 .pg-header, .page3 .pg-header, .pg-header .page2, .page2 .page2, .page4 .page2, .page3 .page2, .pg-header .page4, .page2 .page4, .page4 .page4, .page3 .page4, .pg-header .page3, .page2 .page3, .page4 .page3, .page3 .page3 {
+      .pg-header .pg-header, .page2 .pg-header, .page3 .pg-header, .page4 .sponsor-header .pg-header, .pg-header .page2, .page2 .page2, .page3 .page2, .page4 .sponsor-header .page2, .pg-header .page3, .page2 .page3, .page3 .page3, .page4 .sponsor-header .page3, .pg-header .page4 .sponsor-header, .page4 .pg-header .sponsor-header, .page2 .page4 .sponsor-header, .page4 .page2 .sponsor-header, .page3 .page4 .sponsor-header, .page4 .page3 .sponsor-header, .page4 .sponsor-header .sponsor-header {
         padding-top: 0; }
-        .pg-header .pg-header h1, .page2 .pg-header h1, .page4 .pg-header h1, .page3 .pg-header h1, .pg-header .page2 h1, .page2 .page2 h1, .page4 .page2 h1, .page3 .page2 h1, .pg-header .page4 h1, .page2 .page4 h1, .page4 .page4 h1, .page3 .page4 h1, .pg-header .page3 h1, .page2 .page3 h1, .page4 .page3 h1, .page3 .page3 h1 {
+        .pg-header .pg-header h1, .page2 .pg-header h1, .page3 .pg-header h1, .page4 .sponsor-header .pg-header h1, .pg-header .page2 h1, .page2 .page2 h1, .page3 .page2 h1, .page4 .sponsor-header .page2 h1, .pg-header .page3 h1, .page2 .page3 h1, .page3 .page3 h1, .page4 .sponsor-header .page3 h1, .pg-header .page4 .sponsor-header h1, .page4 .pg-header .sponsor-header h1, .page2 .page4 .sponsor-header h1, .page4 .page2 .sponsor-header h1, .page3 .page4 .sponsor-header h1, .page4 .page3 .sponsor-header h1, .page4 .sponsor-header .sponsor-header h1 {
           font-size: 80px; } }
   @media screen and (min-width: 1023px) {
-    .pg-header h1, .page2 h1, .page4 h1, .page3 h1 {
+    .pg-header h1, .page2 h1, .page3 h1, .page4 .sponsor-header h1 {
       font-size: 130px; } }
 
 .effect {
@@ -192,9 +194,10 @@ header {
 .page1, .teams-page {
   width: 100%;
   height: 100vh;
+  padding: 25px;
   background-color: #212F3D; }
   .page1 .home-content, .teams-page .home-content, .page1 .teams-content, .teams-page .teams-content {
-    padding-top: 250px; }
+    padding-top: 150px; }
     .page1 .home-content h1, .teams-page .home-content h1, .page1 .teams-content h1, .teams-page .teams-content h1 {
       text-align: center;
       font-size: 40px; }
@@ -215,18 +218,17 @@ header {
     .page1 h1, .teams-page h1 {
       font-size: 150px; } }
 
-.page2, .page4 {
+.page2 {
   position: relative;
   width: 100%;
   height: 100vh;
+  padding: 25px;
   background-color: #273746; }
-  .page2 .description, .page4 .description {
-    color: #DAAA00;
-    font-size: 20px; }
+  .page2 .description {
+    color: #DAAA00; }
   @media screen and (min-width: 767px) {
-    .page2 .description, .page4 .description {
+    .page2 .description {
       height: 100%;
-      font-size: 25px;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -238,6 +240,7 @@ header {
   background-color: #212F3D;
   width: 100%;
   height: 100vh;
+  padding: 25px;
   position: relative;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -285,10 +288,19 @@ header {
 .page4 {
   width: 100%;
   height: 100vh;
+  padding: 25px;
   background-color: #273746; }
   @media screen and (min-width: 767px) {
-    .page4 .pg-header h1, .page4 .page2 h1, .page4 .page4 h1, .page4 .page3 h1 {
-      font-size: 60px; } }
+    .page4 .sponsor-header {
+      justify-content: center; } }
+  .page4 .sponsor-description {
+    margin-top: 35px;
+    color: #DAAA00; }
+  .page4 .sponsor-list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; }
 
 /** animation **/
 @keyframes slideup {
@@ -353,6 +365,7 @@ footer {
   position: relative;
   width: 100%;
   height: 100vh;
+  padding: 25px;
   background-color: #212F3D; }
 
 /*# sourceMappingURL=style.css.map */

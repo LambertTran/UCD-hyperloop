@@ -29,8 +29,6 @@
   @include pageProps;
   background-color: $homepage-top;
   .home-content{
-    // opacity: 0;
-    // animation: 1s slideup 1s forwards;
     padding-top:$space-top;
     h1{
       text-align: center;
@@ -71,12 +69,12 @@
   @extend .pg-header;
   .description{
     color:$UCD-color;
-    font-size: 20px;
+    // font-size: 20px;
   }
   @media screen and (min-width:767px){
     .description{
       height: 100%;
-      font-size:25px;
+      // font-size:25px;
       @include centerV;
     }
   }
@@ -139,14 +137,18 @@
 .page4{
   @include pageProps;
   background-color: $homepage-2;
-  @extend .page2;
-  @extend .pg-header;
-  @media screen and (min-width:767px){
-    .pg-header{
-      h1{
-        font-size: 60px;
-      }
+  .sponsor-header{
+    @extend .pg-header;
+    @media screen and (min-width:767px){
+      justify-content: center;
     }
+  }
+  .sponsor-description{
+    margin-top:35px;
+    color:$UCD-color;
+  }
+  .sponsor-list{
+    @include centerV;
   }
 }
 
