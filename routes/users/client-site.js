@@ -1,4 +1,3 @@
-'use strict';
 
 /** =================================
                 Packages
@@ -13,17 +12,17 @@ const router = express.Router();
 
 /** homepage */
 router.get('/', (req, res) => {
-  res.render('homepage', { home: true });
-})
+  res.render('./clients/homepage', { home: true });
+});
 
 /** teampage */
 router.get('/teams', (req, res) => {
-  res.render('teams', { teams: true });
+  res.render('./clients/teams', { teams: true });
 });
 
 /** team */
 router.get('/teams/:team', (req, res) => {
-  res.render('individual-team', {
+  res.render('./clients/individual-team', {
     teams: true,
     team: {
       name: 'Team1',

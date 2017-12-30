@@ -1,29 +1,30 @@
-'use strict';
 /** =================================
                 Packages
-**==================================*/
+**================================== */
 // router
 const express = require('express');
-const router  = express.Router();
+
 // user authentication
-const passport= require('passport');
+const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-// database 
+// database
 const db = require('../database/mysql-db.js');
-const bcrypt  = require('bcryptjs');
+const bcrypt = require('bcryptjs');
+
+const router = express.Router();
 
 /** =================================
             Authentication
-**==================================*/
+**================================== */
 
-/** Login **/
+/** Login */
 
 // GET request
 router.get('/login',(req,res) => {
   if(res.user === undefined){
     var message = req.flash('error'); 
-    res.render('admin-login',{message:message[0]});
+    res.render('./admins/login',{message:message[0]});
   } else {
     res.redirect('/');
   }
@@ -39,14 +40,14 @@ router.post('/login',
   })
 );
 
-/** log out **/
+/** log out */
 router.get('/logout', function(req, res){
   req.session.destroy((err) => {
     res.redirect('/login');
   });
 });
 
-/** Helper **/
+/** Helper */
 passport.use(new LocalStrategy(
   (username,password, done) => {
     // check if user enter both field

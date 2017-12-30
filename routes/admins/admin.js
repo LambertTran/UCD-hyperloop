@@ -24,7 +24,7 @@ router.get('/', VerifyAuth, (req, res) => {
   GetTeams()
     .then((teams) => {
       res.render(
-        'admin-dashboard',
+        './admins/dashboard',
         { 
           isAdmin: true,
           isTeam: true,
@@ -36,19 +36,19 @@ router.get('/', VerifyAuth, (req, res) => {
     });
 });
 
-/** Subteam page */
-router.get('/teams/:name', VerifyAuth, (req, res) => {
-  res.render(
-    'admin-subteam',
-    team:
-});
+// /** Subteam page */
+// router.get('/teams/:name', VerifyAuth, (req, res) => {
+//   res.render(
+//     'admin-subteam',
+//     team:
+// });
 
 
 /** Upload images */
 // GET
-router.get('/team/:name/upload-image', VerifyAuth, (req, res) => {
+router.get('/team/:name/upload-image', (req, res) => {
   res.render(
-    'upload-img',
+    './admins/upload-img',
     {
       isAdmin: true,
       teamName: req.params.name
@@ -57,7 +57,7 @@ router.get('/team/:name/upload-image', VerifyAuth, (req, res) => {
 });
 
 // POST
-router.post('/team/:name/upload-image', VerifyAuth, Upload.array('img') ,(req,res) => {
+router.post('/team/:name/upload-image', Upload.array('img') ,(req,res) => {
   const data = {
     team: req.params.name,
     imgLink: req.files[0].location,

@@ -14,7 +14,7 @@ const db = require('../../database/mysql-db');
  *  params: team, image link, and description  
  */
 
-function QueryDatabase(data){
+function QueryDatabase(data) {
   this.team = data.team;
   this.imgLink = data.imgLink;
   this.description = data.description;
