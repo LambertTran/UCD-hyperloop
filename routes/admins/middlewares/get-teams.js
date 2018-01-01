@@ -18,8 +18,8 @@ function GetTeams() {
       if (err) {
         return reject(err);
       }
-      const teams = result.map((team) => {
-        return team.display;
+      const teams = result.map((data) => {
+        return data.team;
       });
       return resolve(teams);
     });

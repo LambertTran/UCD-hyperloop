@@ -13,6 +13,7 @@ const VerifyAuth = require('./middlewares/verify-auth');
 const Upload = require('./middlewares/upload-img-aws');
 const QueryDataBase = require('./middlewares/insert-data');
 const GetTeams = require('./middlewares/get-teams');
+const GetSubTeam = require('./middlewares/get-subteam');
 
 /** =================================
                 Body
@@ -36,12 +37,20 @@ router.get('/', VerifyAuth, (req, res) => {
     });
 });
 
-// /** Subteam page */
-// router.get('/teams/:name', VerifyAuth, (req, res) => {
-//   res.render(
-//     'admin-subteam',
-//     team:
-// });
+/** Subteam page */
+router.get('/team/:name', (req, res) => {
+  GetSubTeam(req.params.name)
+    .then((teamData) => {
+      res.render(
+        './admins/subteam',
+        {
+          isAdmin: true,
+          teamName:req.params.name,
+          teamData,
+        }
+      );
+    });
+});
 
 
 /** Upload images */

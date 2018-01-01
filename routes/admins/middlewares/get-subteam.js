@@ -11,17 +11,18 @@ const db = require('../../database/mysql-db');
 
 /** Get all teams in database */
 function GetSubTeam(team) {
-  const sql = `select * from teams `;
-
+  const sql = `select * from images
+               where team_id = (
+                 select team_id from teams
+                   where (team = '${team}')
+               ) 
+              `;
   return new Promise((resolve, reject) => {
     db.query(sql, (err, result) => {
       if (err) {
         return reject(err);
       }
-      const teams = result.map((team) => {
-        return team.display;
-      });
-      return resolve(teams);
+      return resolve(result);
     });
   });
 }
