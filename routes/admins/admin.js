@@ -64,8 +64,13 @@ router.post('/team/:name/upload-image', Upload.array('img') ,(req,res) => {
     description: req.body.description
   };
   const insertNewData = new QueryDataBase(data);
-  insertNewData.Insert();
-  res.status(200).send({ message: 'Upload Sucessfully' });
+  insertNewData.Insert()
+    .then(() => {
+      res.status(200).send({ message: 'Sucessfully upload iamges'});
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    })
 });
 
 module.exports = router;

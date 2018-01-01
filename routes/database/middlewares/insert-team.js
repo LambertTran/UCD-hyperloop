@@ -1,35 +1,35 @@
 'use strict';
 /** =================================
                 Helper
-**==================================*/
+**================================== */
 
-var QueryHelper = require('./query-helper');
+const QueryHelper = require('./query-helper');
 
 /** =================================
                 Body
-**==================================*/
+**================================== */
 
-function InsertTeam(){
-  var teams = [
+function InsertTeam() {
+  const teams = [
     'Eddy-Current-Bakes',
     'Wheels',
     'Propulsion',
     'Business',
     'Controls',
     'Friction-Brakes',
-    'Air-Bearings'
+    'Air-Bearings',
   ];
 
   return new Promise ((resolve,reject) => {
-    for (let i =0; i < teams.length; ++i){
-      let sql = sqlTemplate(teams[i]);
-      QueryHelper(sql,'teams')
+    for (let i =0; i < teams.length; ++i) {
+      const sql = sqlTemplate(teams[i]);
+      QueryHelper(sql, 'teams' );
     }
     return resolve();
   })
 
-  function sqlTemplate(team){
-    return `INSERT INTO teams (teams,display) Values ('${team}','${team}')`
+  function sqlTemplate(team) {
+    return `INSERT INTO teams (team) Values ('${team}')`;
   }
 
 }
