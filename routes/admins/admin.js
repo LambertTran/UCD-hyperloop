@@ -38,14 +38,15 @@ router.get('/', VerifyAuth, (req, res) => {
 });
 
 /** Subteam page */
-router.get('/team/:name', (req, res) => {
-  GetSubTeam(req.params.name)
+router.get('/team/:teamName', (req, res) => {
+  GetSubTeam(req.params.teamName)
     .then((teamData) => {
       res.render(
         './admins/subteam',
         {
           isAdmin: true,
-          teamName:req.params.name,
+          message: req.flash('success'),
+          teamName:req.params.teamName,
           teamData,
         }
       );
@@ -55,27 +56,31 @@ router.get('/team/:name', (req, res) => {
 
 /** Upload images */
 // GET
-router.get('/team/:name/upload-image', (req, res) => {
+router.get('/team/:teamName/upload-image', (req, res) => {
   res.render(
     './admins/upload-img',
     {
       isAdmin: true,
-      teamName: req.params.name
+      teamName: req.params.teamName
     }
   );
 });
 
 // POST
-router.post('/team/:name/upload-image', Upload.array('img') ,(req,res) => {
+router.post('/team/:teamName/upload-image', Upload.array('img') ,(req,res) => {
   const data = {
-    team: req.params.name,
+    team: req.params.teamName,
     imgLink: req.files[0].location,
     description: req.body.description
   };
   const insertNewData = new QueryDataBase(data);
   insertNewData.Insert()
     .then(() => {
-      res.status(200).send({ message: 'Sucessfully upload iamges'});
+      req.flash(
+        'success',
+        'Sucessfully upload iamges'
+      );
+      res.status(200).redirect(`/admin/team/${req.params.teamName}`);
     })
     .catch((err) => {
       res.status(400).send(err);

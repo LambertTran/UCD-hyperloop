@@ -1,11 +1,21 @@
 {{!-- Subteam teamplate--}}
 
 <div class="col-12 col-md-9 col-lg-10 ml-md-auto content"> 
-  <h1>{{teamName}}</h1>
-  {{#each teamData}}
-    <div>
-      <img src={{this.img_link}} alt="team-img">
-      <p>{{this.detail}}</p>
-    </div>
-  {{/each}}
+  {{!-- Display any message --}}
+  {{#if message}}
+  <div class="message">
+    <p>{{message}}</p>
+  </div>
+  {{/if}}
+
+  {{!-- Display team data --}}
+  <div class="subteam-pg">
+    <h1>{{teamName}}</h1>
+    {{#each teamData}}
+      <div>
+        <img src={{this.img_link}} alt="team-img">
+        <p>{{this.detail}}</p>
+      </div>
+    {{/each}}
+  </div>
 </div>

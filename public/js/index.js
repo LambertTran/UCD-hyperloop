@@ -20,6 +20,7 @@
 //   }
 // }
 
+/** Animation effect on scroll */
 var box = document.querySelectorAll('.effect');
 var animation = " fadeInUp";
 window.addEventListener('scroll', function(){
@@ -30,6 +31,18 @@ window.addEventListener('scroll', function(){
     } 
   })
 })
+
+/** Display message */
+var message = document.querySelector('.message');
+var subteam = document.querySelector('.subteam-pg');
+if (message) { 
+  subteam.style.display = 'none';
+  setTimeout(function(){
+    message.style.display = 'none';
+    subteam.style.display = 'block';
+  },1500);
+}
+
 
 function IsElementInView(element) {
   const rect = element.getBoundingClientRect();
