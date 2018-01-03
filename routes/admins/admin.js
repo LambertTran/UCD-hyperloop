@@ -79,7 +79,7 @@ router.post('/team/:teamName/upload-image', Upload.array('img') ,(req,res) => {
     .then(() => {
       req.flash(
         'success',
-        'Sucessfully upload iamges'
+        'Sucessfully upload image'
       );
       res.status(200).redirect(`/admin/team/${req.params.teamName}`);
     })
@@ -90,7 +90,17 @@ router.post('/team/:teamName/upload-image', Upload.array('img') ,(req,res) => {
 
 // Delete 
 router.get('/team/:teamName/:imgId',(req,res) => {
-  DeleteImg(req.params.imgId);
+  DeleteImg(req.params.imgId)
+    .then(() => {
+      req.flash(
+        'success',
+        'Sucessfully delete image'
+      )
+      res.status(200).redirect(`/admin/team/${req.params.teamName}`);
+    })
+    .catch(() =>{
+      res.status(401).send(err);
+    })
 });
 
 module.exports = router;

@@ -193,7 +193,7 @@ header {
 /** page section **/
 .page1 {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 25px;
   background-color: #212F3D; }
   .page1 .home-content {
@@ -221,7 +221,7 @@ header {
 .page2 {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 25px;
   background-color: #273746; }
   .page2 .description {
@@ -239,7 +239,7 @@ header {
   position: relative;
   background-color: #212F3D;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 25px;
   position: relative;
   background-attachment: fixed;
@@ -287,7 +287,7 @@ header {
 /** Sponsor section **/
 .page4 {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 25px;
   background-color: #273746; }
   @media screen and (min-width: 767px) {
@@ -350,7 +350,7 @@ footer {
 
 .teams-page {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 25px;
   background-color: #212F3D;
   height: 100%;
@@ -394,7 +394,7 @@ footer {
 
 .subteam-page {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 25px;
   background-color: #212F3D;
   height: 100vh;
@@ -429,7 +429,7 @@ footer {
 .admin-pg {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 25px;
   background-color: #212F3D; }
 
