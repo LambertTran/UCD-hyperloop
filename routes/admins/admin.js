@@ -14,6 +14,7 @@ const Upload = require('./middlewares/upload-img-aws');
 const QueryDataBase = require('./middlewares/insert-data');
 const GetTeams = require('./middlewares/get-teams');
 const GetSubTeam = require('./middlewares/get-subteam');
+const DeleteImg = require('./middlewares/delete-img');
 
 /** =================================
                 Body
@@ -85,6 +86,11 @@ router.post('/team/:teamName/upload-image', Upload.array('img') ,(req,res) => {
     .catch((err) => {
       res.status(400).send(err);
     })
+});
+
+// Delete 
+router.get('/team/:teamName/:imgId',(req,res) => {
+  DeleteImg(req.params.imgId);
 });
 
 module.exports = router;
