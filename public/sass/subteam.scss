@@ -1,0 +1,24 @@
+.subteam-page{
+  @include pageProps;
+  background-color: $homepage-top;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: 300px;
+    li{
+      img{
+        height:100%;
+        width: 100%;
+      }
+      p{
+        color: white;
+      }
+    }
+  }
+}

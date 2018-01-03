@@ -1,0 +1,11 @@
+<div class="subteam-page">
+  <h1>{{name}}</h1>
+  <ul>
+    {{#each teamData}}
+      <li>
+        <img src={{this.img_link}} alt="subteam-img">
+        <p>{{this.detail}}</p>
+      </li>
+      {{/each}}
+  </ul>
+</div>

@@ -12,7 +12,6 @@ const db = require('../../database/mysql-db');
 /** Get all teams in database */
 function GetTeams() {
   const sql = 'select * from teams';
-
   return new Promise((resolve, reject) => {
     db.query(sql, (err, result) => {
       if (err) {
