@@ -17,14 +17,14 @@ const db = require('../../database/mysql-db');
 function QueryDatabase(data) {
   this.team = data.team;
   this.imgLink = data.imgLink;
-  this.description = data.description;
+  this.detail = data.detail;
 }
 
 QueryDatabase.prototype.Insert = function(){
   const sql = `INSERT INTO images (img_link,detail,team_id)
                VALUES (
                  '${this.imgLink}',
-                 '${this.description}',
+                 '${this.detail}',
                  (SELECT team_id from teams
                  WHERE (team = '${this.team}'))
               )`;
@@ -38,12 +38,18 @@ QueryDatabase.prototype.Insert = function(){
   })
 }
 
-QueryDatabase.prototype.GetSubTeam = function(team) {
+QueryDatabase.prototype.GetSubTeamImg = function() {
   const sql = `select * from images
                where team_id = (
                  select team_id from teams
-                   where (team = '${team}')
-               ) 
+                   where (team = '${this.team}')
+               )`;
+  return QueryHelper(sql);
+}
+
+QueryDatabase.prototype.GetSubTeamDetail = function() {
+  const sql = `select team_detail from teams
+               where team = '${this.team}' 
               `;
   return QueryHelper(sql);
 }

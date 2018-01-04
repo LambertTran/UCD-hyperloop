@@ -16,6 +16,7 @@
 <body>
   <header>
     {{#if isAdmin}}
+      {{#if isUpload}}
       <div class="container-fluid">
         <nav>
           <div class="row">
@@ -25,11 +26,15 @@
                   <a href="/admin/">DashBoard</a>
                 </li>
                 <li class="col-4 col-md-12">
-                  <a href="/admin/team/{{teamName}}/upload-image">Customer Images</a>
+                  <a href="/admin/team/{{teamName}}/upload-image">Upload team image</a>
+                </li>
+                <li class="col-4 col-md-12">
+                  <a href="/admin/team/{{teamName}}/upload-team-detail">Upload team description</a>
                 </li>
               </ul>
             </div>
         </nav></div>
+        {{/if}}
     {{else}}
     <h2>logo</h2>
     <nav id="nav-client" class="nav-client">
