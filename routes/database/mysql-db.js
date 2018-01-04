@@ -29,12 +29,19 @@ db.table = {
   descriptions:'descriptions'
 };
 
-db.connect((err) => {
-  if(err) { console.log(err); }
-  else {
-    console.log("Connecting to mysql database");
-  }
-});
+startConnect();
+
+funciton startConnect(){
+  db.connect((err) => {
+    if(err) { 
+      console.log(err); 
+      startConnect()
+    }
+    else {
+      console.log("Connecting to mysql database");
+    }
+  });
+}
 
 
 module.exports = db;
