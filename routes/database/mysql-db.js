@@ -29,7 +29,6 @@ db.table = {
   descriptions:'descriptions'
 };
 
-console.log(dbIdentity);
 
 db.connect((err) => {
   if(err) { 

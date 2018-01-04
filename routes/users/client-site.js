@@ -17,6 +17,7 @@ const QueryDatabase = require('../database/middlewares/query-db');
 
 /** homepage */
 router.get('/', (req, res) => {
+  console.log("homepage")
   res.render('./clients/homepage', { home: true });
 });
 
