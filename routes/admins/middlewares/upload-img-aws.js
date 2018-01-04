@@ -4,7 +4,15 @@
 const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3  = require('multer-s3');
-const awsS3Identity = require('../../../identity/awsS3-identity');
+const fs = require('fs');
+
+let awsS3Identity;
+try{
+  awsS3Identity = require('../../../identity/awsS3-identity');
+} catch(e) {
+  awsS3Identity = require('../../../identity-heroku/awsS3-identity');
+}
+
 /** =================================
                 Body
 **==================================*/

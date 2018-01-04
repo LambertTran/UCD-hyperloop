@@ -4,9 +4,15 @@
 **==================================*/
 
 const mysql = require('mysql');
+const fs = require('fs');
 
-// database identidy 
-const dbIdentity = require('../../identity/db-identity');
+// database identidy
+let dbIdentity;
+try{
+  dbIdentity = require('../../identity/db-identity');
+} catch(e){
+  dbIdentity = require('../../identity-heroku/heroku-db-identity');
+}
 
 /** =================================
                 Body
