@@ -8,12 +8,12 @@ const fs = require('fs');
 
 // database identidy
 let dbIdentity;
-// try{
-//   dbIdentity = require('../../identity/db-identity');
-// } catch(e){
-//   dbIdentity = require('../../identity-heroku/heroku-db-identity');
-// }
-dbIdentity = require('../../identity-heroku/heroku-db-identity');
+try{
+  dbIdentity = require('../../identity/db-identity');
+} catch(e){
+  dbIdentity = require('../../identity-heroku/heroku-db-identity');
+}
+// dbIdentity = require('../../identity-heroku/heroku-db-identity');
 
 /** =================================
                 Body
@@ -28,6 +28,8 @@ db.table = {
   images:'images',
   descriptions:'descriptions'
 };
+
+console.log(dbIdentity);
 
 db.connect((err) => {
   if(err) { 
