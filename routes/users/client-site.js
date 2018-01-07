@@ -5,8 +5,11 @@
 
 const express = require('express');
 const router = express.Router();
+
+// helpers
 const GetTeams = require('../admins/middlewares/get-teams');
 const GetSubTeam = require('../admins/middlewares/get-subteam');
+const HandleSendEmail = require('./middlewares/send-email');
 
 /** Database */
 const QueryDatabase = require('../database/middlewares/query-db');
@@ -15,13 +18,12 @@ const QueryDatabase = require('../database/middlewares/query-db');
                 Body
 **================================== */
 
-/** homepage */
+/** Homepage */
 router.get('/', (req, res) => {
-  console.log("homepage")
   res.render('./clients/homepage', { home: true });
 });
 
-/** teampage */
+/** Teampage */
 router.get('/teams', (req, res) => {
   GetTeams()
     .then((teamData) => {
@@ -36,8 +38,8 @@ router.get('/teams', (req, res) => {
     })
 });
 
-/** sub-team page */
-router.get('/teams/:teamName', (req,res) => {
+/** Sub-team page */
+router.get('/teams/:teamName', (req, res) => {
   const reqTeamData = {
     team:req.params.teamName,
     img_link:null,
@@ -62,6 +64,33 @@ router.get('/teams/:teamName', (req,res) => {
       res.status(400).send(err);
     });
 });
+
+/** Contact page */
+// GET
+router.get('/contact', (req, res) => {
+  res.render('./clients/contact',{
+    contact: true,
+    message: req.flash('success') || req.flash('error'),
+  })
+})
+
+// POST - send email
+router.post('/contact', (req, res) => {
+  let input = req.body;
+  let message = "name: "    + input.name.toString() + "\n" +
+                "email: "   + input.email.toString() + "\n" + 
+                "message: " + input.message.toString() + "\n"; 
+  HandleSendEmail(message)
+    .then(() => {
+      req.flash('success','Sucessfully sent your email');
+      res.status(200).redirect('/contact');
+    })
+    .catch(() => {
+      req.flash('success','Something went wrong! Please email us directly...');
+      res.status(401).redirect('/contact');
+    })
+});
+
 
 
 module.exports = router;

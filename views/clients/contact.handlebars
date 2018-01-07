@@ -1,0 +1,58 @@
+<div class="content-after-message">
+  <div class="contact-pg">
+    {{#if message}}
+  <div class="message">
+    <p>{{message}}</p>
+  </div>
+{{/if}}
+    <div class="contact-info">
+      <h1>Contact us<h1>
+      <div class="contact-item">
+        <h5>
+          <a href="mailto:hyperloop@ucdavis.edu">
+            hyperloop@ucdavis.edu
+          </a>
+        </h5>
+      </div>
+      <div class="social-icon">
+        <a href="#">
+          <img title="Twitter" alt="Twitter" src="https://socialmediawidgets.files.wordpress.com/2014/03/01_twitter.png" width="35" height="35" />
+        </a>
+        <a href="#">
+          <img title="Facebook" alt="Facebook" src="https://socialmediawidgets.files.wordpress.com/2014/03/02_facebook.png" width="35" height="35" />
+        </a>
+        <a href="#">
+          <img title="Instagram" alt="RSS" src="https://socialmediawidgets.files.wordpress.com/2014/03/10_instagram.png" width="35" height="35" />
+        </a>
+      </div>
+    </div>
+    <div class="emailer">
+      <form class="contact-form" action="/contact" method="post">
+        <div class="form-group">
+          <input
+            name="name" 
+            class="form-control" 
+            type="text" 
+            placeholder="Your name"
+          />
+        </div>
+        <div class="form-group">
+          <input 
+            name="email"
+            class="form-control" 
+            type="text" 
+            placeholder="Your email"
+          />
+        </div>
+        <div class="form-group">
+          <textarea 
+            name="message" 
+            class="form-control" 
+            type="text" 
+            placeholder="Your message"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary"> Email us </button>
+      </form>
+    </div>
+  </div>
+</div>

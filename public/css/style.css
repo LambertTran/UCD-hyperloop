@@ -430,6 +430,48 @@ footer {
   .team-intro p {
     color: white; }
 
+.contact-pg {
+  width: 100%;
+  min-height: 100vh;
+  padding: 25px;
+  background-color: #212F3D;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 150px; }
+
+.contact-info {
+  width: 100%; }
+  .contact-info h1 {
+    text-align: center; }
+
+.emailer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: space-around; }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .contact-form button {
+    width: 100%; }
+
+.message {
+  position: absolute;
+  align-self: center;
+  height: 100px;
+  width: 200px;
+  border: 2px solid black;
+  box-shadow: 0 10px 10px black;
+  background-color: white;
+  opacity: 0; }
+  .message p {
+    color: black;
+    font-size: 1.5em; }
+
 /** classes **/
 .container-fluid {
   padding-left: 0;

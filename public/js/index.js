@@ -34,13 +34,11 @@ window.addEventListener('scroll', function(){
 
 /** Display message */
 var message = document.querySelector('.message');
-var subteam = document.querySelector('.subteam-pg');
-if (message) { 
-  subteam.style.display = 'none';
-  setTimeout(function(){
-    message.style.display = 'none';
-    subteam.style.display = 'block';
-  },1500);
+if (message) {
+  message.style.opacity = '1';
+  setTimeout(() => {
+    message.style.opacity = '0';
+  }, 2000);
 }
 
 

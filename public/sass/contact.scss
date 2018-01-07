@@ -1,0 +1,33 @@
+.contact-pg{
+  @include pageProps;
+  background-color: $homepage-top;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: $space-top;
+}
+
+.contact-info{
+  width:100%;
+  h1{
+    text-align: center;
+  }
+}
+
+.emailer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: space-around;
+}
+
+.contact-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  button{
+    width: 100%;
+  }
+}
+
