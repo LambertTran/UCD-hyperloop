@@ -14,57 +14,85 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-  <header>
-    {{#if isAdmin}}
-      {{#if isUpload}}
+  {{!-- Header Admin site --}}
+  {{#if isAdmin}}
+    <header>
       <div class="container-fluid">
-        <nav>
-          <div class="row">
-            <div class="col-12 col-md-3 col-lg-2 navigator">
-              <ul class="row" id= "nav-admin">
-                <li class="col-4 col-md-12 nav-active">
-                  <a href="/admin/">DashBoard</a>
-                </li>
-                <li class="col-4 col-md-12">
-                  <a href="/admin/team/{{teamName}}/upload-image">Upload team image</a>
-                </li>
-                <li class="col-4 col-md-12">
-                  <a href="/admin/team/{{teamName}}/upload-team-detail">Upload team description</a>
-                </li>
-              </ul>
-            </div>
-        </nav></div>
-        {{/if}}
-    {{else}}
-    <h2>logo</h2>
-    <nav id="nav-client" class="nav-client">
-      <li class="{{#if home}}nav-client-active{{/if}}">
-        <a href="/"><i class="fa fa-home"></i>
-        <span>Home</span>
-      </a></li>
-      <li class="{{#if teams}}nav-client-active{{/if}}">
-        <a href="/teams">
-          <i class="fa fa-users"></i>
-          <span>Teams</span>
-        </a>
-      </li>
-      <li class="{{#if contact}}nav-client-active{{/if}}">
-        <a href="/contact">
-          <i class="fa fa-phone"></i>
-          <span>Contact</span>
-        </a>
-      </li>
-      <li class="{{#if donate}}nav-client-active{{/if}}">
-        <a href="#">
-          <i class="fa fa-handshake-o"></i>
-          <span>Donate</span>
-        </a>
-      </li>
-    </nav>
-    {{/if}}
-  </header>
+        <nav class="admin-navbar">
+          <li>
+            <i class="fa fa-tachometer" aria-hidden="true"></i>
+            <a href="/admin/">DashBoard</a>
+          </li>
+          <li>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <a href="/logout">Log out</a>
+          </li>
+        </nav>
+      {{#if isSubteam}}
+        <nav class="row">
+          <div class="col-2 manage-team">
+            <li class="{{#if subteamFolder}}nav-admin-active{{/if}}">
+              <a href="/admin/team/{{team}}">
+                <div>
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                </div>
+                {{team}}
+              </a>
+            </li>
+            <li class="{{#if imagesFolder}}nav-admin-active{{/if}}">
+              <a href="/admin/team/{{team}}/upload-image">
+                <div><i class="fa fa-picture-o" aria-hidden="true"></i></div>  
+                Upload images
+              </a>
+            </li>
+            <li>
+              <a href="/admin/team/{{teamName}}/upload-team-detail">Upload team description</a>
+            </li>
+          </div>
+        </nav>
+      </div>
+      {{/if}}
+    </header>
+  {{else}}
+  {{!-- Header Client Site --}}
+    <header>
+      <h2>logo</h2>
+      <nav id="nav-client" class="nav-client">
+        <li class="{{#if home}}nav-client-active{{/if}}">
+          <a href="/"><i class="fa fa-home"></i>
+          <span>Home</span>
+        </a></li>
+        <li class="{{#if teams}}nav-client-active{{/if}}">
+          <a href="/teams">
+            <i class="fa fa-users"></i>
+            <span>Teams</span>
+          </a>
+        </li>
+        <li class="{{#if contact}}nav-client-active{{/if}}">
+          <a href="/contact">
+            <i class="fa fa-phone"></i>
+            <span>Contact</span>
+          </a>
+        </li>
+        <li class="{{#if donate}}nav-client-active{{/if}}">
+          <a href="#">
+            <i class="fa fa-handshake-o"></i>
+            <span>Donate</span>
+          </a>
+        </li>
+      </nav>
+      {{/if}}
+    </header>
+
   {{!-- Body --}}
   <div class="container-fluid">
+    {{!-- Display any message --}}
+    {{#if message}}
+      <div class="message">
+        <p>{{message}}</p>
+      </div>
+    {{/if}}
+    
     {{{body}}}
   </div>
 
@@ -110,6 +138,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
   <script src="/js/index.js" type="text/javascript"></script>
 </body>
 </html>

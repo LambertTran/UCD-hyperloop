@@ -7,8 +7,6 @@ const express = require('express');
 const router = express.Router();
 
 // helpers
-const GetTeams = require('../admins/middlewares/get-teams');
-const GetSubTeam = require('../admins/middlewares/get-subteam');
 const HandleSendEmail = require('./middlewares/send-email');
 
 /** Database */
@@ -25,17 +23,20 @@ router.get('/', (req, res) => {
 
 /** Teampage */
 router.get('/teams', (req, res) => {
-  GetTeams()
-    .then((teamData) => {
-      res.status(200).render('./clients/teams',{
-        teams:true,
-        teamData,
-      });
+  QueryDataBase.prototype.GetTeams()
+    .then((teams) => {
+      res.render(
+        './admins/dashboard',
+        { 
+          isAdmin: true,
+          isUpload:false,
+          isTeam: true,
+          teams
+        });
     })
     .catch((err) => {
-      console.log(err);
-      res.status(400).send(err);
-    })
+      throw err;
+    });
 });
 
 /** Sub-team page */
@@ -72,7 +73,7 @@ router.get('/contact', (req, res) => {
     contact: true,
     message: req.flash('success') || req.flash('error'),
   })
-})
+});
 
 // POST - send email
 router.post('/contact', (req, res) => {

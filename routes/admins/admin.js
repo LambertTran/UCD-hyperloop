@@ -11,29 +11,32 @@ const router = express.Router();
 // middlewares
 const VerifyAuth = require('./middlewares/verify-auth');
 const Upload = require('./middlewares/upload-img-aws');
-const QueryDataBase = require('./middlewares/insert-data');
-const GetTeams = require('./middlewares/get-teams');
-const GetSubTeam = require('./middlewares/get-subteam');
+const QueryDataBase = require('../database/middlewares/query-db');
 const DeleteImg = require('./middlewares/delete-img');
 const InsertTeamDetail = require('./middlewares/insert-team-detail');
 
 /** =================================
                 Body
 **================================== */
+function adminStatus(isAdmin, isSubteam, subteamFolder, imageFolder){
+  return {
+    isAdmin,
+    isSubteam,
+    subteamFolder,
+    imageFolder,
+  }
+}
 
 /** Admin dashboard page */
 // GET
-router.get('/', VerifyAuth, (req, res) => {
-  GetTeams()
+router.get('/', (req, res) => {
+  const status = adminStatus(true,false,false,false);
+  QueryDataBase.prototype.GetTeams()
     .then((teams) => {
       res.render(
         './admins/dashboard',
-        { 
-          isAdmin: true,
-          isUpload:false,
-          isTeam: true,
-          teams
-        });
+        {...status,teams}
+      );
     })
     .catch((err) => {
       throw err;
@@ -41,14 +44,31 @@ router.get('/', VerifyAuth, (req, res) => {
 });
 
 /** Subteam page */
-router.get('/team/:teamName', VerifyAuth, (req, res) => {
-  GetSubTeam(req.params.teamName)
+router.get('/team/:teamName', (req,res) => {
+  const status = adminStatus(true,true,true,false);
+  const newQuery = new QueryDataBase({team:req.params.teamName});
+  newQuery.GetSubTeamDetail()
+    .then((teamData) => {
+      teamData = teamData[0];
+      res.render(
+        './admins/subteam',
+        {...status,...teamData}
+      );
+    })
+    .catch((err) =>{
+      throw err;
+    })
+})
+
+router.get('/team/:teamName/images', VerifyAuth, (req, res) => {
+  const status = adminStatus(true,true,false,true);
+  const newQuery = new QueryDataBase({team:req.params.teamName})
+  newQuery.GetTeams()
     .then((teamData) => {
       res.render(
         './admins/subteam',
         {
-          isAdmin: true,
-          isUpload:true,
+          ...status,
           message: req.flash('success'),
           teamName:req.params.teamName,
           teamData,

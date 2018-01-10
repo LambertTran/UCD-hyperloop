@@ -1,10 +1,15 @@
 {{!-- Dashboard teamplate used to render all sub-teams--}}
 
-<div class="col-12 col-md-9 col-lg-10 ml-md-auto content"> 
-  <h1>Sub-teams</h1>
-  {{#each teams}}
-    <a href="/admin/team/{{this}}">
-      <li>{{this}}</li>
-    </a>
-  {{/each}}
+<div class="dashboard-pg">
+  <h1>Welcome to UCD Hyperloop team </h1>
+    <div class="dashboard-teams">
+      {{#each teams}}
+      <div class="teams">
+        <a href="/admin/team/{{this.team}}">
+          <img src={{this.team_img}} alt="team">
+          <p>{{this.team}}</p>
+        </a>
+      </div>
+      {{/each}}
+    </div>
 </div>

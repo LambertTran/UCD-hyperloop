@@ -41,6 +41,34 @@ if (message) {
   }, 2000);
 }
 
+/** Admin page SPA */
+var subteam = document.querySelector(".subteam-navbar");
+if (subteam) {
+  subteam.addEventListener("click", function(event){
+    const el = event.target.getAttribute("name");
+    switch (el) {
+      case "img":
+        console.log("yes");
+        break;
+      default:
+        handleSubTeamDetail();
+        break;
+    }
+  });
+};
+
+function handleSubTeamImg(){
+  
+}
+function handleSubTeamDetail(){
+  const subTeamBody = document.querySelector('.subteam-body');
+  let newEl = '<div class="subteam-des">';
+  newEl += '<p>{{team_detail}}</p>';
+  newEl += '</div>';
+  const data = Handlebars.compile(newEl);
+  subTeamBody.insertAdjacentHTML('beforeend',data);
+}
+
 
 function IsElementInView(element) {
   const rect = element.getBoundingClientRect();

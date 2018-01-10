@@ -1,24 +1,19 @@
 {{!-- Subteam teamplate--}}
-
-<div class="col-12 col-md-9 col-lg-10 ml-md-auto content"> 
-  {{!-- Display any message --}}
-  {{#if message}}
-  <div class="message">
-    <p>{{message}}</p>
-  </div>
-  {{/if}}
-
-  {{!-- Display team data --}}
   <div class="content-after-message">
-    <div class="subteam-pg">
-      <h1>{{teamName}}</h1>
-      {{#each teamData}}
-        <div>
-          <img src={{this.img_link}} alt="team-img">
-          <p>{{this.detail}}</p>
-          <a href="/admin/team/{{../teamName}}/{{this.id}}">Delete</a>
+    <div class="row">
+      <div class="col-9 ml-auto subteam-pg">
+        <h1>{{team}}</h1>
+        <hr />
+        <div class="subteam-data">
+          <div class="subteam-navbar">
+            <li name="img" >Team Image</li>
+            <li name="desp" >Description</li>
+          </div>
+          <div class="subteam-body">
+            
+            <p>{{team_detail}}</p>
+          </div>
         </div>
-      {{/each}}
+      </div>
     </div>
   </div>
-</div>

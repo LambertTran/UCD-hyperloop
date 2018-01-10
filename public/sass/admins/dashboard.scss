@@ -1,0 +1,26 @@
+.dashboard-pg{
+  margin: 0 auto;
+  padding-top: 100px;
+  max-width: 1300px;
+  @include flexCol;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-teams{
+  @include flexCol;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 40px;
+  justify-content: center;
+}
+
+.teams{
+  height:250px;
+  width: 300px;
+  border:1px solid black;
+  margin: 10px;
+  a{
+    text-decoration: none;
+  }
+}

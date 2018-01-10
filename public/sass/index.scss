@@ -5,7 +5,7 @@
 /** background color **/
 // navbar 
 $navbar-bg: #273746;
-
+$manage-team-bg: #002855;
 // homepage
 $homepage-top: #212F3D; 
 $homepage-2: #273746; 
@@ -52,6 +52,11 @@ $team-bg-img: url('../images/team-img.png');
   background-size:cover;
   background-position:center;
 }
+
+@mixin flexCol{
+  display: flex;
+  flex-direction: column;
+}
 /*==============================
               Body
 **=============================*/
@@ -70,6 +75,7 @@ h1{
 }
 
 /** import files **/
+// client page
 @import "navbar";
 @import "login";
 @import "homepage";
@@ -78,6 +84,12 @@ h1{
 @import "subteam";
 @import "contact";
 @import "message";
+
+// admin page
+@import "./admins/dashboard";
+@import "./admins/subteam";
+@import "./admins/images";
+
 /** classes **/
 
 .container-fluid{

@@ -20,6 +20,7 @@ function QueryDatabase(data) {
   this.detail = data.detail;
 }
 
+// insert image link and detail into IMAGES TABLE
 QueryDatabase.prototype.Insert = function(){
   const sql = `INSERT INTO images (img_link,detail,team_id)
                VALUES (
@@ -38,6 +39,7 @@ QueryDatabase.prototype.Insert = function(){
   })
 }
 
+// get image link and detail from each subteam
 QueryDatabase.prototype.GetSubTeamImg = function() {
   const sql = `select * from images
                where team_id = (
@@ -47,8 +49,15 @@ QueryDatabase.prototype.GetSubTeamImg = function() {
   return QueryHelper(sql);
 }
 
+// get all teams
+QueryDatabase.prototype.GetTeams = function(){
+  const sql = 'select * from teams';
+  return QueryHelper(sql);
+}
+
+// get sub-team detail
 QueryDatabase.prototype.GetSubTeamDetail = function() {
-  const sql = `select team_detail from teams
+  const sql = `select * from teams
                where team = '${this.team}' 
               `;
   return QueryHelper(sql);
