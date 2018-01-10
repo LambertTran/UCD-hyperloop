@@ -14,6 +14,7 @@ function CreateTables() {
                  team_id INT AUTO_INCREMENT,
                  team VARCHAR(100) NOT NULL,
                  team_detail VARCHAR(10000),
+                 team_img VARCHAR(100),
                  PRIMARY KEY (team_id)
                )
               `;
