@@ -18,7 +18,7 @@ const InsertTeamDetail = require('./middlewares/insert-team-detail');
 /** =================================
                 Body
 **================================== */
-function adminStatus(isAdmin, isSubteam, subteamFolder, imageFolder){
+function AdminStatus(isAdmin, isSubteam, subteamFolder, imageFolder){
   return {
     isAdmin,
     isSubteam,
@@ -30,7 +30,7 @@ function adminStatus(isAdmin, isSubteam, subteamFolder, imageFolder){
 /** Admin dashboard page */
 // GET
 router.get('/', (req, res) => {
-  const status = adminStatus(true,false,false,false);
+  const status = AdminStatus(true,false,false,false);
   QueryDataBase.prototype.GetTeams()
     .then((teams) => {
       res.render(
@@ -45,14 +45,14 @@ router.get('/', (req, res) => {
 
 /** Subteam page */
 router.get('/team/:teamName', (req,res) => {
-  const status = adminStatus(true,true,true,false);
+  const status = AdminStatus(true,true,true,false);
   const newQuery = new QueryDataBase({team:req.params.teamName});
   newQuery.GetSubTeamDetail()
     .then((teamData) => {
       teamData = teamData[0];
       res.render(
         './admins/subteam',
-        {...status,...teamData}
+        {...status,...teamData,message:req.flash('success')}
       );
     })
     .catch((err) =>{
@@ -60,36 +60,31 @@ router.get('/team/:teamName', (req,res) => {
     })
 })
 
-router.get('/team/:teamName/images', VerifyAuth, (req, res) => {
-  const status = adminStatus(true,true,false,true);
-  const newQuery = new QueryDataBase({team:req.params.teamName})
-  newQuery.GetTeams()
-    .then((teamData) => {
-      res.render(
-        './admins/subteam',
-        {
-          ...status,
-          message: req.flash('success'),
-          teamName:req.params.teamName,
-          teamData,
-        }
-      );
-    });
+
+/** Upload team image */
+////////////////////////////
+// need to delete team image on AWS
+////////////////////////////
+// POST
+router.post('/team/:teamName/upload-image', Upload.array('img'), (req, res) => {
+  const newQuery = new QueryDataBase({
+    team: req.params.teamName,
+    imgLink: req.files[0].location,
+    description: null,
+  });
+  newQuery.InsertTeamImg()
+    .then(() => {
+      req.flash('success','Uploaded team image');
+      res.status(200).redirect(`/admin/team/${req.params.teamName}`)
+    })
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    })
+
 });
 
 /** Upload team detail */
-// GET
-router.get('/team/:teamName/upload-team-detail', (req, res)=> {
-  res.render(
-    './admins/upload-team-detail',
-    {
-      isAdmin: true,
-      isUpload:true,
-      teamName: req.params.teamName
-    }
-  )
-});
-
 // POST 
 router.post('/team/:teamName/upload-team-detail', (req,res) => {
   const data = {
@@ -100,27 +95,33 @@ router.post('/team/:teamName/upload-team-detail', (req,res) => {
     .then(() => {
       req.flash(
         'success',
-        'Sucessfully upload team description'
+        'Uploaded team description'
       );
       res.status(200).redirect(`/admin/team/${req.params.teamName}`);
     })
 })
 
-/** Upload images */
+/** Upload images that team working on */
 // GET
-router.get('/team/:teamName/upload-image', VerifyAuth, (req, res) => {
-  res.render(
-    './admins/upload-img',
-    {
-      isAdmin: true,
-      isUpload:true,
-      teamName: req.params.teamName
-    }
-  );
+router.get('/team/:teamName/images', (req, res) => {
+  const status = AdminStatus(true,true,false,true);
+  const newQuery = new QueryDataBase({team:req.params.teamName})
+  newQuery.GetSubTeamImg()
+    .then((teamData) => {
+      res.render(
+        './admins/images',
+        {
+          ...status,
+          message: req.flash('success'),
+          team:req.params.teamName,
+          teamData,
+        }
+      );
+    });
 });
 
 // POST
-router.post('/team/:teamName/upload-image', VerifyAuth, Upload.array('img') ,(req,res) => {
+router.post('/team/:teamName/images/upload-image', VerifyAuth, Upload.array('img') ,(req,res) => {
   const data = {
     team: req.params.teamName,
     imgLink: req.files[0].location,
@@ -131,9 +132,9 @@ router.post('/team/:teamName/upload-image', VerifyAuth, Upload.array('img') ,(re
     .then(() => {
       req.flash(
         'success',
-        'Sucessfully upload image'
+        'Uploaded your image'
       );
-      res.status(200).redirect(`/admin/team/${req.params.teamName}`);
+      res.status(200).redirect(`/admin/team/${req.params.teamName}/images`);
     })
     .catch((err) => {
       res.status(400).send(err);
@@ -141,14 +142,14 @@ router.post('/team/:teamName/upload-image', VerifyAuth, Upload.array('img') ,(re
 });
 
 // Delete 
-router.get('/team/:teamName/:imgId', VerifyAuth,(req,res) => {
+router.get('/team/:teamName/images/:imgId', VerifyAuth,(req,res) => {
   DeleteImg(req.params.imgId)
     .then(() => {
       req.flash(
         'success',
-        'Sucessfully delete image'
+        'Deleted image'
       )
-      res.status(200).redirect(`/admin/team/${req.params.teamName}`);
+      res.status(200).redirect(`/admin/team/${req.params.teamName}/images`);
     })
     .catch(() =>{
       res.status(401).send(err);

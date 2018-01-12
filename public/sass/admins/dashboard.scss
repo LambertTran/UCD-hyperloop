@@ -5,6 +5,9 @@
   @include flexCol;
   justify-content: center;
   align-items: center;
+  h1{
+    text-align: center;
+  }
 }
 
 .dashboard-teams{
@@ -16,11 +19,16 @@
 }
 
 .teams{
-  height:250px;
-  width: 300px;
+  flex-basis: 250px;
   border:1px solid black;
   margin: 10px;
+  img{
+    height: 80%;
+    width: 100%;
+  }
   a{
     text-decoration: none;
+    color: black;
+    text-align: center;
   }
 }

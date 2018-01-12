@@ -20,6 +20,15 @@ function QueryDatabase(data) {
   this.detail = data.detail;
 }
 
+// insert team image into TEAMS TABLE
+QueryDatabase.prototype.InsertTeamImg = function(){
+  const sql = `update teams
+                set team_img = '${this.imgLink}'
+                 where team = '${this.team}'
+              `; 
+  return QueryHelper(sql);
+}
+
 // insert image link and detail into IMAGES TABLE
 QueryDatabase.prototype.Insert = function(){
   const sql = `INSERT INTO images (img_link,detail,team_id)

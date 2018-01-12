@@ -83,12 +83,14 @@ h1{
 @import "teams";
 @import "subteam";
 @import "contact";
-@import "message";
 
 // admin page
+@import "./admins/message";
 @import "./admins/dashboard";
+@import "./admins/navbar";
 @import "./admins/subteam";
 @import "./admins/images";
+@import "./admins/modal";
 
 /** classes **/
 

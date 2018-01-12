@@ -6,10 +6,10 @@
   <div class="team-contents">
     <h1>Intro</h1>
     <div class="sub-team-list">
-      {{#each teamData}}
+      {{#each teams}}
         <div class="sub-team-item">
           <a href="/teams/{{this.team}}">
-            <img src="" alt="">
+            <img src={{this.team_img}} alt="">
             <p>{{this.team}}</p>
           </a>
         </div>

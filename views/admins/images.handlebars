@@ -3,15 +3,37 @@
   <div class="content-after-message">
     <div class="row">
       <div class="col-9 ml-auto subteam-pg">
-        <h1>{{teamName}}</h1>
+        <h1>{{team}} Images</h1>
         <hr />
-        {{#each teamData}}
-          <div class="subteam-img">
-            <img src={{this.img_link}} alt="team-img">
-            <p>{{this.detail}}</p>
-            <a href="/admin/team/{{../teamName}}/{{this.id}}">&#10005;</a>
+        <div class="subteam-manage">
+          <button id="upload-btn" name="image" class="btn btn-outline-primary" >Update team image</button>
+        </div>
+        <div class="subteam-img-container">
+          {{#each teamData}}
+            <div class="subteam-img">
+              <img src={{this.img_link}} alt="team-img">
+              <p>{{this.detail}}</p>
+              <a href="/admin/team/{{../team}}/images/{{this.id}}">&#10005;</a>
+            </div>
+          {{/each}}
+        </div>
+        <div id="upload-subteam-img" class="upload-modal">
+          <div class="upload-modal-content">
+            <form method="post" enctype="multipart/form-data" action="/admin/team/{{team}}/images/upload-image">
+              <h3>Please select 1 image and enter some description about that images</h3>
+              <div class="form-group">
+                <label>Images</label>
+                <input type="file" name="img" class="form-control">
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea type="text" name="description" class="form-control text-area" placeholder="Description"> </textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Upload</button>
+              <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
+            </form>
           </div>
-        {{/each}}
+        </div>
       </div>
     </div>
   </div>

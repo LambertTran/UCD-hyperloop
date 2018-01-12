@@ -14,126 +14,126 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-  {{!-- Header Admin site --}}
+  {{!-- Check if user is admin --}}
   {{#if isAdmin}}
-    <header>
-      <div class="container-fluid">
-        <nav class="admin-navbar">
-          <li>
-            <i class="fa fa-tachometer" aria-hidden="true"></i>
-            <a href="/admin/">DashBoard</a>
-          </li>
-          <li>
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-            <a href="/logout">Log out</a>
-          </li>
-        </nav>
-      {{#if isSubteam}}
-        <nav class="row">
-          <div class="col-2 manage-team">
-            <li class="{{#if subteamFolder}}nav-admin-active{{/if}}">
-              <a href="/admin/team/{{team}}">
-                <div>
-                  <i class="fa fa-users" aria-hidden="true"></i>
-                </div>
-                {{team}}
-              </a>
-            </li>
-            <li class="{{#if imagesFolder}}nav-admin-active{{/if}}">
-              <a href="/admin/team/{{team}}/upload-image">
-                <div><i class="fa fa-picture-o" aria-hidden="true"></i></div>  
-                Upload images
-              </a>
+    {{!-- Header Admin site --}}
+      <header>
+        <div class="container-fluid">
+          <nav class="admin-navbar">
+            <li>
+              <i class="fa fa-tachometer" aria-hidden="true"></i>
+              <a href="/admin/">DashBoard</a>
             </li>
             <li>
-              <a href="/admin/team/{{teamName}}/upload-team-detail">Upload team description</a>
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+              <a href="/logout">Log out</a>
             </li>
-          </div>
-        </nav>
-      </div>
-      {{/if}}
-    </header>
-  {{else}}
-  {{!-- Header Client Site --}}
-    <header>
-      <h2>logo</h2>
-      <nav id="nav-client" class="nav-client">
-        <li class="{{#if home}}nav-client-active{{/if}}">
-          <a href="/"><i class="fa fa-home"></i>
-          <span>Home</span>
-        </a></li>
-        <li class="{{#if teams}}nav-client-active{{/if}}">
-          <a href="/teams">
-            <i class="fa fa-users"></i>
-            <span>Teams</span>
-          </a>
-        </li>
-        <li class="{{#if contact}}nav-client-active{{/if}}">
-          <a href="/contact">
-            <i class="fa fa-phone"></i>
-            <span>Contact</span>
-          </a>
-        </li>
-        <li class="{{#if donate}}nav-client-active{{/if}}">
-          <a href="#">
-            <i class="fa fa-handshake-o"></i>
-            <span>Donate</span>
-          </a>
-        </li>
-      </nav>
-      {{/if}}
-    </header>
-
-  {{!-- Body --}}
-  <div class="container-fluid">
-    {{!-- Display any message --}}
-    {{#if message}}
-      <div class="message">
-        <p>{{message}}</p>
-      </div>
-    {{/if}}
-    
-    {{{body}}}
-  </div>
-
-  {{!-- Footer --}}
-  {{#if isAdmin}}
-  {{else}}
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <div class="slack-icon">
-              <a href="https://ucdhyperloopteam.slack.com">
-                <img src="../images/slack.png" alt="icon">
-                <h5>Chat with us on slack </h5>
-              </a></div>
-            <hr>
-          </div>
-          <div class="col-sm-12 col-md-6">
-            <h4>Contact us</h4>
-            <div class="contact-item">
-              <h5>
-                <a href="mailto:hyperloop@ucdavis.edu">
-                  hyperloop@ucdavis.edu
+          </nav>
+        {{#if isSubteam}}
+          <nav class="row">
+            <div class="col-2 manage-team">
+              <h3>Manage</h3>
+              <li class="{{#if subteamFolder}}nav-admin-active{{/if}}">
+                <a href="/admin/team/{{team}}">
+                  <div>
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                  </div>
+                  {{team}}
                 </a>
-              </h5></div>
-            <div class="social-icon">
-              <a href="#">
-              <img title="Twitter" alt="Twitter" src="https://socialmediawidgets.files.wordpress.com/2014/03/01_twitter.png" width="35" height="35" />
-              </a>
-              <a href="#">
-              <img title="Facebook" alt="Facebook" src="https://socialmediawidgets.files.wordpress.com/2014/03/02_facebook.png" width="35" height="35" />
-              </a>
-              <a href="#">
-              <img title="Instagram" alt="RSS" src="https://socialmediawidgets.files.wordpress.com/2014/03/10_instagram.png" width="35" height="35" />
-              </a></div>
+              </li>
+              <li class="{{#if imageFolder}}nav-admin-active{{/if}}">
+                <a href="/admin/team/{{team}}/images">
+                  <div><i class="fa fa-picture-o" aria-hidden="true"></i></div>  
+                  Images
+                </a>
+              </li>
+            </div>
+          </nav>
+        </div>
+        {{/if}}
+      </header>
+    {{!-- Body Admin site --}}
+      <div class="container-fluid">
+        {{!-- Display any message --}}
+        {{#if message}}
+          <div class="message">
+            <p>{{message}}</p>
+          </div>
+        {{/if}}
+        
+        {{{body}}}
+      </div>
+  {{else}}
+    {{!-- Header Client Site --}}
+      <header>
+        <h2>logo</h2>
+        <nav id="nav-client" class="nav-client">
+          <li class="{{#if home}}nav-client-active{{/if}}">
+            <a href="/"><i class="fa fa-home"></i>
+            <span>Home</span>
+          </a></li>
+          <li class="{{#if teams}}nav-client-active{{/if}}">
+            <a href="/teams">
+              <i class="fa fa-users"></i>
+              <span>Teams</span>
+            </a>
+          </li>
+          <li class="{{#if contact}}nav-client-active{{/if}}">
+            <a href="/contact">
+              <i class="fa fa-phone"></i>
+              <span>Contact</span>
+            </a>
+          </li>
+          <li class="{{#if donate}}nav-client-active{{/if}}">
+            <a href="#">
+              <i class="fa fa-handshake-o"></i>
+              <span>Donate</span>
+            </a>
+          </li>
+        </nav>
+      </header>
+
+    {{!-- Body Client Site --}}
+      <div class="container-fluid">
+        {{{body}}}
+      </div>
+
+    {{!-- Footer --}}
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="slack-icon">
+                <a href="https://ucdhyperloopteam.slack.com">
+                  <img src="../images/slack.png" alt="icon">
+                  <h5>Chat with us on slack </h5>
+                </a></div>
+              <hr>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <h4>Contact us</h4>
+              <div class="contact-item">
+                <h5>
+                  <a href="mailto:hyperloop@ucdavis.edu">
+                    hyperloop@ucdavis.edu
+                  </a>
+                </h5></div>
+              <div class="social-icon">
+                <a href="#">
+                <img title="Twitter" alt="Twitter" src="https://socialmediawidgets.files.wordpress.com/2014/03/01_twitter.png" width="35" height="35" />
+                </a>
+                <a href="#">
+                <img title="Facebook" alt="Facebook" src="https://socialmediawidgets.files.wordpress.com/2014/03/02_facebook.png" width="35" height="35" />
+                </a>
+                <a href="#">
+                <img title="Instagram" alt="RSS" src="https://socialmediawidgets.files.wordpress.com/2014/03/10_instagram.png" width="35" height="35" />
+                </a></div>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
-  {{/if}}
+      </footer>
 
+  {{/if}}
   {{!-- Javascript --}}
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>

@@ -23,70 +23,7 @@ h1 {
   color: #DAAA00; }
 
 /** import files **/
-/** admin navbar **/
 /** client navbar **/
-/** navbar section for admin **/
-.bg-light {
-  background-color: #273746 !important; }
-
-.nav-link {
-  color: #DAAA00 !important; }
-
-.navbar-toggler {
-  border: 1px solid #DAAA00;
-  border-color: #DAAA00; }
-
-.admin-navbar {
-  display: flex;
-  justify-content: space-between; }
-  .admin-navbar li {
-    list-style: none;
-    margin: 0 40px 0 40px;
-    padding: 10px; }
-    .admin-navbar li i {
-      color: white;
-      font-size: 2.0em;
-      margin-right: 5px; }
-    .admin-navbar li a {
-      text-decoration: none;
-      color: white;
-      font-size: 1.6em; }
-
-.manage-team {
-  z-index: 100;
-  position: fixed;
-  background-color: #002855;
-  width: 100%;
-  max-width: 200px;
-  margin-top: 100px;
-  padding: 0;
-  border: 1px solid black; }
-  .manage-team li {
-    list-style: none;
-    text-align: center;
-    padding: 10px; }
-    .manage-team li i {
-      color: #CCFFCC;
-      font-size: 1.5em; }
-    .manage-team li a {
-      color: #CCFFCC;
-      font-size: 1.0em;
-      display: block; }
-    .manage-team li:hover {
-      background-color: white; }
-      .manage-team li:hover i {
-        color: black; }
-      .manage-team li:hover a {
-        color: black;
-        text-decoration: none; }
-
-.nav-admin-active {
-  background-color: white; }
-  .nav-admin-active i {
-    color: black !important; }
-  .nav-admin-active a {
-    color: black !important; }
-
 /* navbar section for client side*/
 header {
   z-index: 100;
@@ -383,13 +320,33 @@ footer {
   justify-content: space-around; }
 
 .sub-team-item {
+  position: relative;
   height: 250px;
   width: 250px;
-  background-color: #667D9D;
+  background-color: transparent;
   margin: 20px 0 20px 0;
   border-radius: 10px; }
+  .sub-team-item img {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    opacity: 1; }
   .sub-team-item p {
-    color: white; }
+    height: 10px;
+    width: 200px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: white;
+    text-align: center;
+    opacity: 0; }
+  .sub-team-item:hover img {
+    opacity: 0.2; }
+  .sub-team-item:hover p {
+    opacity: 1; }
   @media screen and (min-width: 667px) {
     .sub-team-item {
       margin: 20px 20px 20px 20px; } }
@@ -466,16 +423,24 @@ footer {
 
 .message {
   position: absolute;
-  align-self: center;
-  height: 100px;
-  width: 200px;
-  border: 2px solid black;
-  box-shadow: 0 10px 10px black;
-  background-color: white;
-  opacity: 0; }
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 50px;
+  width: 300px;
+  border: 1px solid black;
+  box-shadow: 0 5px 5px black;
+  background-color: #66d9ff;
+  opacity: 0;
+  transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 20px;
+  line-height: 50px; }
   .message p {
-    color: black;
-    font-size: 1.5em; }
+    text-align: center;
+    color: white;
+    font-size: 1.2em; }
 
 .dashboard-pg {
   margin: 0 auto;
@@ -485,6 +450,8 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
+  .dashboard-pg h1 {
+    text-align: center; }
 
 .dashboard-teams {
   display: flex;
@@ -495,33 +462,121 @@ footer {
   justify-content: center; }
 
 .teams {
-  height: 250px;
-  width: 300px;
+  flex-basis: 250px;
   border: 1px solid black;
   margin: 10px; }
+  .teams img {
+    height: 80%;
+    width: 100%; }
   .teams a {
-    text-decoration: none; }
+    text-decoration: none;
+    color: black;
+    text-align: center; }
+
+/** admin navbar **/
+/** navbar section for admin **/
+.bg-light {
+  background-color: #273746 !important; }
+
+.nav-link {
+  color: #DAAA00 !important; }
+
+.navbar-toggler {
+  border: 1px solid #DAAA00;
+  border-color: #DAAA00; }
+
+.admin-navbar {
+  display: flex;
+  justify-content: space-between; }
+  .admin-navbar li {
+    list-style: none;
+    margin: 0 40px 0 40px;
+    padding: 10px; }
+    .admin-navbar li i {
+      color: white;
+      font-size: 2.0em;
+      margin-right: 5px; }
+    .admin-navbar li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.6em; }
+
+.manage-team {
+  z-index: 100;
+  position: fixed;
+  background-color: #596F62;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 100px;
+  margin-left: 100px;
+  padding: 0;
+  border: 1px solid black; }
+  .manage-team h3 {
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    background-color: #70161E;
+    color: white; }
+  .manage-team li {
+    list-style: none;
+    text-align: center;
+    padding: 10px;
+    color: #C3D898; }
+    .manage-team li i {
+      color: #CCFFCC;
+      font-size: 1.5em; }
+    .manage-team li a {
+      color: #CCFFCC;
+      font-size: 1.0em;
+      display: block; }
+    .manage-team li:hover {
+      background-color: white; }
+      .manage-team li:hover i {
+        color: black; }
+      .manage-team li:hover a {
+        color: black;
+        text-decoration: none; }
+
+.nav-admin-active {
+  background-color: white; }
+  .nav-admin-active i {
+    color: black !important; }
+  .nav-admin-active a {
+    color: black !important; }
 
 .subteam-pg {
+  height: 100%;
   padding: 80px; }
   .subteam-pg hr {
     width: 100%;
     border-top: 1px solid black; }
 
-.subteam-navbar li {
-  list-style: none;
-  font-size: 1.2em;
-  cursor: pointer; }
+.subteam-manage {
+  margin: 20px; }
+
+.subteam-data img {
+  position: relative;
+  height: 500px;
+  max-width: 100%;
+  padding: 20px;
+  margin: 20px;
+  z-index: -1;
+  border-radius: 50px; }
+.subteam-data p {
+  padding: 15px; }
+
+.subteam-img-container {
+  display: flex;
+  flex-wrap: wrap; }
 
 .subteam-img {
-  height: 300px;
-  width: 300px;
+  flex-basis: 250px;
   border: 1px solid black;
   margin: 20px;
   position: relative; }
   .subteam-img img {
     height: 100%;
-    width: 300px; }
+    width: 100%; }
   .subteam-img p {
     text-align: center; }
   .subteam-img a {
@@ -537,6 +592,41 @@ footer {
   .subteam-img:hover a {
     opacity: 1;
     cursor: pointer; }
+
+.upload-modal {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  z-index: -10;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.upload-modal-content {
+  position: absolute;
+  height: 550px;
+  width: 500px;
+  padding: 40px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8); }
+  .upload-modal-content textarea {
+    min-height: 200px; }
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  z-index: 100; }
+
+.btn {
+  cursor: pointer; }
 
 /** classes **/
 .container-fluid {

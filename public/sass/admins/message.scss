@@ -1,0 +1,22 @@
+.message{
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin: auto;
+  height: 50px;
+  width: 300px;
+  border: 1px solid black;
+  box-shadow: 0 5px 5px black;
+  background-color: #66d9ff	;
+  opacity: 0;
+  transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+  border-radius: 20px;
+  line-height: 50px;
+  p{
+    text-align: center;
+    color:white;
+    font-size: 1.2em;
+  }
+}

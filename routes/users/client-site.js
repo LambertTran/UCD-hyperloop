@@ -23,16 +23,11 @@ router.get('/', (req, res) => {
 
 /** Teampage */
 router.get('/teams', (req, res) => {
-  QueryDataBase.prototype.GetTeams()
+  const newQuery = new QueryDatabase({team: ''});
+  newQuery.GetTeams()
     .then((teams) => {
-      res.render(
-        './admins/dashboard',
-        { 
-          isAdmin: true,
-          isUpload:false,
-          isTeam: true,
-          teams
-        });
+      console.log(teams);
+      res.status(200).render('./clients/teams',{teams});
     })
     .catch((err) => {
       throw err;

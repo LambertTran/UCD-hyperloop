@@ -41,34 +41,40 @@ if (message) {
   }, 2000);
 }
 
-/** Admin page SPA */
-var subteam = document.querySelector(".subteam-navbar");
-if (subteam) {
-  subteam.addEventListener("click", function(event){
-    const el = event.target.getAttribute("name");
-    switch (el) {
-      case "img":
-        console.log("yes");
-        break;
-      default:
-        handleSubTeamDetail();
-        break;
-    }
-  });
-};
-
-function handleSubTeamImg(){
-  
-}
-function handleSubTeamDetail(){
-  const subTeamBody = document.querySelector('.subteam-body');
-  let newEl = '<div class="subteam-des">';
-  newEl += '<p>{{team_detail}}</p>';
-  newEl += '</div>';
-  const data = Handlebars.compile(newEl);
-  subTeamBody.insertAdjacentHTML('beforeend',data);
+/** Modal */
+var uploadBtn = document.querySelectorAll('#upload-btn');
+var cancelBtn = document.querySelectorAll('#cancel');
+if (uploadBtn && uploadBtn.length > 0) {
+  uploadBtn.forEach((btn) => {
+    btn.addEventListener('click', (event) => HandleOpenModal(event));
+  })
 }
 
+if (cancelBtn) {
+  cancelBtn.forEach((btn) => {
+    btn.addEventListener('click', (event) => HandleCloseModal(event));
+  })
+}
+
+function HandleCloseModal(event) {
+  const modal = document.querySelector('.show-modal');
+  modal.classList.remove('show-modal');
+}
+
+function HandleOpenModal(event){
+  const targetModal = event.target.getAttribute('name');
+  let modal;
+  switch (targetModal) {
+    case 'detail':
+      modal = document.getElementById('upload-subteam-detail');
+      modal.classList.add('show-modal');
+      break;
+    case 'image':
+      modal = document.getElementById('upload-subteam-img');
+      modal.classList.add('show-modal');
+      break;
+  }
+}
 
 function IsElementInView(element) {
   const rect = element.getBoundingClientRect();

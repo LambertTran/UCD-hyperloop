@@ -1,0 +1,37 @@
+.upload-modal{
+  width: 100%;
+  height: 100vh;
+  top:0;
+  left:0;
+  visibility: hidden;
+  z-index: -10;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);;
+  opacity: 0;
+  @include flexCol;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-modal-content{
+  position: absolute;
+  height: 550px;
+  width: 500px;
+  padding: 40px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8);
+  textarea{
+    min-height: 200px;
+  }
+}
+
+.show-modal{
+  opacity: 1;
+  visibility: visible;
+  z-index: 100;
+}
+.btn {
+  cursor: pointer;
+}
