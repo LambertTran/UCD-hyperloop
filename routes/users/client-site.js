@@ -26,7 +26,6 @@ router.get('/teams', (req, res) => {
   const newQuery = new QueryDatabase({team: ''});
   newQuery.GetTeams()
     .then((teams) => {
-      console.log(teams);
       res.status(200).render('./clients/teams',{teams});
     })
     .catch((err) => {

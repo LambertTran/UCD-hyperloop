@@ -76,15 +76,15 @@ h1{
 
 /** import files **/
 // client page
-@import "navbar";
-@import "login";
-@import "homepage";
-@import "footer";
-@import "teams";
-@import "subteam";
-@import "contact";
+@import "./clients/navbar";
+@import "./clients/homepage";
+@import "./clients/footer";
+@import "./clients/teams";
+@import "./clients/subteam";
+@import "./clients/contact";
 
 // admin page
+@import "./admins/login";
 @import "./admins/message";
 @import "./admins/dashboard";
 @import "./admins/navbar";

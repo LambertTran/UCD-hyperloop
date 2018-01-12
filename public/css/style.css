@@ -84,32 +84,6 @@ header {
 @keyframes fadein {
   100% {
     opacity: 1; } }
-.login {
-  height: 85%;
-  width: 80%;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #0099CC;
-  padding: 20px;
-  padding-top: 50px;
-  border-radius: 15px 50px;
-  font-size: 0.5em; }
-  .login h2 {
-    text-align: center; }
-  .login label {
-    font-size: 30px;
-    color: white; }
-  .login .button {
-    text-align: center; }
-  @media (min-width: 767px) {
-    .login {
-      height: 700px;
-      width: 400px; } }
-
 .pg-header, .page2, .page3, .page4 .sponsor-header {
   padding-top: 40px; }
   .pg-header h1, .page2 h1, .page3 h1, .page4 .sponsor-header h1 {
@@ -396,16 +370,27 @@ footer {
   width: 100%;
   min-height: 100vh;
   padding: 25px;
-  background-color: #212F3D;
   display: flex;
   flex-direction: column;
+  background-color: #212F3D;
   justify-content: space-around;
   padding-top: 150px; }
+  @media screen and (min-width: 768px) {
+    .contact-pg {
+      justify-content: flex-start; } }
+  @media screen and (min-width: 1024px) {
+    .contact-pg {
+      flex-direction: row;
+      justify-content: center;
+      padding-top: 200px; } }
 
 .contact-info {
   width: 100%; }
   .contact-info h1 {
     text-align: center; }
+  @media screen and (min-width: 1024px) {
+    .contact-info {
+      flex-basis: 500px; } }
 
 .emailer {
   width: 100%;
@@ -413,13 +398,49 @@ footer {
   flex-direction: column;
   justify-content: space-around;
   align-items: space-around; }
+  @media screen and (min-width: 768px) {
+    .emailer {
+      width: 500px;
+      align-self: center;
+      margin-top: 100px; } }
+  @media screen and (min-width: 1024px) {
+    .emailer {
+      align-self: flex-start;
+      margin-top: 0; } }
 
 .contact-form {
   display: flex;
   flex-direction: column;
   justify-content: center; }
   .contact-form button {
-    width: 100%; }
+    align-self: center;
+    width: 100px; }
+
+.login {
+  height: 85%;
+  width: 80%;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #0099CC;
+  padding: 20px;
+  padding-top: 50px;
+  border-radius: 15px 50px;
+  font-size: 0.5em; }
+  .login h2 {
+    text-align: center; }
+  .login label {
+    font-size: 30px;
+    color: white; }
+  .login .button {
+    text-align: center; }
+  @media (min-width: 767px) {
+    .login {
+      height: 700px;
+      width: 400px; } }
 
 .message {
   position: absolute;

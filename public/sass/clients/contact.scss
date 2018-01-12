@@ -1,0 +1,55 @@
+.contact-pg{
+  @include pageProps;
+  @include flexCol;
+  background-color: $homepage-top;
+  justify-content: space-around;
+  padding-top: $space-top;
+  @media screen and (min-width:768px){
+    justify-content: flex-start
+  }
+  @media screen and (min-width:1024px){
+    flex-direction: row;
+    justify-content: center;
+    // align-items: center;
+    padding-top:200px;
+  }
+
+}
+
+.contact-info{
+  width:100%;
+  h1{
+    text-align: center;
+  }
+  @media screen and (min-width:1024px){
+    flex-basis: 500px;
+    // align-self: center;
+  }
+}
+
+.emailer{
+  width: 100%;
+  @include flexCol;
+  justify-content: space-around;
+  align-items: space-around;
+  @media screen and (min-width:768px){
+    width: 500px;
+    align-self: center;
+    margin-top: 100px;
+  }
+  @media screen and (min-width:1024px){
+    align-self: flex-start;
+    margin-top:0;
+  }
+}
+
+.contact-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  button{
+    align-self: center;
+    width: 100px;
+  }
+}
+
