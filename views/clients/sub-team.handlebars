@@ -1,13 +1,14 @@
 <div class="subteam-page">
   <div class="team-intro">
-    <h1>{{name}}</h1>
+    <h1>{{name}} team</h1>
+    <img src={{teamData.teamImg}} alt="team image">
     <p>{{teamData.teamDetail}}</p>
   </div>
-  <ul class="team-img">
-    {{#each teamData.imageData}}
+  <ul>
+    {{#each teamData.imgData}}
       <li>
-        <img src={{this.img_link}} alt="subteam-img">
         <p>{{this.detail}}</p>
+        <img src={{this.img_link}} alt="subteam-img">
       </li>
       {{/each}}
   </ul>

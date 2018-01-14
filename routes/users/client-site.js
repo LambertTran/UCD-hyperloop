@@ -26,6 +26,9 @@ router.get('/teams', (req, res) => {
   const newQuery = new QueryDatabase({team: ''});
   newQuery.GetTeams()
     .then((teams) => {
+      teams.forEach((subTeam) => {
+        subTeam.display = subTeam.team.replace(/-/g,' ');
+      });
       res.status(200).render('./clients/teams',{teams});
     })
     .catch((err) => {
@@ -48,10 +51,11 @@ router.get('/teams/:teamName', (req, res) => {
     .then((results) => {
       let teamData = {};
       teamData.teamDetail = results[0][0].team_detail;
-      teamData.imageData = results[1];
+      teamData.teamImg = results[0][0].team_img;
+      teamData.imgData = results[1];
       res.status(200).render('./clients/sub-team', {
         teams:true,
-        name:req.params.teamName,
+        name:req.params.teamName.replace(/-/g,' '),
         teamData,
       })
     })
@@ -86,6 +90,10 @@ router.post('/contact', (req, res) => {
     })
 });
 
+/** Donation page */
+router.get('/donate', (req, res) => {
+  res.render('./clients/donate', { donate:true });
+});
 
 
 module.exports = router;

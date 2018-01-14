@@ -2,20 +2,20 @@
   padding-top: 40px;
   h1{
     text-align: center;
-    font-size: $sm-fs;
+    // font-size: $sm-fs;
   }
   @media screen and (min-width:767px){
     @include centerV;
     .pg-header{
       padding-top: 0;
       h1{
-        font-size: $md-fs - 20px;
+        // font-size: $md-fs;
       }
     }
   }
   @media screen and (min-width:1023px){
     h1{
-      font-size: $lg-fs;
+      // font-size: $lg-fs;
     }
   }
 }
@@ -32,17 +32,17 @@
     padding-top:$space-top;
     h1{
       text-align: center;
-      font-size: $sm-fs;
+      // font-size: $sm-fs;
     }
     @media screen and (min-width:767px){
       h1{
-        font-size: $md-fs;
+        // font-size: $md-fs;
       }
     }
     @media screen and (min-width:1025px){
       h1{
         text-align:left;
-        font-size: $lg-fs;
+        // font-size: $lg-fs;
         &:nth-of-type(1){
           margin-left: 200px;
         }
@@ -57,7 +57,7 @@
   }
   @media screen and (min-width: 1500px){
     h1{
-      font-size: $xl-fs;
+      // font-size: $xl-fs;
     }
   }
 }
@@ -74,7 +74,7 @@
   @media screen and (min-width:767px){
     .description{
       height: 100%;
-      // font-size:25px;
+      margin-top:0;
       @include centerV;
     }
   }

@@ -1,16 +1,15 @@
 
 <section class="teams-page">
-  <div class="team-img">
-    <img src="../images/team-img.png" alt="team-img">
-  </div>
+  <img src="../images/team-img.png" alt="team-img">
   <div class="team-contents">
-    <h1>Intro</h1>
+    <p>The UC Davis Hyperloop team is made up of 84 members. We have an engineering division with multiple sub-teams within and a business team. Click on one of the subteam below to learn more about us!</p>
+    <hr />
     <div class="sub-team-list">
       {{#each teams}}
         <div class="sub-team-item">
           <a href="/teams/{{this.team}}">
+            <p>{{this.display}}</p>
             <img src={{this.team_img}} alt="">
-            <p>{{this.team}}</p>
           </a>
         </div>
       {{/each}}

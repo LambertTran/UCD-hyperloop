@@ -1,0 +1,10 @@
+.donate-pg{
+  @include pageProps;
+  @include flexCol;
+  background-color: $homepage-top;
+  padding-top: $space-top;
+  h1{
+    padding: 20px;
+    text-align: center;
+  }
+}

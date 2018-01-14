@@ -32,6 +32,9 @@
   @include flexCol;
   justify-content: space-around;
   align-items: space-around;
+  textarea{
+    height: 200px;
+  }
   @media screen and (min-width:768px){
     width: 500px;
     align-self: center;
