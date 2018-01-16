@@ -27,8 +27,13 @@
 /** page section **/
 .page1{
   @include pageProps;
-  background-color: $homepage-top;
-  .home-content{
+  // background-color: $homepage-top;
+  background-image: url('../../images/ship-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+    .home-content{
     padding-top:$space-top;
     h1{
       text-align: center;

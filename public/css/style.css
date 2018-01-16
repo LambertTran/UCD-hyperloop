@@ -173,7 +173,11 @@ header {
   width: 100%;
   min-height: 100vh;
   padding: 25px;
-  background-color: #212F3D; }
+  background-image: url("../../images/ship-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; }
   .page1 .home-content {
     padding-top: 150px; }
     .page1 .home-content h1 {
