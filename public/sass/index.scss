@@ -70,6 +70,9 @@ html,body{
 body, caption, th, td, input, textarea, select, option, legend, fieldset, h1, h2, h3, h4, h5, h6 {
   font-size-adjust: 0.5;
 }
+h1,h2,h3,h4,h5,h6,p,a,span,li{ 
+  font-family: 'Vollkorn', serif;
+}
 
 // color
 h1{
@@ -179,6 +182,7 @@ p{
 
 .container{
   height: 100%;
+  padding:0;
   .row{
     height: 100%;
   }
