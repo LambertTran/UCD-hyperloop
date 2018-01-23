@@ -91,9 +91,9 @@ router.post('/contact', (req, res) => {
 });
 
 /** Donation page */
-router.get('/donate', (req, res) => {
-  res.render('./clients/donate', { donate:true });
-});
+// router.get('/donate', (req, res) => {
+//   res.render('./clients/donate', { donate:true });
+// });
 
 
 module.exports = router;

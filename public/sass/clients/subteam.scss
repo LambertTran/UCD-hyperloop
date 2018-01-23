@@ -1,3 +1,36 @@
+.team-intro{
+  align-self: center;
+  width: 100%;
+  padding: 10px;
+  margin-top: 40px;
+  img{
+    display: block;
+    width: 100%;
+    margin: 30px auto;
+  }
+  h1{
+    margin-top: 40px;
+    text-align: center;
+  }
+  p{
+    margin: 0 auto;
+    max-width: 1000px;
+    color:white;
+    padding: 20px;
+    white-space: pre-wrap;
+  }
+  @media screen and (min-width:667px){
+    p{
+    }
+  }
+  @media screen and (min-width:1024px){
+    img{
+      width: 800px;
+      height: 600px;
+    }
+  }
+}
+
 .subteam-page{
   @include pageProps;
   background-color: $homepage-top;
@@ -5,6 +38,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  overflow-y: hidden;
   ul{
     display: flex;
     flex-direction: column;
@@ -15,8 +49,11 @@
     padding: 0;
     li{
       align-self: center;
-      flex-basis: 300px;
+      // flex-basis: 300px;
+      width: 300px;
+      height: 250px;
       margin: 20px 20px 20px 20px;
+
       img{
         height:100%;
         width: 100%;
@@ -31,33 +68,3 @@
   }
 }
 
-.team-intro{
-  align-self: center;
-  width: 100%;
-  padding: 10px;
-  margin-top: 40px;
-  img{
-    display: block;
-    width: 100%;
-    max-height: 480px;
-    margin: 30px auto;
-  }
-  h1{
-    margin-top: 40px;
-    text-align: center;
-  }
-  p{
-    color:white;
-    padding: 20px;
-    white-space: pre;
-  }
-  @media screen and (min-width:667px){
-    p{
-    }
-  }
-  @media screen and (min-width:767px){
-    img{
-      // width: 500px;
-    }
-  }
-}

@@ -67,6 +67,7 @@
   }
 }
 
+/** Hyperloop description */
 .page2{
   position:relative;
   @include pageProps;
@@ -85,7 +86,7 @@
   }
 }
 
-/** UCD team section **/
+/** UCD team **/
 .page3{
   position:relative;
   background-color: $homepage-top;
@@ -99,6 +100,7 @@
 }
 .team-img{
   margin-top: 50px;
+  text-align: center;
   img{
     max-width: 100%;
   }
@@ -151,8 +153,14 @@
   .sponsor-description{
     margin-top:35px;
     color:white;
+    max-width: 500px;
+    margin: 0 auto;
+    p{
+      text-align: center;
+    }
   }
   .sponsor-list{
+    min-height: 300px;
     @include centerV;
   }
 }

@@ -195,6 +195,7 @@ header {
         .page1 .home-content h1:nth-of-type(3) {
           margin-left: 300px; } }
 
+/** Hyperloop description */
 .page2 {
   position: relative;
   width: 100%;
@@ -213,7 +214,7 @@ header {
       flex-direction: column;
       justify-content: space-around; } }
 
-/** UCD team section **/
+/** UCD team **/
 .page3 {
   position: relative;
   background-color: #212F3D;
@@ -229,7 +230,8 @@ header {
     font-size: 40px; }
 
 .team-img {
-  margin-top: 50px; }
+  margin-top: 50px;
+  text-align: center; }
   .team-img img {
     max-width: 100%; }
   @media screen and (min-width: 767px) {
@@ -274,8 +276,13 @@ header {
       justify-content: center; } }
   .page4 .sponsor-description {
     margin-top: 35px;
-    color: white; }
+    color: white;
+    max-width: 500px;
+    margin: 0 auto; }
+    .page4 .sponsor-description p {
+      text-align: center; }
   .page4 .sponsor-list {
+    min-height: 300px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -398,6 +405,29 @@ footer {
     .sub-team-item {
       margin: 20px 30px 20px 30px; } }
 
+.team-intro {
+  align-self: center;
+  width: 100%;
+  padding: 10px;
+  margin-top: 40px; }
+  .team-intro img {
+    display: block;
+    width: 100%;
+    margin: 30px auto; }
+  .team-intro h1 {
+    margin-top: 40px;
+    text-align: center; }
+  .team-intro p {
+    margin: 0 auto;
+    max-width: 1000px;
+    color: white;
+    padding: 20px;
+    white-space: pre-wrap; }
+  @media screen and (min-width: 1024px) {
+    .team-intro img {
+      width: 800px;
+      height: 600px; } }
+
 .subteam-page {
   width: 100%;
   min-height: 100vh;
@@ -406,7 +436,8 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around; }
+  justify-content: space-around;
+  overflow-y: hidden; }
   .subteam-page ul {
     display: flex;
     flex-direction: column;
@@ -417,7 +448,8 @@ footer {
     padding: 0; }
     .subteam-page ul li {
       align-self: center;
-      flex-basis: 300px;
+      width: 300px;
+      height: 250px;
       margin: 20px 20px 20px 20px; }
       .subteam-page ul li img {
         height: 100%;
@@ -427,24 +459,6 @@ footer {
     @media screen and (min-width: 667px) {
       .subteam-page ul {
         flex-direction: row; } }
-
-.team-intro {
-  align-self: center;
-  width: 100%;
-  padding: 10px;
-  margin-top: 40px; }
-  .team-intro img {
-    display: block;
-    width: 100%;
-    max-height: 480px;
-    margin: 30px auto; }
-  .team-intro h1 {
-    margin-top: 40px;
-    text-align: center; }
-  .team-intro p {
-    color: white;
-    padding: 20px;
-    white-space: pre; }
 
 .contact-pg {
   width: 100%;
