@@ -28,13 +28,13 @@
 .page1{
   @include pageProps;
   // background-color: $homepage-top;
-  background-image: url('../../images/ship-bg.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  // background-image: url('../../images/ship-bg.jpg');
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-attachment: fixed;
+  // background-size: cover;
     .home-content{
-    padding-top:$space-top;
+    padding-top:$space-top - 90px;
     h1{
       text-align: center;
       // font-size: $sm-fs;
@@ -45,19 +45,19 @@
       }
     }
     @media screen and (min-width:1025px){
-      h1{
-        text-align:left;
-        // font-size: $lg-fs;
-        &:nth-of-type(1){
-          margin-left: 200px;
-        }
-        &:nth-of-type(2){
-          margin-left: 400px;
-        }
-        &:nth-of-type(3){
-          margin-left: 300px;
-        }
-      }
+      // h1{
+      //   text-align:left;
+      //   // font-size: $lg-fs;
+      //   &:nth-of-type(1){
+      //     margin-left: 200px;
+      //   }
+      //   &:nth-of-type(2){
+      //     margin-left: 400px;
+      //   }
+      //   &:nth-of-type(3){
+      //     margin-left: 300px;
+      //   }
+      // }
     }
   }
   @media screen and (min-width: 1500px){
@@ -66,6 +66,21 @@
     }
   }
 }
+.video-bg{
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -99;
+
+  // iframe {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   pointer-events: none;
+  // }
+}
+
 
 /** Hyperloop description */
 .page2{

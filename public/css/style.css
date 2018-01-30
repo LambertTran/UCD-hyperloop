@@ -175,25 +175,19 @@ header {
 .page1 {
   width: 100%;
   min-height: 100vh;
-  padding: 25px;
-  background-image: url("../../images/ship-bg.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover; }
+  padding: 25px; }
   .page1 .home-content {
-    padding-top: 150px; }
+    padding-top: 60px; }
     .page1 .home-content h1 {
       text-align: center; }
-    @media screen and (min-width: 1025px) {
-      .page1 .home-content h1 {
-        text-align: left; }
-        .page1 .home-content h1:nth-of-type(1) {
-          margin-left: 200px; }
-        .page1 .home-content h1:nth-of-type(2) {
-          margin-left: 400px; }
-        .page1 .home-content h1:nth-of-type(3) {
-          margin-left: 300px; } }
+
+.video-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -99; }
 
 /** Hyperloop description */
 .page2 {

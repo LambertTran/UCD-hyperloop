@@ -1,24 +1,4 @@
 'strict mode';
-/** active navigation bar for admin **/
-// navbarActivate("nav-admin","nav-admin-active");
-/** active navbar for client site **/
-// navbarActivate("nav-client","nav-client-active");
-
-
-// // add active class to navbar
-// function navbarActivate(element,activeClass){
-//   var ul = document.getElementById(element).getElementsByTagName('li');
-//   for(var i=0; i<ul.length; ++i){
-//     ul[i].addEventListener("click",addActiveClass);
-//   }
-//   function addActiveClass(){
-//     el = document.querySelector('.' +activeClass);
-//     if( el != null){
-//       el.classList.remove(activeClass);
-//     }
-//     this.className = activeClass;
-//   }
-// }
 
 /** Animation effect on scroll */
 var box = document.querySelectorAll('.effect');
@@ -86,3 +66,54 @@ function IsElementInView(element) {
   );
 }
 
+/** Handle background video */
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('video', {
+    height: '100%',
+    width: '100%',
+    videoId: 'Czrc1JfIBRw',
+    playerVars:{
+      autoplay:1,
+      controls:0,
+      showinfor:0,
+      modetbranding:1,
+      loop:1,
+      fs:0,
+      cc_load_policy:0,
+      iv_load_policy:3,
+      autohide:1,
+      mute:1
+    },
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+// 5. The API calls this function when the player's state changes.
+//    The function indicates that when playing a video (state=1),
+//    the player should play for six seconds and then stop.
+var done = false;
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+    setTimeout(replayVideo, 24000);
+    // done = true;
+  }
+}
+function replayVideo() {
+  player.seekTo(1);
+}
