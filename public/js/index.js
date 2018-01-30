@@ -15,10 +15,12 @@ window.addEventListener('scroll', function(){
 /** Display message */
 var message = document.querySelector('.message');
 if (message) {
-  message.style.opacity = '1';
+  setTimeout(() => {
+    message.style.opacity = '1';
+  }, 500);
   setTimeout(() => {
     message.style.opacity = '0';
-  }, 2000);
+  }, 3000);
 }
 
 /** Modal */

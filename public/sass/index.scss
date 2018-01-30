@@ -107,7 +107,7 @@ h1 {
   }
 }
 h2 {
-  font-size: 1.625em;
+  // font-size: 1.625em;
   /* 1.625x body copy size = 26px */
   line-height: 1.15384615;
   /* 30px / 26px */
@@ -196,4 +196,9 @@ p{
   background-color: $homepage-top;
 }
 
+.content-after-message{
+  padding: 20px;
+  padding-top: 120px;
+  
+}
 

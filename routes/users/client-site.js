@@ -81,7 +81,7 @@ router.post('/contact', (req, res) => {
                 "message: " + input.message.toString() + "\n"; 
   HandleSendEmail(message)
     .then(() => {
-      req.flash('success','Sucessfully sent your email');
+      req.flash('success','Sent your email');
       res.status(200).redirect('/contact');
     })
     .catch(() => {

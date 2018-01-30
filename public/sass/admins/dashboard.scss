@@ -8,6 +8,9 @@
   h1{
     text-align: center;
   }
+  // @media screen and (min-width: 767px) {
+  //   padding-top: 100px
+  // }
 }
 
 .dashboard-teams{
@@ -20,15 +23,24 @@
 
 .teams{
   flex-basis: 250px;
-  border:1px solid black;
-  margin: 10px;
+  margin: 20px 10px;
+  border: 0.5px solid rgba(201, 76, 76, 0.3);
+  box-shadow: 5px 10px 15px black;
+  border-radius: 20px;
+  padding: 0 5px;
   img{
-    height: 80%;
+    height: 200px;
     width: 100%;
+    box-shadow: none;
   }
   a{
     text-decoration: none;
     color: black;
     text-align: center;
+    p{
+      margin-top: 10px;
+      color: #0D47A1;
+      font-weight: bold;
+    }
   }
 }
