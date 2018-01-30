@@ -21,9 +21,21 @@
   h1{
     text-align: center;
   }
+  h5:first-of-type{
+    color: white;
+    text-align: center;
+    margin: 40px 0;
+    line-height: 1.4em;
+  }
+  @media screen and (min-width:667px){
+    h5:first-of-type{
+      width: 450px;
+      margin: 40px auto;
+    }
+  }
   @media screen and (min-width:1024px){
     flex-basis: 500px;
-    // align-self: center;
+    
   }
 }
 
