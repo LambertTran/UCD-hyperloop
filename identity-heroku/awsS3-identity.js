@@ -4,7 +4,7 @@
  */
 
 var awsS3Identity = {
-  secretAccessKey: process.env.SE3_SCRET,
+  secretAccessKey: process.env.S3_SECRET,
   accessKeyId: process.env.S3_KEY,
   region: 'us-east-1'
 }
