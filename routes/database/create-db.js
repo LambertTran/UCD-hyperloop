@@ -16,6 +16,14 @@ const InsertTeam = require('./middlewares/insert-team');
 /** =================================
                 Body
 **================================== */
+/*
+  To create Database for UC Davis Hyperloop
+    1. Send GET request to /create/tables
+    2. Insert desired username and password in CREATE ADMIN TABLE
+    3. Send GET request to /create/admin
+    4. Send GET request to /insert/teams
+*/
+
 
 /** Create tables */
 router.get('/create/tables',(req, res) => {
@@ -43,8 +51,8 @@ router.get('/create/admin', (req, res) => {
   });
   
   // admin identity
-  var username = "hyperloop";
-  var password = "test123";
+  var username = ""; // add username here
+  var password = ""; // add password here
   
   // hash password before store into database
   bcrypt.genSalt(10,(err,salt) =>{

@@ -7,7 +7,10 @@ const fs = require('fs');
 
 let awsS3Identity;
 try{
-  awsS3Identity = require('../../../identity/awsS3-identity');
+  // production keys
+  awsS3Identity = require('../../../identity/prod-awsS3');
+  // development keys
+  // awsS3Identity = require('../../../identity/awsS3-identity');
 } catch(e) {
   awsS3Identity = require('../../../identity-heroku/awsS3-identity');
 }
@@ -17,7 +20,7 @@ try{
 **==================================*/
 
 /** Config S3 bucket **/
-AWS.config.update(awsS3Identity)
+AWS.config.update(awsS3Identity.keys)
 
 /** create new instance of aws S3 **/
 const s3 = new AWS.S3();
@@ -54,7 +57,7 @@ async function DeleteImg(imgId){
     return new Promise ((resolve,reject) => {
       // delete that image in s3 bucket
       const params = {
-        Bucket: 'testimage-uploader',
+        Bucket: awsS3Identity.bucket,
         Delete: {
           Objects: [{
             Key: itemName
