@@ -7,19 +7,22 @@ const multerS3  = require('multer-s3');
 const fs = require('fs');
 
 let awsS3Identity;
-try{
-  awsS3Identity = require('../../../identity/awsS3-identity');
-} catch(e) {
-  awsS3Identity = require('../../../identity-heroku/awsS3-identity');
-}
-// awsS3Identity = require('../../../identity-heroku/awsS3-identity');
+// try{
+  // production keys
+  awsS3Identity = require('../../../identity/prod-awsS3');
+  // development keys
+  // awsS3Identity = require('../../../identity/awsS3-identity');
+// } catch(e) {
+  // awsS3Identity = require('../../../identity-heroku/awsS3-identity');
+// }
+
 
 /** =================================
                 Body
 **==================================*/
 
 /** Config S3 bucket **/
-AWS.config.update(awsS3Identity)
+AWS.config.update(awsS3Identity.keys)
 
 /** create new instance of aws S3 **/
 var s3 = new AWS.S3();
@@ -28,7 +31,7 @@ var s3 = new AWS.S3();
 var upload = multer({
   storage: multerS3({
     s3: s3,
-    bucket: 'testimage-uploader',
+    bucket: awsS3Identity.bucket,
     contentType: multerS3.AUTO_CONTENT_TYPE ,
     key: function (req, file, cb) {
       var name = Date.now().toString() + file.originalname;

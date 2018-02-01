@@ -20,7 +20,7 @@ var ClientSite = require('./routes/users/client-site');
 var Admin = require('./routes/admins/admin');
 var Login = require('./routes/admins/login');
 
-var CreateDb = require('./routes/database/create-db');
+// var CreateDb = require('./routes/database/create-db');
 
 /** =================================
                 Body
@@ -73,7 +73,7 @@ app.use(function (req, res, next) {
 app.use('/',ClientSite);
 app.use('/',Login);
 app.use('/admin',Admin);
-app.use('/database',CreateDb);
+// app.use('/database',CreateDb);
 
 
 app.listen(port, () => console.log(`connect to ${port}`));

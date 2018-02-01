@@ -9,7 +9,11 @@ const fs = require('fs');
 // database identidy
 let dbIdentity;
 try{
-  dbIdentity = require('../../identity/db-identity');
+  // production DB
+  dbIdentity = require('../../identity/prod-db');
+
+  // dev database
+  // dbIdentity = require('../../identity/db-identity');
 } catch(e){
   dbIdentity = require('../../identity-heroku/heroku-db-identity');
 }
@@ -18,6 +22,8 @@ try{
 /** =================================
                 Body
 **==================================*/
+
+
 /** mysql database **/
 const db = mysql.createConnection(dbIdentity);
 
