@@ -28,7 +28,7 @@ var CreateDb = require('./routes/database/create-db');
 
 /** set up server **/
 var app = express();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 80;
 app.use(cors());
 
 // View Engine
