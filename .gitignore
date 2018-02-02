@@ -1,2 +1,4 @@
 /node_modules
 /identity
+*.out
+*.yaml
