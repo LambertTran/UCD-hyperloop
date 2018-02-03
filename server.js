@@ -28,7 +28,7 @@ var Login = require('./routes/admins/login');
 
 /** set up server **/
 var app = express();
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 8080;
 app.use(cors());
 
 // View Engine
