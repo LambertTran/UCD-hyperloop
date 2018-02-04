@@ -7,14 +7,14 @@ const multerS3  = require('multer-s3');
 const fs = require('fs');
 
 let awsS3Identity;
-// try{
+try{
   // production keys
   awsS3Identity = require('../../../identity/prod-awsS3');
   // development keys
   // awsS3Identity = require('../../../identity/awsS3-identity');
-// } catch(e) {
-  // awsS3Identity = require('../../../identity-heroku/awsS3-identity');
-// }
+} catch(e) {
+  awsS3Identity = require('../../../identity-heroku/awsS3-identity');
+}
 
 
 /** =================================
