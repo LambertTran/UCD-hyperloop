@@ -35,37 +35,41 @@ db.table = {
   descriptions:'descriptions'
 };
 
+handleDisconnect();
+
 function handleDisconnect() {
   // create new connection
   db = mysql.createConnection(dbIdentity); 
   // re-connect to mySQL and handle err if cant connect
   db.connect(function(err) {              
-    if(err) {                                     
+    if(err) {                                  
       console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); // repeat the process
-    }                                     
+      setTimeout(handleDisconnect, 10000); // repeat the process
+    } else {
+      console.log("Connecting to mysql database");
+    }
   });                                     
 
   // handle disconnection 
-  connection.on('error', function(err) {
+  db.on('error', function(err) {
     console.log('db error', err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
-      handleDisconnect();                         
-    } else {                                      
-      throw err;                                  
+      handleDisconnect();
+    } else {
+      throw err;
     }
   });
 }
 
-db.connect((err) => {
-  if(err) { 
-    console.log(err);
-    setTimeout(handleDisconnect, 2000); 
-  }
-  else {
-    console.log("Connecting to mysql database");
-  }
-})
+// db.connect((err) => {
+//   if(err) { 
+//     console.log(err);
+//     handleDisconnect();
+//   }
+//   else {
+//     console.log("Connecting to mysql database");
+//   }
+// })
 
 
 module.exports = db;
