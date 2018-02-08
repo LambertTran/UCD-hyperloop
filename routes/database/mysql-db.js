@@ -10,10 +10,10 @@ const fs = require('fs');
 let dbIdentity;
 try{
   // production DB
-  dbIdentity = require('../../identity/prod-db');
+  // dbIdentity = require('../../identity/prod-db');
 
   // dev database
-  // dbIdentity = require('../../identity/db-identity');
+  dbIdentity = require('../../identity/db-identity');
 } catch(e){
   dbIdentity = require('../../identity-heroku/heroku-db-identity');
 }

@@ -50,7 +50,9 @@ router.get('/teams/:teamName', (req, res) => {
   ])
     .then((results) => {
       let teamData = {};
-      teamData.teamDetail = results[0][0].team_detail;
+      let teamDetail = results[0][0].team_detail.split('\r\n');
+      teamData.mainTeamDetail = teamDetail[0];
+      teamData.moreDetail = teamDetail.slice(1,teamDetail.length).join('\r\n');
       teamData.teamImg = results[0][0].team_img;
       teamData.imgData = results[1];
       res.status(200).render('./clients/sub-team', {

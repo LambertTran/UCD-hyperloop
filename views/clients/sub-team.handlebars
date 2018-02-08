@@ -2,7 +2,11 @@
   <div class="team-intro">
     <h1>{{name}} team</h1>
     <img src={{teamData.teamImg}} alt="team image">
-    <p>{{teamData.teamDetail}}</p>
+    <div class="toggle-text">
+      <p class="main-text">{{teamData.mainTeamDetail}}
+      <span id="toggle-text-btn" class="fa fa-chevron-down"></span></p>
+      <p>{{teamData.moreDetail}}</p>
+    </div>
   </div>
   <ul>
     {{#each teamData.imgData}}

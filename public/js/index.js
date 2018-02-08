@@ -119,3 +119,36 @@ function onPlayerStateChange(event) {
 function replayVideo() {
   player.seekTo(1);
 }
+
+
+/** Toggle text */
+handleScreenSizeChange();
+function handleScreenSizeChange(){
+  var vpWidth = document.body.clientWidth;
+  if (vpWidth < 768) {
+    toggleText();
+  }
+}
+window.addEventListener('resize',handleScreenSizeChange);
+
+function toggleText(){
+  var toggleText = document.querySelector('.toggle-text');
+  var mainText = document.querySelector('.main-text');
+  var expanded = false;
+  toggleText.style.height = mainText.scrollHeight + 'px';
+  mainText.addEventListener('click', handleToggleText );
+  
+  function handleToggleText(){
+    var toggleBtn = document.querySelector('#toggle-text-btn');
+    var parent = this.parentNode;
+    if (expanded){
+      expanded = false;
+      toggleBtn.style.transform= 'rotate(0deg)';
+      parent.style.height = mainText.scrollHeight + 'px';
+      return;
+    }
+    expanded = true;
+    parent.style.height = toggleText.scrollHeight + 'px';
+    toggleBtn.style.transform= 'rotate(180deg)';
+  }
+}

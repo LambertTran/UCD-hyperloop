@@ -68,3 +68,31 @@
   }
 }
 
+/** Toggle text */
+.toggle-text{
+  position: relative;
+  margin: 0 auto;
+  max-width: 600px;
+  /* border: 1px solid black; */
+  overflow: hidden;
+  transition: height 0.5s ease ;  
+}
+
+.toggle-text p {
+  white-space: pre-line;
+  transition:  0.5s ease all;  
+  padding-right: 20px;
+  margin-bottom: 10px;
+}
+
+.main-text{
+  cursor: pointer;
+}
+
+#toggle-text-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.5em;
+  transition: all 0.75s ease;
+}
