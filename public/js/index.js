@@ -122,20 +122,13 @@ function replayVideo() {
 
 
 /** Toggle text */
-handleScreenSizeChange();
-function handleScreenSizeChange(){
-  var vpWidth = document.body.clientWidth;
-  if (vpWidth < 768) {
-    toggleText();
-  }
-}
-window.addEventListener('resize',handleScreenSizeChange);
+toggleText();
 
 function toggleText(){
   var toggleText = document.querySelector('.toggle-text');
   var mainText = document.querySelector('.main-text');
   var expanded = false;
-  toggleText.style.height = mainText.scrollHeight + 'px';
+  toggleText.style.height = mainText.scrollHeight + 35 + 'px'; // account for margin and padding
   mainText.addEventListener('click', handleToggleText );
   
   function handleToggleText(){
@@ -144,7 +137,8 @@ function toggleText(){
     if (expanded){
       expanded = false;
       toggleBtn.style.transform= 'rotate(0deg)';
-      parent.style.height = mainText.scrollHeight + 'px';
+      // account for margin and padding
+      parent.style.height = mainText.scrollHeight + 30 + 'px';
       return;
     }
     expanded = true;
