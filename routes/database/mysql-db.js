@@ -23,7 +23,6 @@ try{
                 Body
 **==================================*/
 
-
 /** mysql database **/
 let db = mysql.createConnection(dbIdentity);
 

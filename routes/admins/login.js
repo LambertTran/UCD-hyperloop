@@ -23,7 +23,7 @@ const router = express.Router();
 // GET request
 router.get('/login',(req,res) => {
   if(res.user === undefined){
-    var message = req.flash('error'); 
+    var message = req.flash('error');
     res.render('./admins/login',{message:message[0]});
   } else {
     res.redirect('/');
@@ -55,12 +55,12 @@ passport.use(new LocalStrategy(
       return done(null,false, {message:'Wrong credentials'});
     }
     ValidateUser(username,password)
-      .then(() => {
-        done(null,username);
-      })
-      .catch((err) => {
-        return done(null,false, {message:'Wrong username or password'});
-      })
+    .then(() => {
+      done(null,username);
+    })
+    .catch((err) => {
+      return done(null,false, {message:'Wrong username or password'});
+    })
   }      
 ));
 
@@ -75,8 +75,11 @@ passport.deserializeUser(function(user,done) {
 function ValidateUser(username,password){
   // look for username
   return new Promise((resolve,reject) => {
-    var sql = `SELECT * FROM ${db.table.admin} WHERE user = '${username}'`;
+
+    var sql = `SELECT * FROM admin WHERE user = '${username}'`;
+
     db.query(sql,(err,result) => {
+
       if (err) {
         return reject(err);
       }
