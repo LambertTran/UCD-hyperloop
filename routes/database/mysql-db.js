@@ -10,10 +10,10 @@ const fs = require('fs');
 let dbIdentity;
 try{
   // production DB
-  dbIdentity = require('../../identity/prod-db');
+  // dbIdentity = require('../../identity/prod-db');
 
   // dev database
-  // dbIdentity = require('../../identity/db-identity');
+  dbIdentity = require('../../identity/db-identity');
 } catch(e){
   dbIdentity = require('../../identity-heroku/heroku-db-identity');
 }
@@ -33,8 +33,6 @@ db.table = {
   images:'images',
   descriptions:'descriptions'
 };
-
-handleDisconnect();
 
 function handleDisconnect() {
   // create new connection
@@ -60,15 +58,23 @@ function handleDisconnect() {
   });
 }
 
-// db.connect((err) => {
-//   if(err) { 
-//     console.log(err);
-//     handleDisconnect();
-//   }
-//   else {
-//     console.log("Connecting to mysql database");
-//   }
-// })
+db.connect((err) => {
+  if(err) { 
+    console.log(err);
+    setTimeout(handleDisconnect, 10000); // repeat the process
+  }
+  else {
+    console.log("Connecting to mysql database");
+  }
+})
+db.on('error', function(err) {
+  console.log('db error', err);
+  if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
+    handleDisconnect();
+  } else {
+    throw err;
+  }
+});
 
 
 module.exports = db;

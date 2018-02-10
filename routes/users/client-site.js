@@ -18,7 +18,7 @@ const QueryDatabase = require('../database/middlewares/query-db');
 
 /** Homepage */
 router.get('/', (req, res) => {
-  res.render('./clients/homepage', { home: true });
+  res.status(200).render('./clients/homepage', { home: true });
 });
 
 /** Teampage */
