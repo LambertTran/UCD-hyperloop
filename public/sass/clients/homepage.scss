@@ -166,17 +166,41 @@
     }
   }
   .sponsor-description{
+    margin: 0 auto;
     margin-top:35px;
     color:white;
     max-width: 500px;
-    margin: 0 auto;
     p{
       text-align: center;
+      a{
+        text-decoration: none;
+        color:white;
+      }
     }
   }
   .sponsor-list{
     min-height: 300px;
     @include centerV;
+    text-align: center;
+    ul{
+      margin: 0;
+      padding: 0;
+      a{
+        text-decoration: none;
+        transition: filter 0.5s linear;
+        img{
+          max-width: 200px;
+          max-height: 200px;
+          box-shadow: 0 0 0 0;
+          border-radius: 0;
+          margin: 10px;
+        }
+      &:hover{
+        filter: grayscale(100%);
+      }
+      }
+
+    }
   }
 }
 

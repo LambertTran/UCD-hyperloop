@@ -1,7 +1,4 @@
 /node_modules
 /identity
 *.out
-<<<<<<< HEAD
-=======
 *.yaml
->>>>>>> refs/remotes/origin/master

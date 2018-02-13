@@ -7,6 +7,6 @@ test('it should list of tables', () => {
     images:'images',
     descriptions:'descriptions'
   };
-
   expect(db.table).toEqual(table); 
 })
+
