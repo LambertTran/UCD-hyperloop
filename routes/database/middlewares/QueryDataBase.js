@@ -14,14 +14,14 @@ const db = require('../../database/mysql-db');
  *  params: team, image link, and description  
  */
 
-function QueryDatabase(data) {
+function QueryDataBase(data) {
   this.team = data.team;
   this.imgLink = data.imgLink;
   this.detail = data.detail;
 }
 
 // insert team image into TEAMS TABLE
-QueryDatabase.prototype.InsertTeamImg = function(){
+QueryDataBase.prototype.InsertTeamImg = function(){
   const sql = `update teams
                 set team_img = '${this.imgLink}'
                  where team = '${this.team}'
@@ -30,7 +30,7 @@ QueryDatabase.prototype.InsertTeamImg = function(){
 }
 
 // insert image link and detail into IMAGES TABLE
-QueryDatabase.prototype.Insert = function(){
+QueryDataBase.prototype.Insert = function(){
   const sql = `INSERT INTO images (img_link,detail,team_id)
                VALUES (
                  '${this.imgLink}',
@@ -49,7 +49,7 @@ QueryDatabase.prototype.Insert = function(){
 }
 
 // get image link and detail from each subteam
-QueryDatabase.prototype.GetSubTeamImg = function() {
+QueryDataBase.prototype.GetSubTeamImg = function() {
   const sql = `select * from images
                where team_id = (
                  select team_id from teams
@@ -59,13 +59,13 @@ QueryDatabase.prototype.GetSubTeamImg = function() {
 }
 
 // get all teams
-QueryDatabase.prototype.GetTeams = function(){
+QueryDataBase.prototype.GetTeams = function(){
   const sql = 'select * from teams';
   return QueryHelper(sql);
 }
 
 // get sub-team detail
-QueryDatabase.prototype.GetSubTeamDetail = function() {
+QueryDataBase.prototype.GetSubTeamDetail = function() {
   const sql = `select * from teams
                where team = '${this.team}' 
               `;
@@ -84,4 +84,4 @@ function QueryHelper(sql) {
 }
 
 
-module.exports = QueryDatabase;
+module.exports = QueryDataBase;

@@ -20,7 +20,7 @@ var ClientSite = require('./routes/users/client-site');
 var Admin = require('./routes/admins/admin');
 var Login = require('./routes/admins/login');
 
-// var CreateDb = require('./routes/database/create-db');
+var CreateDb = require('./routes/database/create-db');
 
 /** =================================
                 Body

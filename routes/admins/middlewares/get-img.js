@@ -1,29 +1,29 @@
 
-/** =================================
-                Packages
-**================================== */
+// /** =================================
+//                 Packages
+// **================================== */
 
-const db = require('../../database/mysql-db');
+// const db = require('../../database/mysql-db');
 
-/** =================================
-                Body
-**================================== */
+// /** =================================
+//                 Body
+// **================================== */
 
-function DeleteImgInDb(team) {
-  const sql = `select * from images
-               where team_id = (
-                 select team_id from teams
-                   where (team = '${team}')
-               ) 
-              `;
-  return new Promise((resolve, reject) => {
-    db.query(sql, (err, result) => {
-      if (err) {
-        return reject(err);
-      }
-      return resolve(result);
-    });
-  });
-}
+// function DeleteImgInDb(team) {
+//   const sql = `select * from images
+//                where team_id = (
+//                  select team_id from teams
+//                    where (team = '${team}')
+//                ) 
+//               `;
+//   return new Promise((resolve, reject) => {
+//     db.query(sql, (err, result) => {
+//       if (err) {
+//         return reject(err);
+//       }
+//       return resolve(result);
+//     });
+//   });
+// }
 
-module.exports = GetSubTeam;
+// module.exports = GetSubTeam;

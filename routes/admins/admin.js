@@ -5,15 +5,23 @@
 
 // router
 const express = require('express');
-
 const router = express.Router();
+
+// express multer for upload
+const multer  = require('multer')
+const upload = multer({ storage: multer.memoryStorage() })
 
 // middlewares
 const VerifyAuth = require('./middlewares/verify-auth');
-const Upload = require('./middlewares/upload-img-aws');
-const QueryDataBase = require('../database/middlewares/query-db');
-const DeleteImg = require('./middlewares/delete-img');
+const QueryDataBase = require('../database/middlewares/QueryDataBase');
 const InsertTeamDetail = require('./middlewares/insert-team-detail');
+
+// GCP
+const imgHandler = require('./middlewares/image-handler');
+
+// AWS
+// const DeleteImg = require('./middlewares/delete-img');
+const Upload = require('./middlewares/upload-img-aws');
 
 /** =================================
                 Body
@@ -62,14 +70,12 @@ router.get('/team/:teamName', (req,res) => {
 
 
 /** Upload team image */
-////////////////////////////
-// need to delete team image on AWS
-////////////////////////////
 // POST
-router.post('/team/:teamName/upload-image', Upload.array('img'), (req, res) => {
+router.post('/team/:teamName/upload-image', upload.single('img'), async (req, res) => {
+  const newImage = await imgHandler.upload(req.file);
   const newQuery = new QueryDataBase({
     team: req.params.teamName,
-    imgLink: req.files[0].location,
+    imgLink: newImage,
     description: null,
   });
   newQuery.InsertTeamImg()
@@ -78,10 +84,9 @@ router.post('/team/:teamName/upload-image', Upload.array('img'), (req, res) => {
       res.status(200).redirect(`/admin/team/${req.params.teamName}`)
     })
     .catch((err) => {
-      console.log(err);
-      throw err;
-    })
-
+      console.error(err);
+      res.status(400)
+    });
 });
 
 /** Upload team detail */
@@ -121,10 +126,11 @@ router.get('/team/:teamName/images', (req, res) => {
 });
 
 // POST
-router.post('/team/:teamName/images/upload-image', VerifyAuth, Upload.array('img') ,(req,res) => {
+router.post('/team/:teamName/images/upload-image', VerifyAuth, upload.single('img'), async (req,res) => {
+  const newImage = await imgHandler.upload(req.file);
   const data = {
     team: req.params.teamName,
-    imgLink: req.files[0].location,
+    imgLink: newImage,
     description: req.body.description
   };
   const insertNewData = new QueryDataBase(data);
@@ -144,6 +150,7 @@ router.post('/team/:teamName/images/upload-image', VerifyAuth, Upload.array('img
 // Delete 
 router.get('/team/:teamName/images/:imgId', VerifyAuth,(req,res) => {
   DeleteImg(req.params.imgId)
+  
     .then(() => {
       req.flash(
         'success',

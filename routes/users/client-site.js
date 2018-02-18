@@ -10,7 +10,7 @@ const router = express.Router();
 const HandleSendEmail = require('./middlewares/send-email');
 
 /** Database */
-const QueryDatabase = require('../database/middlewares/query-db');
+const QueryDatabase = require('../database/middlewares/QueryDataBase');
 
 /** =================================
                 Body
