@@ -148,19 +148,22 @@ router.post('/team/:teamName/images/upload-image', VerifyAuth, upload.single('im
 });
 
 // Delete 
-router.get('/team/:teamName/images/:imgId', VerifyAuth,(req,res) => {
-  DeleteImg(req.params.imgId)
-  
-    .then(() => {
-      req.flash(
-        'success',
-        'Deleted image'
-      )
-      res.status(200).redirect(`/admin/team/${req.params.teamName}/images`);
-    })
-    .catch(() =>{
-      res.status(401).send(err);
-    })
+router.post('/team/:teamName/images/:imgId', VerifyAuth, async (req,res) => {
+  const isDeleted = await imgHandler.delete(req.params.imgId);
+  if (isDeleted) {
+    req.flash(
+      'success',
+      'Deleted image'
+    )
+    res.status(200).redirect(`/admin/team/${req.params.teamName}/images`);
+  } else {
+    req.flash(
+      'success',
+      'Can NOT delete image'
+    )
+    res.status(400).redirect(`/admin/team/${req.params.teamName}/images`);
+  }
+
 });
 
 module.exports = router;

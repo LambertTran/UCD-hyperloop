@@ -13,7 +13,9 @@
             <div class="subteam-img">
               <img src={{this.img_link}} alt="team-img">
               <p>{{this.detail}}</p>
-              <a href="/admin/team/{{../team}}/images/{{this.id}}">&#10005;</a>
+              <form method="post" action="/admin/team/{{../team}}/images/{{this.id}}">
+                <button type="submit">&#10005;</button>
+              </form>
             </div>
           {{/each}}
         </div>
