@@ -51,8 +51,8 @@ router.get('/create/admin', (req, res) => {
   });
   
   // admin identity
-  var username = ""; // add username here
-  var password = ""; // add password here
+  var username = "hyperloop"; // add username here
+  var password = "test123"; // add password here
   
   // hash password before store into database
   bcrypt.genSalt(10,(err,salt) =>{
