@@ -59,7 +59,6 @@ router.get('/create/admin', (req, res) => {
     bcrypt.hash(password,salt,(err,hash) => {
       password = hash;
       let sqlInsert = `INSERT INTO ${db.table.admin} (user,password) VALUES ('${username}','${password}')`;
-      console.log(sqlInsert);
       db.query(sqlInsert, (err,result) => {
         if (err) {
           console.log(err);
