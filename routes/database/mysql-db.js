@@ -34,16 +34,17 @@ db.table = {
   descriptions:'descriptions'
 };
 
-function handleDisconnect() {
+function handleDisconnect(db) {
   // create new connection
   db = mysql.createConnection(dbIdentity); 
   // re-connect to mySQL and handle err if cant connect
   db.connect(function(err) {              
     if(err) {                                  
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 10000); // repeat the process
+      console.error('error when connecting to db:', err);
+      console.log('\\** Try to reconnect to database again... **//')
+      setTimeout(handleDisconnect, 2000); // repeat the process
     } else {
-      console.log("Connecting to mysql database");
+      console.log("\\ Reconnecting to mysql database again //");
     }
   });                                     
 
@@ -51,6 +52,7 @@ function handleDisconnect() {
   db.on('error', function(err) {
     console.log('db error', err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
+      console.log("\\ Try to connect database again //")
       handleDisconnect();
     } else {
       throw err;
@@ -58,23 +60,25 @@ function handleDisconnect() {
   });
 }
 
-db.connect((err) => {
-  if(err) { 
-    console.log(err);
-    setTimeout(handleDisconnect, 10000); // repeat the process
-  }
-  else {
-    console.log("Connecting to mysql database");
-  }
-})
-db.on('error', function(err) {
-  console.log('db error', err);
-  if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
-    handleDisconnect();
-  } else {
-    throw err;
-  }
-});
+handleDisconnect(db);
+
+// db.connect((err) => {
+//   if(err) { 
+//     console.log(err);
+//     setTimeout(handleDisconnect, 10000); // repeat the process
+//   }
+//   else {
+//     console.log("\\ Connecting to mysql database //");
+//   }
+// })
+// db.on('error', function(err) {
+//   console.error('db error', err);
+//   if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
+//     handleDisconnect();
+//   } else {
+//     throw err;
+//   }
+// });
 
 
 module.exports = db;
