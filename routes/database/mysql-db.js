@@ -24,7 +24,7 @@ try{
 **==================================*/
 
 /** mysql database **/
-let db = mysql.createConnection(dbIdentity);
+let db = mysql.createPool(dbIdentity);
 
 // table names
 db.table = {
@@ -34,11 +34,11 @@ db.table = {
   descriptions:'descriptions'
 };
 
-function handleDisconnect(db) {
+function handleDisconnect() {
   // create new connection
-  db = mysql.createConnection(dbIdentity); 
+  db = mysql.createPool(dbIdentity); 
   // re-connect to mySQL and handle err if cant connect
-  db.connect(function(err) {              
+  db.getConnection((err,connection) => {           
     if(err) {                                  
       console.error('error when connecting to db:', err);
       console.log('\\** Try to reconnect to database again... **//')
@@ -47,20 +47,9 @@ function handleDisconnect(db) {
       console.log("\\ Reconnecting to mysql database again //");
     }
   });                                     
-
-  // handle disconnection 
-  db.on('error', function(err) {
-    console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
-      console.log("\\ Try to connect database again //")
-      handleDisconnect();
-    } else {
-      throw err;
-    }
-  });
 }
 
-handleDisconnect(db);
+// handleDisconnect(db);
 
 // db.connect((err) => {
 //   if(err) { 
@@ -79,6 +68,17 @@ handleDisconnect(db);
 //     throw err;
 //   }
 // });
+
+db.getConnection((err,connection) => {
+  if (err) {
+    console.log('Cant connect to database')
+    console.error(err)
+    handleDisconnect();
+  } else {
+    console.log('Connecting to data')
+  }
+  return connection;
+});
 
 
 module.exports = db;
