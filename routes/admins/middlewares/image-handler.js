@@ -1,10 +1,18 @@
-// mysql database 
+/**
+ * This middleware will handle upload and delete image
+ * in Google cloud platform (GCP). You needs
+ *    + key file to GCP
+ *    + bucket name in GCP storage
+ */
+
+// Mysql database 
 const db = require('../../database/mysql-db');
 
-// import GCP storage Object
+// Import GCP storage Object
+// This object will handle upload and delete new object
 const GcpStorageObject = require('../../database/middlewares/GcpStorageObject');
 
-// instanitate new object
+// Instanitate new object
 const path2Key = './identity/GCP-key.json';
 const bucketName = 'photo-tester';
 const newObject = new GcpStorageObject(path2Key,bucketName);
@@ -21,7 +29,9 @@ const imgHandler = {
     })
   }
 }
-// find image name in database and return url
+
+/** Helpers */
+// Find image name in database and return url
 function FindImage(imgId){
   return new Promise((resolve,reject) => {
     const sql = `select * from images where id = ${imgId} `
@@ -36,7 +46,7 @@ function FindImage(imgId){
   })
 }
 
-// delete image in database
+// Delete image in database
 function DeleteImgInDb(imgId){
   return new Promise((resolve,reject) => {
     const sql = `delete from images where id = ${imgId}`;

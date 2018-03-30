@@ -65,7 +65,7 @@ app.use(function(req, res, next){
 
 // global variable
 app.use(function (req, res, next) {
-  res.locals.user = req.user;
+  // res.locals.user = req.user;
   next();
 });
 

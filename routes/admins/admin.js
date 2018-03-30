@@ -14,30 +14,19 @@ const upload = multer({ storage: multer.memoryStorage() })
 // middlewares
 const VerifyAuth = require('./middlewares/verify-auth');
 const QueryDataBase = require('../database/middlewares/QueryDataBase');
-const InsertTeamDetail = require('./middlewares/insert-team-detail');
+const AdminStatus = require('./middlewares/status-handler');
 
 // GCP
 const imgHandler = require('./middlewares/image-handler');
 
-// AWS
-// const DeleteImg = require('./middlewares/delete-img');
-const Upload = require('./middlewares/upload-img-aws');
 
 /** =================================
                 Body
 **================================== */
-function AdminStatus(isAdmin, isSubteam, subteamFolder, imageFolder){
-  return {
-    isAdmin,
-    isSubteam,
-    subteamFolder,
-    imageFolder,
-  }
-}
 
 /** Admin dashboard page */
 // GET
-router.get('/', (req, res) => {
+router.get('/', VerifyAuth, (req, res) => {
   const status = AdminStatus(true,false,false,false);
   QueryDataBase.prototype.GetTeams()
     .then((teams) => {
@@ -52,7 +41,7 @@ router.get('/', (req, res) => {
 });
 
 /** Subteam page */
-router.get('/team/:teamName', (req,res) => {
+router.get('/team/:teamName', VerifyAuth, (req,res) => {
   const status = AdminStatus(true,true,true,false);
   const newQuery = new QueryDataBase({team:req.params.teamName});
   newQuery.GetSubTeamDetail()
@@ -69,9 +58,9 @@ router.get('/team/:teamName', (req,res) => {
 })
 
 
-/** Upload team image */
+/** Upload team image - 1 single image represent the */
 // POST
-router.post('/team/:teamName/upload-image', upload.single('img'), async (req, res) => {
+router.post('/team/:teamName/upload-image', VerifyAuth, upload.single('img'), async (req, res) => {
   const newImage = await imgHandler.upload(req.file);
   const newQuery = new QueryDataBase({
     team: req.params.teamName,
@@ -91,12 +80,14 @@ router.post('/team/:teamName/upload-image', upload.single('img'), async (req, re
 
 /** Upload team detail */
 // POST 
-router.post('/team/:teamName/upload-team-detail', (req,res) => {
-  const data = {
-    teamName:req.params.teamName,
-    detail : req.body.description
-  };
-  InsertTeamDetail(data)
+router.post('/team/:teamName/upload-team-detail', VerifyAuth, (req,res) => {
+
+  const newQuery = new QueryDataBase({
+    team: req.params.teamName,
+    detail: req.body.description,
+  });
+
+  newQuery.InsertTeamDetail()
     .then(() => {
       req.flash(
         'success',
@@ -108,7 +99,7 @@ router.post('/team/:teamName/upload-team-detail', (req,res) => {
 
 /** Upload images that team working on */
 // GET
-router.get('/team/:teamName/images', (req, res) => {
+router.get('/team/:teamName/images', VerifyAuth, (req, res) => {
   const status = AdminStatus(true,true,false,true);
   const newQuery = new QueryDataBase({team:req.params.teamName})
   newQuery.GetSubTeamImg()
@@ -128,13 +119,12 @@ router.get('/team/:teamName/images', (req, res) => {
 // POST
 router.post('/team/:teamName/images/upload-image', VerifyAuth, upload.single('img'), async (req,res) => {
   const newImage = await imgHandler.upload(req.file);
-  const data = {
+  const insertNewData = new QueryDataBase({
     team: req.params.teamName,
     imgLink: newImage,
-    description: req.body.description
-  };
-  const insertNewData = new QueryDataBase(data);
-  insertNewData.Insert()
+    detail: req.body.description
+  });
+  insertNewData.InsertWorkImg()
     .then(() => {
       req.flash(
         'success',

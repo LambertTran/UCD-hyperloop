@@ -1,9 +1,4 @@
 'use strict';
-/** =================================
-                Helper
-**================================== */
-
-const QueryHelper = require('./query-helper');
 
 /** =================================
                 Body
@@ -32,6 +27,16 @@ function InsertTeam() {
     return `INSERT INTO teams (team) Values ('${team}')`;
   }
 
+  function QueryHelper(sql) {
+    return new Promise((resolve, reject) => {
+      db.query(sql, (err, result) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(result);
+      });
+    });
+  }
 }
 
 module.exports = InsertTeam;

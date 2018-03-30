@@ -21,16 +21,19 @@ const router = express.Router();
 /** Login */
 
 // GET request
+// Check if there is already exist admin user.
+// If yes, then redirect to admin page
 router.get('/login',(req,res) => {
-  if(res.user === undefined){
+  if(req.user){
+    res.redirect('admin');
+  } else {
     var message = req.flash('error');
     res.render('./admins/login',{message:message[0]});
-  } else {
-    res.redirect('/');
   }
 })
 
 // POST request
+// Validating user input if its correct -> redirect to admin page
 router.post('/login',
   passport.authenticate('local',{
     successRedirect:'/admin',
@@ -42,6 +45,7 @@ router.post('/login',
 
 /** log out */
 router.get('/logout', function(req, res){
+  req.logout();
   req.session.destroy((err) => {
     res.redirect('/login');
   });
@@ -65,11 +69,11 @@ passport.use(new LocalStrategy(
 ));
 
 passport.serializeUser(function(user, done) {
-  done(null, user);
+  done(null, user); // this line will attach req.user
 });
 
 passport.deserializeUser(function(user,done) {
-  done(null,user);
+  done(null,user); // this line will remove req.user 
 })
 
 function ValidateUser(username,password){
