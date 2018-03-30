@@ -35,8 +35,10 @@ db.table = {
 };
 
 function handleDisconnect() {
+
   // create new connection
   db = mysql.createPool(dbIdentity); 
+  
   // re-connect to mySQL and handle err if cant connect
   db.getConnection((err,connection) => {           
     if(err) {                                  
@@ -49,33 +51,13 @@ function handleDisconnect() {
   });                                     
 }
 
-// handleDisconnect(db);
-
-// db.connect((err) => {
-//   if(err) { 
-//     console.log(err);
-//     setTimeout(handleDisconnect, 10000); // repeat the process
-//   }
-//   else {
-//     console.log("\\ Connecting to mysql database //");
-//   }
-// })
-// db.on('error', function(err) {
-//   console.error('db error', err);
-//   if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
-//     handleDisconnect();
-//   } else {
-//     throw err;
-//   }
-// });
-
 db.getConnection((err,connection) => {
   if (err) {
     console.log('Cant connect to database')
     console.error(err)
     handleDisconnect();
   } else {
-    console.log('Connecting to data')
+    console.log('Connecting to mySQL database')
   }
   return connection;
 });
