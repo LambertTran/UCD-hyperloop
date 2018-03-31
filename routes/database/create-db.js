@@ -1,3 +1,10 @@
+/**
+  * To create Database for UC Davis Hyperloop
+  * 1. Send GET request to /create/tables
+  * 2. Insert desired username and password in CREATE ADMIN TABLE
+  * 3. Send GET request to /create/admin
+  * 4. Send GET request to /insert/teams 
+**/
 
 /** =================================
                 Packages
@@ -5,7 +12,6 @@
 
 const express = require('express');
 const bcrypt = require('bcryptjs');
-
 const router = express.Router();
 
 // Helpers
@@ -16,13 +22,6 @@ const InsertTeam = require('./middlewares/insert-team');
 /** =================================
                 Body
 **================================== */
-/*
-  To create Database for UC Davis Hyperloop
-    1. Send GET request to /create/tables
-    2. Insert desired username and password in CREATE ADMIN TABLE
-    3. Send GET request to /create/admin
-    4. Send GET request to /insert/teams
-*/
 
 
 /** Create tables */

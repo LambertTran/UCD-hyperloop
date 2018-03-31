@@ -1,49 +1,53 @@
-{{!-- Subteam teamplate--}}
-  <div class="content-after-message">
-    <div class="row no-gutters">
-      <div class="col-12 col-md-9 ml-auto subteam-pg">
-        <h1>{{team}}</h1>
-        <hr />
-        <div class="subteam-manage">
-          <button id="upload-btn" name="image" class="btn btn-outline-primary" >Update team image</button>
-          <button id="upload-btn" name="detail" class="btn btn-outline-success">Update team description</button>
+<!-- 
+  * Rendering subteam page where it show subteam picture
+  * and a short description about the subteam
+--> 
+
+<div class="content-after-message">
+  <div class="row no-gutters">
+    <div class="col-12 col-md-9 ml-auto subteam-pg">
+      <h2>{{team}}</h2>
+      <hr />
+      <div class="subteam-manage">
+        <button id="upload-btn" name="image" class="btn btn-outline-primary" >Update team image</button>
+        <button id="upload-btn" name="detail" class="btn btn-outline-success">Update team description</button>
+      </div>
+      <div class="subteam-data">
+        <h3>Team image</h3><hr />
+        {{#if team_img}}
+        <img src={{team_img}} alt="team image">
+        {{else}}
+        <p>Note: There is no image yet! Please upload your team image</p>
+        {{/if}}
+        <h3> Team Description </h3><hr />
+        <p>{{team_detail}}</p>
+      </div>
+      <div id="upload-subteam-img" class="upload-modal">
+        <div class="upload-modal-content">
+          <form method="post" enctype="multipart/form-data" action="/admin/team/{{team}}/upload-image">
+            <h3>Please choose 1 image for your team</h3>
+            <div class="form-group">
+              <label>Images</label>
+              <input type="file" name="img" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+            <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
+          </form>
         </div>
-        <div class="subteam-data">
-          <h3>Team image</h3><hr />
-          {{#if team_img}}
-          <img src={{team_img}} alt="team image">
-          {{else}}
-          <p>Note: There is no image yet! Please upload your team image</p>
-          {{/if}}
-          <h3> Team Description </h3><hr />
-          <p>{{team_detail}}</p>
-        </div>
-        <div id="upload-subteam-img" class="upload-modal">
-          <div class="upload-modal-content">
-            <form method="post" enctype="multipart/form-data" action="/admin/team/{{team}}/upload-image">
-              <h3>Please choose 1 image for your team</h3>
-              <div class="form-group">
-                <label>Images</label>
-                <input type="file" name="img" class="form-control">
-              </div>
-              <button type="submit" class="btn btn-primary">Upload</button>
-              <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
-            </form>
-          </div>
-        </div>
-        <div id="upload-subteam-detail" class="upload-modal">
-          <div class="upload-modal-content">
-            <h3>Please input the description of your team</h3>
-            <form method="post" action="/admin/team/{{team}}/upload-team-detail">
-              <div class="form-group">
-                <label>Description</label>
-                <textarea type="text" name="description" class="form-control text-area" placeholder="Description"> </textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Upload</button>
-              <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
-            </form>
-          </div>
+      </div>
+      <div id="upload-subteam-detail" class="upload-modal">
+        <div class="upload-modal-content">
+          <h3>Please input the description of your team</h3>
+          <form method="post" action="/admin/team/{{team}}/upload-team-detail">
+            <div class="form-group">
+              <label>Description</label>
+              <textarea type="text" name="description" class="form-control text-area" placeholder="Description"> </textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+            <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>

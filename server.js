@@ -16,7 +16,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 
 /** import routers */
-var ClientSite = require('./routes/users/client-site');
+var ClientSite = require('./routes/clients/client-site');
 var Admin = require('./routes/admins/admin');
 var Login = require('./routes/admins/login');
 

@@ -1,9 +1,15 @@
 .subteam-pg{
   height: 100%;
+  
   hr{
     width: 100%;
     border-top: 1px solid rgba(0, 0, 0, 1);
   }
+
+  h2 {
+    color: $main-header;
+  }
+
   @media screen and (max-width:767px) {
    padding: 80px; 
   }
@@ -32,5 +38,6 @@
   }
   p{
     padding: 15px;
+    min-height: 40vh;
   }
 }

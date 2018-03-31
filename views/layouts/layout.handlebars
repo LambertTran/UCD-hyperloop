@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hyperloop Team at University of California,Davis</title>
+  <title>Hyperloop Team | University of California,Davis</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Favicon icon -->
   <link rel="icon" href="../images/favicon-1.ico" type="image/x-icon">
-
-  <!-- bootstrap -->
+  <!-- Bootstrap -->
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
   <!-- front-awesome -->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- AnimationCss -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <!-- font -->
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-  <!-- custom css -->
+  <!-- Custom css -->
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-  {{!-- Check if user is admin --}}
+  <!-- If user logs in as Admin, then display admin page -->
   {{#if isAdmin}}
-    {{!-- Header Admin site --}}
+    <!-- Header Admin site -->
       <header>
         <div class="container-fluid">
           <nav class="admin-navbar">
@@ -56,53 +56,59 @@
         </div>
         {{/if}}
       </header>
-    {{!-- Body Admin site --}}
+
+    <!-- Body Admin site -->>
       <div class="container-fluid">
-        {{!-- Display any message --}}
+
+        <!-- Display any message -->
         {{#if message}}
           <div class="message">
             <p>{{message}}</p>
           </div>
         {{/if}}
-        
-        {{{body}}}
-      </div>
-  {{else}}
-    {{!-- Header Client Site --}}
-      <header>
-        {{!-- <a class="logo" href="/"><img src="../images/ucd-logo.png" alt="logo"></a> --}}
-        <nav id="nav-client" class="nav-client">
-          <li class="{{#if home}}nav-client-active{{/if}}">
-            <a href="/"><i class="fa fa-home"></i>
-            <span>Home</span>
-          </a></li>
-          <li class="{{#if teams}}nav-client-active{{/if}}">
-            <a href="/teams">
-              <i class="fa fa-users"></i>
-              <span>Teams</span>
-            </a>
-          </li>
-          <li class="{{#if contact}}nav-client-active{{/if}}">
-            <a href="/contact">
-              <i class="fa fa-phone"></i>
-              <span>Contact</span>
-            </a>
-          </li>
-          {{!-- <li class="{{#if donate}}nav-client-active{{/if}}">
-            <a href="/donate">
-              <i class="fa fa-handshake-o"></i>
-              <span>Donate</span>
-            </a>
-          </li> --}}
-        </nav>
-      </header>
 
-    {{!-- Body Client Site --}}
+        <!-- Display body -->
+        {{{body}}}
+      </div> 
+    <!-- End of Admin site -->
+
+  {{else}}
+  <!-- If not, then display navbar for clients -->
+    <!-- Header Client site -->
+    <header>
+      <a class="logo" href="/"><img src="../images/ucd-logo.png" alt="logo"></a>
+      <nav id="nav-client" class="nav-client">
+        <li class="{{#if home}}nav-client-active{{/if}}">
+          <a href="/"><i class="fa fa-home"></i>
+          <span>Home</span>
+        </a></li>
+        <li class="{{#if teams}}nav-client-active{{/if}}">
+          <a href="/teams">
+            <i class="fa fa-users"></i>
+            <span>Teams</span>
+          </a>
+        </li>
+        <li class="{{#if contact}}nav-client-active{{/if}}">
+          <a href="/contact">
+            <i class="fa fa-phone"></i>
+            <span>Contact</span>
+          </a>
+        </li>
+        {{!-- <li class="{{#if donate}}nav-client-active{{/if}}">
+          <a href="/donate">
+            <i class="fa fa-handshake-o"></i>
+            <span>Donate</span>
+          </a>
+        </li> --}}
+      </nav>
+    </header>
+
+    <!-- Body Client Site -->
       <div class="container-fluid">
         {{{body}}}
       </div>
 
-    {{!-- Footer --}}
+    <!-- Footer -->
       <footer>
         <div class="container">
           <div class="row no-gutters">
@@ -118,8 +124,8 @@
               <h4>Contact us</h4>
               <div class="contact-item">
                 <h5>
-                  <a href="mailto:hyperloop@ucdavis.edu">
-                    hyperloop@ucdavis.edu
+                  <a href="mailto:hyperloopucd@gmail.com">
+                    hyperloopucd@gmail.com
                   </a>
                 </h5></div>
               <div class="social-icon">
@@ -136,10 +142,11 @@
           </div>
         </div>
       </footer>
-
+    <!-- End of Client Site -->
+    
   {{/if}}
-  {{!-- Javascript --}}
-  <!-- hyperloop JS -->
+
+  <!-- JS -->
   <script src="/js/index.js" type="text/javascript"></script>
 </body>
 </html>

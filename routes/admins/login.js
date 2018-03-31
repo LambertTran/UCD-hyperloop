@@ -1,3 +1,13 @@
+/**
+ * Handling authentication - Admin user
+ * Logic flow: 
+ *    1. Display the login page of if user has not login yet
+ *    2. If user already logged in, redirect them to Admin dashboard
+ *    3. If user tries to login, check the ID and Password in the database
+ *    4. If it matches, redirect user to Admin dashboard
+ *    5. If not, display error 
+ */
+
 /** =================================
                 Packages
 **================================== */

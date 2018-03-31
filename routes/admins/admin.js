@@ -1,3 +1,11 @@
+/**
+ * Handling any route relate to CMS (or admin)
+ * Current functionalities: 
+ *    + Display Admin dashboard
+ *    + Upload team image + description about the team
+ *    + Upload/Delete images of what team working on 
+ */
+
 
 /** =================================
                 Packages
@@ -105,7 +113,7 @@ router.get('/team/:teamName/images', VerifyAuth, (req, res) => {
   newQuery.GetSubTeamImg()
     .then((teamData) => {
       res.render(
-        './admins/images',
+        './admins/image-folder',
         {
           ...status,
           message: req.flash('success'),
