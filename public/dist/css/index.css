@@ -163,6 +163,7 @@ header {
 @keyframes fadein {
   100% {
     opacity: 1; } }
+
 .pg-header, .page2, .page3, .page4 .sponsor-header {
   padding-top: 40px; }
   .pg-header h1, .page2 h1, .page3 h1, .page4 .sponsor-header h1 {
@@ -313,6 +314,7 @@ header {
   100% {
     opacity: 1;
     padding-top: 120px; } }
+
 footer {
   background-color: #212F3D;
   position: relative;
@@ -782,6 +784,7 @@ footer {
     .subteam-data img {
       height: 600px;
       width: 800px; } }
+
 .subteam-data p {
   padding: 15px;
   min-height: 40vh; }
@@ -878,5 +881,3 @@ footer {
 .content-after-message {
   padding: 20px;
   padding-top: 120px; }
-
-/*# sourceMappingURL=style.css.map */
