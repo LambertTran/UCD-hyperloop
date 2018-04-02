@@ -6,12 +6,18 @@
 var box = document.querySelectorAll('.effect');
 var animation = " fadeInUp";
 window.addEventListener('scroll', function () {
-  box.forEach(function (el) {
-    if (IsElementInView(el) && !el.classList.contains(animation.trim())) {
-      el.className += animation;
-      el.style.opacity = '1';
-    }
+  box.forEach(function (el, index) {
+    setTimeout(function () {
+      if (IsElementInView(el) && !el.classList.contains(animation.trim())) {
+        el.className += animation;
+        el.style.opacity = '1';
+      }
+    }, 500 * index);
   });
+  function IsElementInView(element) {
+    var rect = element.getBoundingClientRect();
+    return rect.top >= 0 && rect.left >= 0 && rect.bottom * 1.2 <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+  }
 });
 
 /** Display message */
@@ -62,11 +68,6 @@ function HandleOpenModal(event) {
       modal.classList.add('show-modal');
       break;
   }
-}
-
-function IsElementInView(element) {
-  var rect = element.getBoundingClientRect();
-  return rect.top >= 0 && rect.left >= 0 && rect.bottom * 0.9 <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
 }
 
 /** Handle background video */
@@ -122,13 +123,15 @@ function replayVideo() {
 }
 
 /** Toggle text */
-toggleText();
+var text2Toggle = document.querySelector('.toggle-text');
+var mainText = document.querySelector('.main-text');
+if (text2Toggle && mainText) {
+  toggleText();
+}
 
 function toggleText() {
-  var toggleText = document.querySelector('.toggle-text');
-  var mainText = document.querySelector('.main-text');
   var expanded = false;
-  toggleText.style.height = mainText.scrollHeight + 35 + 'px'; // account for margin and padding
+  text2Toggle.style.height = mainText.scrollHeight + 35 + 'px'; // account for margin and padding
   mainText.addEventListener('click', handleToggleText);
 
   function handleToggleText() {
@@ -142,7 +145,7 @@ function toggleText() {
       return;
     }
     expanded = true;
-    parent.style.height = toggleText.scrollHeight + 'px';
+    parent.style.height = text2Toggle.scrollHeight + 'px';
     toggleBtn.style.transform = 'rotate(180deg)';
   }
 }
