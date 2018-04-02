@@ -6,7 +6,7 @@
 
 function InsertTeam() {
   const teams = [
-    'Eddy-Current-Bakes',
+    'Eddy-Current-Brakes',
     'Wheels',
     'Propulsion',
     'Business',
