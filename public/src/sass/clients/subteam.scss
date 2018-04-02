@@ -1,15 +1,50 @@
+.subteam-page{
+  @include pageProps;
+  padding: 0;
+  background-color: $homepage-top;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow-y: hidden;
+  
+  h2 {
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  hr {
+    border-top: 1px solid white;
+  }
+  
+  @include for-tablet-desktop {
+    justify-content: flex-start;
+
+    h2 {
+      text-align: left;
+      padding-left: 40px;
+    }
+
+    hr {
+      width: 60%;
+      position: relative;
+      margin-left: 50px;
+    }
+  }
+}
+
 .team-intro{
   align-self: center;
   width: 100%;
-  padding: 10px;
-  margin-top: 40px;
+  
   img{
     display: block;
     width: 100%;
-    margin: 30px auto;
+    // margin: 50px auto;
   }
+
   h1{
-    margin-top: 40px;
+    margin-top: 20px;
     text-align: center;
   }
   p{
@@ -19,51 +54,12 @@
     // padding: 20px;
     white-space: pre-wrap;
   }
-  @media screen and (min-width:667px){
-    p{
-    }
-  }
-  @media screen and (min-width:1024px){
-    img{
-      width: 800px;
-      height: 600px;
-    }
-  }
-}
 
-.subteam-page{
-  @include pageProps;
-  background-color: $homepage-top;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  overflow-y: hidden;
-  ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    li{
-      align-self: center;
-      // flex-basis: 300px;
-      width: 300px;
-      height: 250px;
-      margin: 20px 20px 20px 20px;
-
-      img{
-        height:100%;
-        width: 100%;
-      }
-      p{
-        color: white;
-      }
-    }
-    @media screen and (min-width:667px){
-      flex-direction: row;
+  @include for-tablet-desktop {
+    h1 {
+      position: absolute;
+      top: 100px;
+      right: 15px;
     }
   }
 }
@@ -71,14 +67,21 @@
 /** Toggle text */
 .toggle-text{
   position: relative;
-  margin: 0 auto;
+  margin: 0 20px;
   max-width: 600px;
   box-shadow: 0 5px 5px black;
   border-radius: 5px;
   padding: 20px;
   background-color: #1A3E68;
   overflow: hidden;
-  transition: height 0.5s ease ;  
+  transition: height 0.5s ease; 
+
+  @include for-tablet-desktop {
+    position: absolute;
+    top: 200px;
+    right: 0;
+    width: 350px;
+  }
 }
 
 .toggle-text p {
@@ -99,3 +102,47 @@
   font-size: 1.5em;
   transition: all 0.75s ease;
 }
+
+.team-card-img{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  
+  li{
+    align-self: center;
+    width: 300px;
+    height: 250px;
+    margin: 20px 20px 20px 20px;
+    background-color: #00695C;
+    img{
+      height:100%;
+      width: 100%;
+    }
+    p{
+      color: white;
+    }
+  }
+
+  @include for-tablet-desktop {
+    flex-direction: row;
+
+    li {
+      width: 250px;
+      height: 200px;
+    }
+  }
+}
+
+/** Team members */
+.team-members {
+
+}
+
+/** Team update */
+.team-update {
+}
+

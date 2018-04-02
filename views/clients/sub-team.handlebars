@@ -1,19 +1,49 @@
 <div class="subteam-page">
   <div class="team-intro">
-    <h1>{{name}} team</h1>
     <img src={{teamData.teamImg}} alt="team image">
+    
+    <h1>{{name}}</h1>
     <div class="toggle-text">
       <p class="main-text">{{teamData.mainTeamDetail}}
       <span id="toggle-text-btn" class="fa fa-chevron-down"></span></p>
       <p>{{teamData.moreDetail}}</p>
     </div>
   </div>
-  <ul>
-    {{#each teamData.imgData}}
-      <li class="animated effect">
-        <p>{{this.detail}}</p>
-        <img src={{this.img_link}} alt="subteam-img">
+
+  <div class="team-members">
+    <h2>Our team</h2>
+    <hr>
+    <ul class="team-card-img">
+      <li>
+        <h3>Name</h3>
+        <h5>Title</h5>
       </li>
-      {{/each}}
-  </ul>
+      <li>
+        <h3>Name</h3>
+        <h5>Title</h5>
+      </li>
+      <li>
+        <h3>Name</h3>
+        <h5>Title</h5>
+      </li>
+      <li>
+        <h3>Name</h3>
+        <h5>Title</h5>
+      </li>
+    </ul>
+  </div>
+
+  <div class="team-update">
+    <h2>Our progress</h2>
+    <hr>
+    <ul class="team-card-img">
+      {{#each teamData.imgData}}
+        <li class="animated effect">
+          <p>{{this.detail}}</p>
+          <img src={{this.img_link}} alt="subteam-img">
+        </li>
+        {{/each}}
+    </ul>
+  </div>
+
 </div>

@@ -25,6 +25,7 @@ $space-top:150px;
 
 /** image **/
 $team-bg-img: url('../images/team-img.png');
+
 /*==============================
             Properties 
 **=============================*/
@@ -54,6 +55,17 @@ $team-bg-img: url('../images/team-img.png');
   display: flex;
   flex-direction: column;
 }
+
+/*==============================
+          Breakpoints 
+**=============================*/
+
+@mixin for-tablet-desktop {
+  @media screen and (min-width:767px) {
+    @content;
+  }
+}
+
 /*==============================
               Body
 **=============================*/
@@ -78,14 +90,6 @@ h1,h2,h3,h4,h5,h6,p,a,span,li{
 h1{
   color:$main-header;
 }
-
-// image shadow
-img{
-  box-shadow: 0 5px 5px black;
-  border-radius: 15px;
-}
-
-
 
 // fonts
 h1 {
@@ -141,11 +145,9 @@ h3 {
 }
 h4 {
   font-size: 1.125em;
-  /* 1.125x body copy size = 18px */
   line-height: 1.11111111;
   @media (min-width: 43.75em) {
     line-height: 1.22222222;
-    /* (22px / 18px */
   }
 }
 p{
@@ -153,6 +155,9 @@ p{
 }
 
 /** import files **/
+// loader
+@import "./shares/loader";
+
 // client page
 @import "./clients/navbar";
 @import "./clients/homepage";

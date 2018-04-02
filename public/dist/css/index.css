@@ -9,6 +9,9 @@
             Properties 
 **=============================*/
 /*==============================
+          Breakpoints 
+**=============================*/
+/*==============================
               Body
 **=============================*/
 /** global classes **/
@@ -27,10 +30,6 @@ h1, h2, h3, h4, h5, h6, p, a, span, li {
 
 h1 {
   color: #DAAA00; }
-
-img {
-  box-shadow: 0 5px 5px black;
-  border-radius: 15px; }
 
 h1 {
   font-size: 2em;
@@ -82,22 +81,68 @@ h3 {
 
 h4 {
   font-size: 1.125em;
-  /* 1.125x body copy size = 18px */
   line-height: 1.11111111; }
   @media (min-width: 43.75em) {
     h4 {
-      line-height: 1.22222222;
-      /* (22px / 18px */ } }
+      line-height: 1.22222222; } }
 
 p {
   line-height: 1.7em; }
 
 /** import files **/
+.loader-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black; }
+
+.loader {
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #ce4233;
+  letter-spacing: 0.2em; }
+  .loader::before, .loader::after {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: #ce4233;
+    position: absolute;
+    animation: load .7s infinite alternate ease-in-out; }
+  .loader::before {
+    top: 0; }
+  .loader::after {
+    bottom: 0; }
+
+@keyframes load {
+  0% {
+    left: 0;
+    height: 30px;
+    width: 15px; }
+  50% {
+    height: 8px;
+    width: 40px; }
+  100% {
+    left: 235px;
+    height: 30px;
+    width: 15px; } }
+
 /** client navbar **/
 /* navbar section for client side*/
 header {
   z-index: 100;
-  position: absolute;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -427,64 +472,57 @@ footer {
     .sub-team-item {
       margin: 20px 30px 20px 30px; } }
 
+.subteam-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 25px;
+  padding: 0;
+  background-color: #212F3D;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow-y: hidden; }
+  .subteam-page h2 {
+    color: white;
+    text-align: center;
+    margin-top: 30px; }
+  .subteam-page hr {
+    border-top: 1px solid white; }
+  @media screen and (min-width: 767px) {
+    .subteam-page {
+      justify-content: flex-start; }
+      .subteam-page h2 {
+        text-align: left;
+        padding-left: 40px; }
+      .subteam-page hr {
+        width: 60%;
+        position: relative;
+        margin-left: 50px; } }
+
 .team-intro {
   align-self: center;
-  width: 100%;
-  padding: 10px;
-  margin-top: 40px; }
+  width: 100%; }
   .team-intro img {
     display: block;
-    width: 100%;
-    margin: 30px auto; }
+    width: 100%; }
   .team-intro h1 {
-    margin-top: 40px;
+    margin-top: 20px;
     text-align: center; }
   .team-intro p {
     margin: 0 auto;
     max-width: 1000px;
     color: white;
     white-space: pre-wrap; }
-  @media screen and (min-width: 1024px) {
-    .team-intro img {
-      width: 800px;
-      height: 600px; } }
-
-.subteam-page {
-  width: 100%;
-  min-height: 100vh;
-  padding: 25px;
-  background-color: #212F3D;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  overflow-y: hidden; }
-  .subteam-page ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0; }
-    .subteam-page ul li {
-      align-self: center;
-      width: 300px;
-      height: 250px;
-      margin: 20px 20px 20px 20px; }
-      .subteam-page ul li img {
-        height: 100%;
-        width: 100%; }
-      .subteam-page ul li p {
-        color: white; }
-    @media screen and (min-width: 667px) {
-      .subteam-page ul {
-        flex-direction: row; } }
+  @media screen and (min-width: 767px) {
+    .team-intro h1 {
+      position: absolute;
+      top: 100px;
+      right: 15px; } }
 
 /** Toggle text */
 .toggle-text {
   position: relative;
-  margin: 0 auto;
+  margin: 0 20px;
   max-width: 600px;
   box-shadow: 0 5px 5px black;
   border-radius: 5px;
@@ -492,6 +530,12 @@ footer {
   background-color: #1A3E68;
   overflow: hidden;
   transition: height 0.5s ease; }
+  @media screen and (min-width: 767px) {
+    .toggle-text {
+      position: absolute;
+      top: 200px;
+      right: 0;
+      width: 350px; } }
 
 .toggle-text p {
   white-space: pre-line;
@@ -509,6 +553,34 @@ footer {
   font-size: 1.5em;
   transition: all 0.75s ease; }
 
+.team-card-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0; }
+  .team-card-img li {
+    align-self: center;
+    width: 300px;
+    height: 250px;
+    margin: 20px 20px 20px 20px;
+    background-color: #00695C; }
+    .team-card-img li img {
+      height: 100%;
+      width: 100%; }
+    .team-card-img li p {
+      color: white; }
+  @media screen and (min-width: 767px) {
+    .team-card-img {
+      flex-direction: row; }
+      .team-card-img li {
+        width: 250px;
+        height: 200px; } }
+
+/** Team members */
+/** Team update */
 .contact-pg {
   width: 100%;
   min-height: 100vh;

@@ -26,7 +26,7 @@ gulp.task('reload', () => {
 gulp.task('sass', function () {
   return gulp.src('./public/src/sass/index.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./public/src/css'));
+    .pipe(gulp.dest('./public/dist/css'));
 });
 
 gulp.task('babel', () => {

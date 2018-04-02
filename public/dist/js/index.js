@@ -1,8 +1,19 @@
 'use strict';
 'strict mode';
+/** Check if document is loaded */
+
+if (checkLoaded) {
+  var loader = document.querySelector('.loader-container');
+  setTimeout(function () {
+    loader.style.display = "none";
+  }, 1000);
+}
+
+function checkLoaded() {
+  return document.readyState === 'complete';
+}
 
 /** Animation effect on scroll */
-
 var box = document.querySelectorAll('.effect');
 var animation = " fadeInUp";
 window.addEventListener('scroll', function () {
@@ -16,7 +27,7 @@ window.addEventListener('scroll', function () {
   });
   function IsElementInView(element) {
     var rect = element.getBoundingClientRect();
-    return rect.top >= 0 && rect.left >= 0 && rect.bottom * 1.2 <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+    return rect.top >= 0 && rect.left >= 0 && rect.bottom * 1.1 <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
   }
 });
 
