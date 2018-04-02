@@ -177,6 +177,9 @@ p{
 @import "./admins/modal";
 
 /** classes **/
+.wrapper {
+  display: none;
+}
 
 .container-fluid{
   padding-left: 0;

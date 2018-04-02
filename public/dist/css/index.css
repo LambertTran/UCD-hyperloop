@@ -91,6 +91,8 @@ p {
 
 /** import files **/
 .loader-container {
+  position: absolute;
+  z-index: 999;
   height: 100vh;
   width: 100%;
   display: flex;
@@ -208,6 +210,22 @@ header {
 @keyframes fadein {
   100% {
     opacity: 1; } }
+
+.video-test {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: black no-repeat;
+  background-size: cover; }
 
 .pg-header, .page2, .page3, .page4 .sponsor-header {
   padding-top: 40px; }
@@ -930,6 +948,9 @@ footer {
   margin: 10px 20px; }
 
 /** classes **/
+.wrapper {
+  display: none; }
+
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
