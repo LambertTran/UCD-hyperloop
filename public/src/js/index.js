@@ -144,7 +144,7 @@ if (text2Toggle && mainText) {
 
 function toggleText(){
   var expanded = false;
-  text2Toggle.style.height = mainText.scrollHeight + 35 + 'px'; // account for margin and padding
+  text2Toggle.style.height = mainText.scrollHeight + 40 + 'px'; // account for margin and padding
   mainText.addEventListener('click', handleToggleText );
   
   function handleToggleText(){
