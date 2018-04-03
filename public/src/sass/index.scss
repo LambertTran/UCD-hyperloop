@@ -24,7 +24,7 @@ $main-p: #FBF6E5;
 $space-top:150px;
 
 /** image **/
-$team-bg-img: url('../images/team-img.png');
+$team-bg-img: url('../updates/team-img.png');
 
 /*==============================
             Properties 
@@ -173,7 +173,7 @@ p{
 @import "./admins/dashboard";
 @import "./admins/navbar";
 @import "./admins/subteam";
-@import "./admins/images";
+@import "./admins/updates";
 @import "./admins/modal";
 
 /** classes **/

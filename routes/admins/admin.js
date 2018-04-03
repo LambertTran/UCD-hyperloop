@@ -3,7 +3,7 @@
  * Current functionalities: 
  *    + Display Admin dashboard
  *    + Upload team image + description about the team
- *    + Upload/Delete images of what team working on 
+ *    + Upload/Delete updates of what team working on 
  */
 
 
@@ -105,15 +105,15 @@ router.post('/team/:teamName/upload-team-detail', VerifyAuth, (req,res) => {
     })
 })
 
-/** Upload images that team working on */
+/** Upload updates that team working on */
 // GET
-router.get('/team/:teamName/images', VerifyAuth, (req, res) => {
+router.get('/team/:teamName/updates', VerifyAuth, (req, res) => {
   const status = AdminStatus(true,true,false,true);
   const newQuery = new QueryDataBase({team:req.params.teamName})
   newQuery.GetSubTeamImg()
     .then((teamData) => {
       res.render(
-        './admins/image-folder',
+        './admins/update-folder',
         {
           ...status,
           message: req.flash('success'),
@@ -125,7 +125,7 @@ router.get('/team/:teamName/images', VerifyAuth, (req, res) => {
 });
 
 // POST
-router.post('/team/:teamName/images/upload-image', VerifyAuth, upload.single('img'), async (req,res) => {
+router.post('/team/:teamName/updates/upload-image', VerifyAuth, upload.single('img'), async (req,res) => {
   const newImage = await imgHandler.upload(req.file);
   const insertNewData = new QueryDataBase({
     team: req.params.teamName,
@@ -138,7 +138,7 @@ router.post('/team/:teamName/images/upload-image', VerifyAuth, upload.single('im
         'success',
         'Uploaded your image'
       );
-      res.status(200).redirect(`/admin/team/${req.params.teamName}/images`);
+      res.status(200).redirect(`/admin/team/${req.params.teamName}/updates`);
     })
     .catch((err) => {
       res.status(400).send(err);
@@ -146,20 +146,20 @@ router.post('/team/:teamName/images/upload-image', VerifyAuth, upload.single('im
 });
 
 // Delete 
-router.post('/team/:teamName/images/:imgId', VerifyAuth, async (req,res) => {
+router.post('/team/:teamName/updates/:imgId', VerifyAuth, async (req,res) => {
   const isDeleted = await imgHandler.delete(req.params.imgId);
   if (isDeleted) {
     req.flash(
       'success',
       'Deleted image'
     )
-    res.status(200).redirect(`/admin/team/${req.params.teamName}/images`);
+    res.status(200).redirect(`/admin/team/${req.params.teamName}/updates`);
   } else {
     req.flash(
       'success',
       'Can NOT delete image'
     )
-    res.status(400).redirect(`/admin/team/${req.params.teamName}/images`);
+    res.status(400).redirect(`/admin/team/${req.params.teamName}/updates`);
   }
 
 });

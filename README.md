@@ -17,7 +17,7 @@
   + Bootstrap: styling
   + Gulp: task runner
 
-#### Beside these techs, I also use Google Cloud Platform to host the server and store images  
+#### Beside these techs, I also use Google Cloud Platform to host the server and store updates  
 
 #### This project consist of 2 separated routes: 
   + admins (http://localhost:3000/login)

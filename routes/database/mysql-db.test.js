@@ -4,7 +4,7 @@ test('it should list of tables', () => {
   let table = {
     admin:'admin',
     teams:'teams',
-    images:'images',
+    updates:'updates',
     descriptions:'descriptions'
   };
   expect(db.table).toEqual(table); 

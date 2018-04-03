@@ -34,7 +34,7 @@ const imgHandler = {
 // Find image name in database and return url
 function FindImage(imgId){
   return new Promise((resolve,reject) => {
-    const sql = `select * from images where id = ${imgId} `
+    const sql = `select * from updates where id = ${imgId} `
     // find that image in database using its ID
     db.query(sql,(err, result) => {
       if (err) {
@@ -49,7 +49,7 @@ function FindImage(imgId){
 // Delete image in database
 function DeleteImgInDb(imgId){
   return new Promise((resolve,reject) => {
-    const sql = `delete from images where id = ${imgId}`;
+    const sql = `delete from updates where id = ${imgId}`;
     db.query(sql,(err,result) =>{
       if (err) {
         console.log(err);

@@ -1,14 +1,14 @@
 <!--
-  * Render images folder, where displaying images of 
+  * Render updates folder, where displaying updates of 
   * what subteam is working on. Beside that, user can
-  * also upload new images or delete the old images
+  * also upload new updates or delete the old updates
 -->
 
 <div class="content-after-message">
   <div class="row no-gutters">
     <div class="col-12 col-md-9 ml-auto subteam-pg">
       <h2>{{team}}</h2>
-      <h3>Image Folder</h3>
+      <h3>Update Folder</h3>
       <hr />
       <div class="subteam-manage">
         <button id="upload-btn" name="image" class="btn btn-outline-primary" >Update team image</button>
@@ -18,7 +18,7 @@
           <div class="subteam-img">
             <img src={{this.img_link}} alt="team-img">
             <p>{{this.detail}}</p>
-            <form method="post" action="/admin/team/{{../team}}/images/{{this.id}}">
+            <form method="post" action="/admin/team/{{../team}}/updates/{{this.id}}">
               <button type="submit">&#10005;</button>
             </form>
           </div>
@@ -26,10 +26,10 @@
       </div>
       <div id="upload-subteam-img" class="upload-modal">
         <div class="upload-modal-content">
-          <form method="post" enctype="multipart/form-data" action="/admin/team/{{team}}/images/upload-image">
-            <h3>Please select 1 image and enter some description about that images</h3>
+          <form method="post" enctype="multipart/form-data" action="/admin/team/{{team}}/updates/upload-image">
+            <h3>Please select 1 image and enter some description about that updates</h3>
             <div class="form-group">
-              <label>Images</label>
+              <label>updates</label>
               <input type="file" name="img" class="form-control">
             </div>
             <div class="form-group">

@@ -52,7 +52,7 @@ QueryDataBase.prototype.InsertTeamDetail = function() {
   return QueryHelper(sql);
 }
 
-// insert image links - details of the work they have done into IMAGES TABLE
+// insert image links - details of the work they have done into updates TABLE
 QueryDataBase.prototype.InsertWorkImg = function(){
   const sql = `INSERT INTO ${db.tables.updates} (img_link,detail,team_id)
                VALUES (
