@@ -8,12 +8,13 @@
  * @param {*} imageFolder 
  */
 
-function AdminStatus(isAdmin, isSubteam, subteamFolder, imageFolder){
+function AdminStatus(isAdmin = false, isSubteam = false, subteamFolder = false, imageFolder=false,memberFolder=false){
   return {
     isAdmin,
     isSubteam,
     subteamFolder,
     imageFolder,
+    memberFolder,
   }
 }
 

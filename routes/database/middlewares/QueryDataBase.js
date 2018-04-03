@@ -32,9 +32,11 @@ function QueryDataBase(data) {
   this.team = data.team;
   this.imgLink = data.imgLink;
   this.detail = data.detail;
+  this.memberName = data.memberName;
+  this.memberTitle = data.memberTitle;
 }
 
-// insert team image (1 simgple image represent the team) into TEAMS TABLE
+// Insert team image (1 simgple image represent the team) into TEAMS TABLE
 QueryDataBase.prototype.InsertTeamImg = function(){
   const sql = `update teams
                 set team_img = '${this.imgLink}'
@@ -43,7 +45,7 @@ QueryDataBase.prototype.InsertTeamImg = function(){
   return QueryHelper(sql);
 }
 
-// insert detail about the team
+// Insert detail about the team
 QueryDataBase.prototype.InsertTeamDetail = function() {
   const sql = `update teams
                  set team_detail = '${this.detail}'
@@ -52,7 +54,7 @@ QueryDataBase.prototype.InsertTeamDetail = function() {
   return QueryHelper(sql);
 }
 
-// insert image links - details of the work they have done into updates TABLE
+// Insert image links - details of the work they have done into updates TABLE
 QueryDataBase.prototype.InsertWorkImg = function(){
   const sql = `INSERT INTO ${db.tables.updates} (img_link,detail,team_id)
                VALUES (
@@ -71,7 +73,21 @@ QueryDataBase.prototype.InsertWorkImg = function(){
   })
 }
 
-// get image link and detail from each subteam
+// Insert a member into Members Table
+QueryDataBase.prototype.InsertMember = function() {
+  const sql = `INSERT INTO ${db.tables.members}
+                (member_img_link,member_name,member_title,team_id)
+                VALUES (
+                  '${this.imgLink}',
+                  '${this.memberName}',
+                  '${this.memberTitle}',
+                  (SELECT team_id from teams
+                     WHERE (team = '${this.team}'))
+                )`;
+  return QueryHelper(sql);
+}
+
+// Get image link and detail from each subteam
 QueryDataBase.prototype.GetSubTeamImg = function() {
   const sql = `select * from ${db.tables.updates}
                where team_id = (
@@ -81,16 +97,27 @@ QueryDataBase.prototype.GetSubTeamImg = function() {
   return QueryHelper(sql);
 }
 
-// get all teams
+// Get all teams
 QueryDataBase.prototype.GetTeams = function(){
   const sql = 'select * from teams';
   return QueryHelper(sql);
 }
 
-// get sub-team detail
+// Get sub-team detail
 QueryDataBase.prototype.GetSubTeamDetail = function() {
   const sql = `select * from teams
                where team = '${this.team}' 
+              `;
+  return QueryHelper(sql);
+}
+
+// Get sub-team members
+QueryDataBase.prototype.GetSubTeamMembers = function() {
+  const sql = `select * from ${db.tables.members}
+               where team_id = (
+                 select team_id from teams
+                   where (team = '${this.team}') 
+               )
               `;
   return QueryHelper(sql);
 }

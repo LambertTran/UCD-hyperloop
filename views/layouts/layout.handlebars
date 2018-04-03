@@ -47,9 +47,15 @@
                 <li class="{{#if subteamFolder}}nav-admin-active{{/if}}">
                   <a href="/admin/team/{{team}}">
                     <div>
-                      <i class="fa fa-users" aria-hidden="true"></i>
+                      <i class="fa fa-user-circle" aria-hidden="true"></i>
                     </div>
                     {{team}}
+                  </a>
+                </li>
+                <li class="{{#if memberFolder}}nav-admin-active{{/if}}">
+                  <a href="/admin/team/{{team}}/members">
+                    <div><i class="fa fa-users" aria-hidden="true"></i></div>  
+                    Members
                   </a>
                 </li>
                 <li class="{{#if imageFolder}}nav-admin-active{{/if}}">
@@ -64,7 +70,7 @@
           {{/if}}
         </header>
 
-      <!-- Body Admin site -->>
+      <!-- Body Admin site -->
         <div class="container-fluid">
 
           <!-- Display any message -->

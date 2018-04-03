@@ -1,0 +1,51 @@
+<!--
+  * Render member folder, where displaying images of 
+  * the given sub-team. Beside that, user can
+  * also upload or delete members
+-->
+
+<div class="content-after-message">
+  <div class="row no-gutters">
+    <div class="col-12 col-md-9 ml-auto subteam-pg">
+      <h2>{{team}}</h2>
+      <h3>Member Folder</h3>
+      <hr />
+      <div class="subteam-manage">
+        <button id="upload-btn" name="image" class="btn btn-outline-primary" >Update team image</button>
+      </div>
+      <div class="subteam-img-container">
+        {{#each teamData}}
+          <div class="subteam-img">
+            <img src={{this.member_img_link}} alt="team-img">
+            <p>{{this.member_name}}</p>
+            <p>{{this.member_title}}</p>
+            <form method="post" action="/admin/team/{{../team}}/members/{{this.id}}">
+              <button type="submit">&#10005;</button>
+            </form>
+          </div>
+        {{/each}}
+      </div>
+      <div id="upload-subteam-img" class="upload-modal">
+        <div class="upload-modal-content">
+          <form method="post" enctype="multipart/form-data" action="/admin/team/{{team}}/members/upload-image">
+            <h3>Please select 1 image, enter title and name of the member</h3>
+            <div class="form-group">
+              <label>Picture of member</label>
+              <input type="file" name="img" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Name of member</label>
+              <input type="text" name="name" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Title of member</label>
+              <input type="text" name="title" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+            <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

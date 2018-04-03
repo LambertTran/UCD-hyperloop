@@ -86,7 +86,7 @@ router.post('/team/:teamName/upload-image', VerifyAuth, upload.single('img'), as
     });
 });
 
-/** Upload team detail */
+/** Manage team detail */
 // POST 
 router.post('/team/:teamName/upload-team-detail', VerifyAuth, (req,res) => {
 
@@ -104,6 +104,49 @@ router.post('/team/:teamName/upload-team-detail', VerifyAuth, (req,res) => {
       res.status(200).redirect(`/admin/team/${req.params.teamName}`);
     })
 })
+
+/** Manage team members */
+// GET
+router.get('/team/:teamName/members', VerifyAuth, (req, res) => {
+
+  const status = AdminStatus(true,true,false,false,true);
+  
+  const newQuery = new QueryDataBase({team:req.params.teamName})
+  newQuery.GetSubTeamMembers()
+    .then((teamData) => {
+      res.render(
+        './admins/member-folder',
+        {
+          ...status,
+          message: req.flash('success'),
+          team:req.params.teamName,
+          teamData,
+        }
+      );
+    });
+});
+
+// POST
+router.post('/team/:teamName/members/upload-image', VerifyAuth, upload.single('img'), async (req,res) => {
+  const newImage = await imgHandler.upload(req.file);
+  const insertNewMember = new QueryDataBase({
+    team: req.params.teamName,
+    imgLink: newImage,
+    memberName: req.body.name,
+    memberTitle: req.body.title,
+  });
+  insertNewMember.InsertMember()
+    .then(() => {
+      req.flash(
+        'success',
+        'Uploaded your image'
+      );
+      res.status(200).redirect(`/admin/team/${req.params.teamName}/members`);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    })
+});
 
 /** Upload updates that team working on */
 // GET
