@@ -39,7 +39,13 @@ router.get('/create/tables',(req, res) => {
 router.get('/create/admin', (req, res) => {
   
   // define table parameters
-  let sql = `CREATE TABLE IF NOT EXISTS ${db.table.admin} (id int AUTO_INCREMENT,PRIMARY KEY(id), user VARCHAR(255), password VARCHAR(255))`;
+  let sql = `CREATE TABLE IF NOT EXISTS ${db.tables.admin} 
+              (id int AUTO_INCREMENT,
+               PRIMARY KEY(id), 
+               user VARCHAR(255), 
+               password VARCHAR(255)
+              )
+            `;
 
   // create table using defined params
   db.query(sql,(err,result) => {
@@ -57,7 +63,7 @@ router.get('/create/admin', (req, res) => {
   bcrypt.genSalt(10,(err,salt) =>{
     bcrypt.hash(password,salt,(err,hash) => {
       password = hash;
-      let sqlInsert = `INSERT INTO ${db.table.admin} (user,password) VALUES ('${username}','${password}')`;
+      let sqlInsert = `INSERT INTO ${db.tables.admin} (user,password) VALUES ('${username}','${password}')`;
       db.query(sqlInsert, (err,result) => {
         if (err) {
           console.log(err);

@@ -27,11 +27,11 @@ try{
 let db = mysql.createPool(dbIdentity);
 
 // table names
-db.table = {
+db.tables = {
   admin:'admin',
   teams:'teams',
-  images:'images',
-  descriptions:'descriptions'
+  updates:'updates',
+  members:'members',
 };
 
 function handleDisconnect() {

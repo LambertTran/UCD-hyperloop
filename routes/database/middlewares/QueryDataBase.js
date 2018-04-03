@@ -54,7 +54,7 @@ QueryDataBase.prototype.InsertTeamDetail = function() {
 
 // insert image links - details of the work they have done into IMAGES TABLE
 QueryDataBase.prototype.InsertWorkImg = function(){
-  const sql = `INSERT INTO images (img_link,detail,team_id)
+  const sql = `INSERT INTO ${db.tables.updates} (img_link,detail,team_id)
                VALUES (
                  '${this.imgLink}',
                  '${this.detail}',
@@ -73,7 +73,7 @@ QueryDataBase.prototype.InsertWorkImg = function(){
 
 // get image link and detail from each subteam
 QueryDataBase.prototype.GetSubTeamImg = function() {
-  const sql = `select * from images
+  const sql = `select * from ${db.tables.updates}
                where team_id = (
                  select team_id from teams
                    where (team = '${this.team}')

@@ -1,6 +1,7 @@
 /** =================================
                 Packages
 **================================== */
+
 const db = require('../mysql-db.js');
 
 /** =================================
@@ -8,16 +9,16 @@ const db = require('../mysql-db.js');
 **================================== */
 
 function CreateTables() {
-  const teams = `CREATE TABLE IF NOT EXISTS ${db.table.teams}
+  const teams = `CREATE TABLE IF NOT EXISTS ${db.tables.teams}
                ( 
                  team_id INT AUTO_INCREMENT,
                  team VARCHAR(100) NOT NULL,
                  team_detail VARCHAR(10000),
-                 team_img VARCHAR(100),
+                 team_img VARCHAR(255),
                  PRIMARY KEY (team_id)
                )
               `;
-  const images = `CREATE TABLE IF NOT EXISTS ${db.table.images} 
+  const updates = `CREATE TABLE IF NOT EXISTS ${db.tables.updates} 
                 (
                   id INT AUTO_INCREMENT,
                   team_id INT NOT NULL,
@@ -28,9 +29,22 @@ function CreateTables() {
                 )
                `;
   
+  const members = `CREATE TABLE IF NOT EXISTS ${db.tables.members} 
+                  (
+                    id INT AUTO_INCREMENT,
+                    team_id INT NOT NULL,
+                    member_img_link VARCHAR(255),
+                    member_name VARCHAR(255),
+                    member_title VARCHAR(255),
+                    PRIMARY KEY (id),
+                    FOREIGN KEY (team_id) REFERENCES teams(team_id)
+                  )
+`;
+  
   const query = {
     teams,
-    images,
+    updates,
+    members
   };
   return new Promise((resolve, reject) => {
     for (let item in query) {
