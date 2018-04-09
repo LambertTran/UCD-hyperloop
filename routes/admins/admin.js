@@ -148,6 +148,25 @@ router.post('/team/:teamName/members/upload-image', VerifyAuth, upload.single('i
     })
 });
 
+// Delete 
+router.post('/team/:teamName/members/:imgId', VerifyAuth, async (req,res) => {
+  const isDeleted = await imgHandler.deleteMember(req.params.imgId);
+  if (isDeleted) {
+    req.flash(
+      'success',
+      'Deleted image'
+    )
+    res.status(200).redirect(`/admin/team/${req.params.teamName}/members`);
+  } else {
+    req.flash(
+      'success',
+      'Can NOT delete image'
+    )
+    res.status(400).redirect(`/admin/team/${req.params.teamName}/members`);
+  }
+
+});
+
 /** Upload updates that team working on */
 // GET
 router.get('/team/:teamName/updates', VerifyAuth, (req, res) => {
@@ -190,7 +209,7 @@ router.post('/team/:teamName/updates/upload-image', VerifyAuth, upload.single('i
 
 // Delete 
 router.post('/team/:teamName/updates/:imgId', VerifyAuth, async (req,res) => {
-  const isDeleted = await imgHandler.delete(req.params.imgId);
+  const isDeleted = await imgHandler.deleteUpdate(req.params.imgId);
   if (isDeleted) {
     req.flash(
       'success',
