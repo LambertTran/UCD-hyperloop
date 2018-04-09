@@ -14,21 +14,17 @@
     <h2>Our team</h2>
     <hr>
     <ul class="team-card-img">
+      {{#each teamData.members}}
+        <li>
+          <img src={{this.member_img_link}} alt="">
+          <h3>{{this.member_name}}</h3>
+          <h5>{{this.member_title}}</h5>
+        </li>
+      {{/each}}
       <li>
-        <h3>Name</h3>
-        <h5>Title</h5>
-      </li>
-      <li>
-        <h3>Name</h3>
-        <h5>Title</h5>
-      </li>
-      <li>
-        <h3>Name</h3>
-        <h5>Title</h5>
-      </li>
-      <li>
-        <h3>Name</h3>
-        <h5>Title</h5>
+        <img src="../images/empty-avatar.png" class="empty-user" alt="">
+        <h3>You?</h3>
+        <h5>Email Us!</h5>
       </li>
     </ul>
   </div>
@@ -37,10 +33,10 @@
     <h2>Our progress</h2>
     <hr>
     <ul class="team-card-img">
-      {{#each teamData.imgData}}
+      {{#each teamData.updates}}
         <li class="animated effect">
-          <p>{{this.detail}}</p>
           <img src={{this.img_link}} alt="subteam-img">
+          <p>{{this.detail}}</p>
         </li>
         {{/each}}
     </ul>

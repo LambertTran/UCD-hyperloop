@@ -46,7 +46,8 @@ router.get('/teams/:teamName', (req, res) => {
   const newQuery = new QueryDatabase(reqTeamData);
   Promise.all([
     newQuery.GetSubTeamDetail(),
-    newQuery.GetSubTeamImg()
+    newQuery.GetSubTeamMembers(),
+    newQuery.GetSubTeamImg(),
   ])
     .then((results) => {
       let teamData = {};
@@ -54,7 +55,9 @@ router.get('/teams/:teamName', (req, res) => {
       teamData.mainTeamDetail = teamDetail[0];
       teamData.moreDetail = teamDetail.slice(1,teamDetail.length).join('\r\n');
       teamData.teamImg = results[0][0].team_img;
-      teamData.imgData = results[1];
+      teamData.members = results[1];
+      teamData.updates = results[2];
+      
       res.status(200).render('./clients/sub-team', {
         teams:true,
         name:req.params.teamName.replace(/-/g,' '),

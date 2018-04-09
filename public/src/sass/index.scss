@@ -66,6 +66,12 @@ $team-bg-img: url('../updates/team-img.png');
   }
 }
 
+@mixin for-desktop-up {
+  @media screen and (min-width:767px) {
+    @content;
+  }
+}
+
 /*==============================
               Body
 **=============================*/
