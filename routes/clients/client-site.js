@@ -56,7 +56,7 @@ router.get('/teams/:teamName', (req, res) => {
       teamData.moreDetail = teamDetail.slice(1,teamDetail.length).join('\r\n');
       teamData.teamImg = results[0][0].team_img;
       teamData.members = results[1];
-      teamData.updates = results[2];
+      teamData.updates = results[2].reverse();
       
       res.status(200).render('./clients/sub-team', {
         teams:true,
