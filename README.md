@@ -6,7 +6,7 @@
 
 ***
 
-__**Note**__: Pls email at lb.tran648@gmail.com if you are interested in developing website for hyperloop team at UC Davis
+__**Note**__: Pls email me at lb.tran648@gmail.com if you are interested in developing website for hyperloop team at UC Davis
 
 ***
 
