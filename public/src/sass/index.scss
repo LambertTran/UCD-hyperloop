@@ -60,6 +60,12 @@ $team-bg-img: url('../updates/team-img.png');
           Breakpoints 
 **=============================*/
 
+@mixin for-phone-portrait {
+  @media screen and (min-width:600px) {
+    @content;
+  }
+}
+
 @mixin for-tablet-desktop {
   @media screen and (min-width:767px) {
     @content;
@@ -213,6 +219,25 @@ p{
 .content-after-message{
   padding: 20px;
   padding-top: 120px;
-  
+}
+
+.btn-trans {
+  color: white;
+  background-color: transparent;
+  font-size: 1.2em;
+  padding: 5px 20px;
+  text-align: center;
+  border-radius: 20px;  
+  margin: 0 auto;
+  border: 2px solid #72adc4;
+  transition: all 0.300s ease-in;
+  &:hover{
+    background-color: $main-header;
+    border: 2px solid $main-header;
+    cursor: pointer;
+  }
+  &:focus {
+    outline: 0;
+  }  
 }
 
