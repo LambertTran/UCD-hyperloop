@@ -1,0 +1,8 @@
+1. Create new folder, name it "identity"
+
+2. Copy all the files in this folder to "identity" folder
+
+3. Input your MySQL username and password into "db-identity.js" inside the newly created folder "identity"
+
+4. Copy your GCP API key to this folder, and rename it to "GCP-key.json"
+
