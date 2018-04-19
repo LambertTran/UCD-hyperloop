@@ -73,7 +73,7 @@ app.use(function (req, res, next) {
 app.use('/',ClientSite);
 app.use('/',Login);
 app.use('/admin',Admin);
-app.use('/database',CreateDb);
+// app.use('/database',CreateDb);
 
 
 app.listen(port, () => console.log(`connect to ${port}`));
