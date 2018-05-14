@@ -32,6 +32,7 @@ db.tables = {
   teams:'teams',
   updates:'updates',
   members:'members',
+  tokens: 'tokens',
 };
 
 function handleDisconnect() {

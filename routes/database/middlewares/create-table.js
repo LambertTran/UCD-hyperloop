@@ -39,13 +39,25 @@ function CreateTables() {
                     PRIMARY KEY (id),
                     FOREIGN KEY (team_id) REFERENCES teams(team_id)
                   )
-`;
+                  `;
+
+  const tokens = `CREATE TABLE IF NOT EXISTS ${db.tables.tokens} 
+                  (
+                    id INT AUTO_INCREMENT,
+                    token VARCHAR(255),
+                    logout BOOL,
+                    PRIMARY KEY (id)
+                  )
+                  `;
+
   
   const query = {
     teams,
     updates,
-    members
+    members,
+    tokens,
   };
+  
   return new Promise((resolve, reject) => {
     for (let item in query) {
       QueryHelper(query[item],item);

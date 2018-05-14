@@ -2,3 +2,7 @@
 /identity
 *.out
 *.yaml
+
+nohup.out
+
+*-lock.json

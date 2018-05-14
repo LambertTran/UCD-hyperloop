@@ -19,7 +19,7 @@ var bodyParser   = require('body-parser');
 var ClientSite = require('./routes/clients/client-site');
 var Admin = require('./routes/admins/admin');
 var Login = require('./routes/admins/login');
-
+var Apis  = require('./routes/api/apis');
 var CreateDb = require('./routes/database/create-db');
 
 /** =================================
@@ -73,7 +73,8 @@ app.use(function (req, res, next) {
 app.use('/',ClientSite);
 app.use('/',Login);
 app.use('/admin',Admin);
-// app.use('/database',CreateDb);
+app.use('/api',Apis);
+app.use('/database',CreateDb);
 
 
 app.listen(port, () => console.log(`connect to ${port}`));
