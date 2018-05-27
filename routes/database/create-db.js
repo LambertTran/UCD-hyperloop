@@ -1,9 +1,9 @@
 /**
   * To create Database for UC Davis Hyperloop
   * 1. Send GET request to /create/tables
-  * 2. Insert desired username and password in CREATE ADMIN TABLE
+  * 2. Insert desired username and password in CREATE ADMIN TABLE route below
   * 3. Send GET request to /create/admin
-  * 4. Send GET request to /insert/teams 
+  * 4. Send GET request to /insert/teams
 **/
 
 /** =================================
@@ -32,17 +32,17 @@ router.get('/create/tables',(req, res) => {
     })
     .catch(() => {
       res.status(401).send({message: 'Cant create tables'});
-    });  
+    });
 });
 
 /** Create admin table */
 router.get('/create/admin', (req, res) => {
-  
+
   // define table parameters
-  let sql = `CREATE TABLE IF NOT EXISTS ${db.tables.admin} 
+  let sql = `CREATE TABLE IF NOT EXISTS ${db.tables.admin}
               (id int AUTO_INCREMENT,
-               PRIMARY KEY(id), 
-               user VARCHAR(255), 
+               PRIMARY KEY(id),
+               user VARCHAR(255),
                password VARCHAR(255)
               )
             `;
@@ -54,11 +54,11 @@ router.get('/create/admin', (req, res) => {
       console.log("Cant create table");
     }
   });
-  
+
   // admin identity
   var username = "hyperloop"; // add username here
   var password = "test123"; // add password here
-  
+
   // hash password before store into database
   bcrypt.genSalt(10,(err,salt) =>{
     bcrypt.hash(password,salt,(err,hash) => {
